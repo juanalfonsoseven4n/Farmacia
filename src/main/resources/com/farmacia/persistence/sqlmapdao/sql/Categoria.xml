@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Categoria">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="categoria" type="com.farmacia.domain.Categoria" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="categoriaResult" class="categoria">
+		<result property="idcategoria" column="idcategoria" />
+		<result property="nombre" column="nombre" />
+		<result property="descripcion" column="descripcion" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Categoria' a la tabla de la base de datos-->
+	<insert id="insertCategoria" parameterClass="categoria">	
+        INSERT INTO ${schema}.categoria (idcategoria, nombre, descripcion)
+    	                      VALUES (#idcategoria# ,#nombre# ,#descripcion# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Categoria' a la tabla de la base de datos-->	
+	<update id="updateCategoria" parameterClass="categoria">
+        UPDATE ${schema}.categoria SET idcategoria = #idcategoria# ,nombre = #nombre# ,descripcion = #descripcion#     	WHERE idcategoria = #idcategoria# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Categoria' de la tabla de la base de datos-->
+	<delete id="deleteCategoria" parameterClass="categoria">
+    	DELETE FROM ${schema}.categoria WHERE idcategoria = #idcategoria# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Categoria' de la tabla de la base de datos-->
+	<select id="getCategoria" resultMap="categoriaResult" parameterClass="categoria">
+		SELECT idcategoria, nombre, descripcion
+		FROM ${schema}.categoria
+		WHERE idcategoria = #idcategoria# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de Categoria de la tabla de la base de datos-->
+	<select id="getMaxCategoriaIdcategoria" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idcategoria )
+		FROM ${schema}.categoria
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Categoria' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getCategoriaXmlString" resultClass="xml" xmlResultName="Categoria" parameterClass="java.math.BigDecimal">
+		SELECT idcategoria, nombre, descripcion		FROM ${schema}.categoria
+		WHERE idcategoria = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Categoria' de la tabla de la base de datos en una lista-->
+	<select id="getCategoriaList" resultMap="categoriaResult">
+		SELECT idcategoria, nombre, descripcion
+		FROM ${schema}.categoria
+		ORDER BY nombre ASC
+	</select>
+		<!--Definición del proceso de consulta de todos los registros de 'Categoria' de la tabla de la base de datos en una lista-->
+	<select id="getCategoriaByName" resultMap="categoriaResult" parameterClass="java.lang.String">
+		SELECT idcategoria, nombre, descripcion
+		FROM ${schema}.categoria
+		WHERE upper(nombre) like '$nombre$%'
+		ORDER BY nombre ASC
+	</select>
+	<!--Definición del proceso de consulta de todos los registros de 'Categoria' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getCategoriaListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idcategoria, nombre, descripcion
+		FROM ${schema}.categoria
+		ORDER BY idcategoria ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Categoria' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Clasificacion">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="clasificacion" type="com.farmacia.domain.Clasificacion" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="clasificacionResult" class="clasificacion">
+		<result property="idclasificacion" column="idclasificacion" />
+		<result property="nombre" column="nombre" />
+		<result property="descripcion" column="descripcion" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Clasificacion' a la tabla de la base de datos-->
+	<insert id="insertClasificacion" parameterClass="clasificacion">	
+        INSERT INTO ${schema}.clasificacion (idclasificacion, nombre, descripcion)
+    	                      VALUES (#idclasificacion# ,#nombre# ,#descripcion# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Clasificacion' a la tabla de la base de datos-->	
+	<update id="updateClasificacion" parameterClass="clasificacion">
+        UPDATE ${schema}.clasificacion SET idclasificacion = #idclasificacion# ,nombre = #nombre# ,descripcion = #descripcion#     	WHERE idclasificacion = #idclasificacion# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Clasificacion' de la tabla de la base de datos-->
+	<delete id="deleteClasificacion" parameterClass="clasificacion">
+    	DELETE FROM ${schema}.clasificacion WHERE idclasificacion = #idclasificacion# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Clasificacion' de la tabla de la base de datos-->
+	<select id="getClasificacion" resultMap="clasificacionResult" parameterClass="clasificacion">
+		SELECT idclasificacion, nombre, descripcion
+		FROM ${schema}.clasificacion
+		WHERE idclasificacion = #idclasificacion# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de Clasificacion de la tabla de la base de datos-->
+	<select id="getMaxClasificacionIdclasificacion" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idclasificacion )
+		FROM ${schema}.clasificacion
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Clasificacion' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getClasificacionXmlString" resultClass="xml" xmlResultName="Clasificacion" parameterClass="java.math.BigDecimal">
+		SELECT idclasificacion, nombre, descripcion		FROM ${schema}.clasificacion
+		WHERE idclasificacion = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Clasificacion' de la tabla de la base de datos en una lista-->
+	<select id="getClasificacionList" resultMap="clasificacionResult">
+		SELECT idclasificacion, nombre, descripcion
+		FROM ${schema}.clasificacion
+		ORDER BY nombre ASC
+	</select>
+		<!--Definición del proceso de consulta de todos los registros de 'Clasificacion' de la tabla de la base de datos en una lista-->
+	<select id="getClasificacionByName" resultMap="clasificacionResult" parameterClass="java.lang.String">
+		SELECT idclasificacion, nombre, descripcion
+		FROM ${schema}.clasificacion
+		WHERE upper(nombre) like '$nombre$%'
+		ORDER BY nombre ASC
+	</select>
+	<!--Definición del proceso de consulta de todos los registros de 'Clasificacion' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getClasificacionListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idclasificacion, nombre, descripcion
+		FROM ${schema}.clasificacion
+		ORDER BY idclasificacion ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Clasificacion' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

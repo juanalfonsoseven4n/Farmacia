@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE form-validation PUBLIC 
+    "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN" 
+    "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+
+	<formset>
+		<form name="usuarioForm">
+			<field property="usuario.estadoUsuario"
+				depends="required">
+				<arg0 key="usuario.estadoUsuario" />
+			</field>
+			<field property="usuario.usuario" depends="required">
+				<arg0 key="usuario.usuario" />
+			</field>
+			<field property="usuario.nombreUsuario"
+				depends="required">
+				<arg0 key="usuario.nombreUsuario" />
+			</field>
+			<field property="usuario.id_perfil" depends="intRange">
+				<arg0 key="perfil.title" />
+				<arg1 name="range" key="${var:min}" resource="false" />
+				<arg2 name="range" key="${var:max}" resource="false" />
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>10000</var-value>
+				</var>
+			</field>
+		</form>
+	</formset>
+
+	<formset>
+		<form name="perfilForm">
+			<field property="perfil.nombre" depends="required">
+				<arg0 key="perfil.field.nombre" />
+			</field>
+			<field property="perfil.descripcion" depends="required">
+				<arg0 key="perfil.field.descripcion" />
+			</field>
+			<field property="perfil.estado" depends="required">
+				<arg0 key="perfil.field.estado" />
+			</field>
+		</form>
+	</formset>
+
+	<formset>
+		<form name="opcionForm">
+			<field property="opcion.id_menu" depends="intRange">
+				<arg0 key="opcion.field.id_menu" />
+				<arg1 name="range" key="${var:min}" resource="false" />
+				<arg2 name="range" key="${var:max}" resource="false" />
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>10000</var-value>
+				</var>
+			</field>
+			<field property="opcion.nombre" depends="required">
+				<arg0 key="opcion.field.nombre" />
+			</field>
+			<field property="opcion.descripcion" depends="required">
+				<arg0 key="opcion.field.descripcion" />
+			</field>
+			<field property="opcion.linkopcion" depends="required">
+				<arg0 key="opcion.field.linkopcion" />
+			</field>
+			<field property="opcion.orden"
+				depends="required, integer">
+				<arg0 key="opcion.field.orden" />
+			</field>
+			<field property="opcion.estado" depends="required">
+				<arg0 key="opcion.field.estado" />
+			</field>
+			<field property="opcion.titulo" depends="required">
+				<arg0 key="opcion.field.titulo" />
+			</field>
+		</form>
+	</formset>
+
+	<formset>
+		<form name="personaForm">
+			<field property="persona.nombre" depends="required">
+				<arg0 key="persona.field.nombre" />
+			</field>
+			
+		</form>
+	</formset>
+	
+	<formset>
+		<form name="medicoForm">
+			<field property="persona.estado" depends="required">
+				<arg0 key="persona.estado" />
+			</field>
+			<field property="persona.nombre" depends="required">
+				<arg0 key="persona.nombre" />
+			</field>
+			<field property="persona.apellido" depends="required">
+				<arg0 key="persona.apellido" />
+			</field>
+			<field property="persona.sexo" depends="required">
+				<arg0 key="persona.sexo" />
+			</field>
+			<field property="persona.mat_prov" depends="required">
+				<arg0 key="persona.mat_prov" />
+			</field>
+			<field property="persona.esp1" depends="required">
+				<arg0 key="persona.esp1" />
+			</field>
+			<field property="persona.codmed_sibel" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="persona.codmed_sibel"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9]{1}[0-9\.]*$</var-value>
+   				</var>
+            </field>
+            <field property="persona.pacientes" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="persona.pacientes"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9]{1}[0-9\.]*$</var-value>
+   				</var>
+            </field>
+		</form>
+	</formset>
+	
+	<formset>
+		<form name="pacienteForm">
+			<field property="persona.estado" depends="required">
+				<arg0 key="persona.estado" />
+			</field>
+			<field property="persona.nombre" depends="required">
+				<arg0 key="persona.nombre" />
+			</field>
+			<field property="persona.apellido" depends="required">
+				<arg0 key="persona.apellido" />
+			</field>
+			<field property="persona.sexo" depends="required">
+				<arg0 key="persona.sexo" />
+			</field>
+			
+			<field property="persona.pafuen" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="persona.pafuen"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9]{1}[0-9\.]*$</var-value>
+   				</var>
+            </field>
+			
+		</form>
+	</formset>
+	
+	<formset>
+		<form name="otroForm">
+			<field property="persona.estado" depends="required">
+				<arg0 key="persona.estado" />
+			</field>
+			<field property="persona.nombre" depends="required">
+				<arg0 key="persona.nombre" />
+			</field>
+			<field property="persona.apellido" depends="required">
+				<arg0 key="persona.apellido" />
+			</field>
+			<field property="persona.sexo" depends="required">
+				<arg0 key="persona.sexo" />
+			</field>
+			<field property="persona.pafuen" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="persona.pafuen"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9]{1}[0-9\.]*$</var-value>
+   				</var>
+            </field>
+		</form>
+	</formset>
+	
+	<formset>
+		<form name="consultaForm">
+			<field property="consulta.nombre" depends="required">
+				<arg0 key="consulta.nombre" />
+			</field>
+			
+		</form>
+	</formset>
+	
+	
+	<formset>
+		<form name="tipoCampanaForm">
+			<field property="tipocampana.guion" depends="minlength,maxlength">
+            	<arg0 key="campana.guion"/>
+		        
+	   		    <var>
+	          		<var-name>minlength</var-name>
+	          		<var-value>0</var-value>
+	        	</var>
+	        	<var>
+	          		<var-name>maxlength</var-name>
+	          		<var-value>1000</var-value>
+	        	</var>
+            </field> 
+		</form>
+	</formset>
+	
+	<formset>
+		<form name="encuestaForm">
+			<field property="encuesta.numeropreguntas" depends="required,intRange">
+				<arg0 key="encuesta.numeropreguntas" />
+				<arg1 name="range" key="${var:min}" resource="false" />
+				<arg2 name="range" key="${var:max}" resource="false" />
+				<var>
+					<var-name>min</var-name>
+					<var-value>1</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+		</form>
+	</formset>
+	
+</form-validation>

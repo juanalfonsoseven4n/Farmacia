@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Venta">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="venta" type="com.farmacia.domain.Venta" />
+	<typeAlias alias="detVentaProd" type="com.farmacia.domain.DetVentaProd" />
+	<typeAlias alias="preventa" type="com.farmacia.domain.Preventa" />
+	<typeAlias alias="ventaform" type="com.farmacia.form.VentaForm" />
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="ventaResult" class="venta">
+		<result property="idventa" column="idventa" />
+		<result property="fecha" column="fecha" />
+		<result property="idusuario" column="idusuario" />
+		<result property="idmedico" column="idmedico" />
+		<result property="valortotal" column="valortotal" />
+		<result property="iva" column="iva" />
+		<result property="idcliente" column="idcliente" />
+		<result property="idfarmacia" column="idfarmacia" />
+		<result property="codigo" column="codigo" />
+		<result property="valor" column="valor" />
+		<result property="hora" column="hora" />
+		<result property="vendedor" column="idusuario" select="getUsuarioByID" />
+		<result property="medico" column="idmedico" select="getUsuarioByID"/>
+		<result property="cliente" column="idcliente" select="getClienteByID"/>		
+	</resultMap>
+	<resultMap id="detVentaProdResult" class="detVentaProd">
+		<result property="fecha" column="fecha" />
+		<result property="iddetventa" column="iddetventa" />
+		<result property="idventa" column="idventa" />
+		<result property="idproducto" column="idproducto" />
+		<result property="idlaboratorio" column="idlaboratorio" />
+		<result property="cantidad" column="cantidad" />
+		<result property="valor" column="valor" />
+		<result property="valorunit" column="valorunit" />
+		<result property="marca" column="marca" />
+		<result property="presentacion" column="presentacion" />
+		<result property="dias" column="dias" />
+		<result property="nombreProducto" column="nombreProducto" />
+		<result property="usuario" column="usuario" />
+		<result property="labdesc" column="labdesc"/>
+	</resultMap>
+	<resultMap id="preventaResult" class="preventa">
+		<result property="fechaVenta" column="fechaVenta" />
+		<result property="iddetventa" column="iddetventa" />
+		<result property="idventa" column="idventa" />
+		<result property="idproducto" column="idproducto" />
+		<result property="idlaboratorio" column="idlaboratorio" />
+		<result property="cantidad" column="cantidad" />
+		<result property="valor" column="valor" />
+		<result property="valorunit" column="valorunit" />
+		<result property="nombreLaboratorio" column="nombreLaboratorio" />
+		<result property="presentacion" column="presentacion" />
+		<result property="precioventa" column="precioventa" />
+		<result property="fechaProxVenta" column="fechaProxVenta" />
+		<result property="nombreProducto" column="nombreProducto" />
+		<result property="idcliente" column="idcliente" />
+		<result property="nombre" column="nombre" />
+		<result property="apellido" column="apellido" />
+		<result property="telefono" column="telefono" />
+		<result property="direccion" column="direccion" />	
+	</resultMap>
+	
+	
+	<!--Definición del proceso de inserción de un registro de 'Venta' a la tabla de la base de datos-->
+	<insert id="insertVenta" parameterClass="venta">	
+        INSERT INTO ${schema}.venta (idventa, fecha, idusuario, idmedico, valortotal, iva, idcliente, idfarmacia, codigo, valor, hora )
+    	                      VALUES (#idventa# ,#fecha# ,#idusuario# ,#idmedico# ,#valortotal# ,#iva# ,#idcliente# ,#idfarmacia# ,#codigo# ,#valor# ,#hora#)
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Venta' a la tabla de la base de datos-->	
+	<update id="updateVenta" parameterClass="venta">
+        UPDATE ${schema}.venta SET idventa = #idventa# ,fecha = #fecha# ,idusuario = #idusuario# ,idmedico = #idmedico# ,valortotal = #valortotal# ,iva = #iva# ,
+        	idcliente = #idcliente# ,idfarmacia = #idfarmacia# ,codigo = #codigo# ,valor = #valor# ,hora = #hora# 
+           	WHERE idventa = #idventa# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Venta' de la tabla de la base de datos-->
+	<delete id="deleteVenta" parameterClass="venta">
+    	DELETE FROM ${schema}.venta WHERE idventa = #idventa# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Venta' de la tabla de la base de datos-->
+	<select id="getVenta" resultMap="ventaResult" parameterClass="venta">
+		SELECT idventa, fecha, idusuario, idmedico, valortotal, iva, idcliente, idfarmacia, codigo, valor, hora 
+		FROM ${schema}.venta
+		WHERE idventa = #idventa# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Venta' de la tabla de la base de datos-->
+	<select id="getMaxVentaIdventa" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idventa )
+		FROM ${schema}.venta
+	</select>
+	<select id="getMaxCodigoVenta" resultClass="java.math.BigDecimal" >
+		SELECT MAX( codigo )
+		FROM ${schema}.venta
+	</select>
+	
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Venta' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getVentaXmlString" resultClass="xml" xmlResultName="Venta" parameterClass="java.math.BigDecimal">
+		SELECT idventa, fecha, idusuario, idmedico, valortotal, iva, idcliente, idfarmacia, codigo, valor, hora 		FROM ${schema}.venta
+		WHERE idventa = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Venta' de la tabla de la base de datos en una lista-->
+	<select id="getVentaList" resultMap="ventaResult">
+		SELECT idventa, fecha, idusuario, idmedico, valortotal, iva, idcliente, idfarmacia, codigo, valor, hora 
+		FROM ${schema}.venta
+		ORDER BY idventa DESC
+	</select>
+	
+	<select id="getVentaListFiltradas" resultMap="ventaResult" parameterClass="ventaform">
+		SELECT idventa, fecha, idusuario, idmedico, valortotal, iva, idcliente, idfarmacia, codigo, valor, hora 
+		FROM ${schema}.venta
+		where idfarmacia ='1'
+		<isNotEmpty prepend="AND" property="usuario">
+			(idusuario =#idusuarioNum# OR idmedico=#idmedicoNum#)
+		</isNotEmpty>
+		<isNotEmpty property="fechaini">
+		<isNotEqual compareValue="0" prepend="AND" property="fechaini">
+			fecha &gt;= #fechainiNum# AND fecha &lt;= #fechafinNum#
+		</isNotEqual>
+		</isNotEmpty>
+		ORDER BY idventa DESC
+	</select>
+	
+	<select id="getVentaListSUM" resultClass="java.math.BigDecimal">
+		SELECT SUM(valortotal)
+		FROM ${schema}.venta
+	</select>
+	
+	<select id="getVentaListFiltradasSUM" resultClass="java.math.BigDecimal" parameterClass="ventaform">
+		SELECT SUM(valortotal)
+		FROM ${schema}.venta
+		where idfarmacia ='1'
+		<isNotEmpty prepend="AND" property="usuario">
+			(idusuario =#idusuarioNum# OR idmedico=#idmedicoNum#)
+		</isNotEmpty>
+		<isNotEmpty property="fechaini">
+		<isNotEqual compareValue="0" prepend="AND" property="fechaini">
+			fecha &gt;= #fechainiNum# AND fecha &lt;= #fechafinNum#
+		</isNotEqual>
+		</isNotEmpty>
+	</select>
+	
+	<select id="getVentaListMarked" resultMap="ventaResult">
+		SELECT v.idventa, v.fecha, v.idusuario, v.idmedico, v.valortotal, v.iva, v.idcliente, v.idfarmacia, v.codigo, v.valor, v.hora 
+		FROM ${schema}.venta v, ${schema}.detventa d where v.idventa=d.idventa and d.marca='1' and v.fecha &gt;= ${fecvent}
+		GROUP BY v.idventa, v.fecha, v.idusuario, v.idmedico, v.valortotal, v.iva, v.idcliente, v.idfarmacia, v.codigo, v.valor, v.hora 
+		ORDER BY idventa DESC
+	</select>
+	
+	
+	<select id="getVentaListMarkedFiltradas" resultMap="ventaResult" parameterClass="ventaform">
+		SELECT v.idventa, v.fecha, v.idusuario, v.idmedico, v.valortotal, v.iva, v.idcliente, v.idfarmacia, v.codigo, v.valor, v.hora 
+		FROM ${schema}.venta v, ${schema}.detventa d 
+		WHERE v.idventa=d.idventa and d.marca='1' and v.idfarmacia ='1' and v.fecha &gt;= ${fecvent}
+		<isNotEmpty prepend="AND" property="usuario">
+			(v.idusuario =#idusuarioNum# OR v.idmedico=#idmedicoNum#)
+		</isNotEmpty>
+		<isNotEmpty property="fechaini">
+		<isNotEqual compareValue="0" prepend="AND" property="fechaini">
+			v.fecha &gt;= #fechainiNum# AND v.fecha &lt;= #fechafinNum#
+		</isNotEqual>
+		</isNotEmpty>
+		GROUP BY v.idventa, v.fecha, v.idusuario, v.idmedico, v.valortotal, v.iva, v.idcliente, v.idfarmacia, v.codigo, v.valor, v.hora 
+		ORDER BY idventa DESC
+	</select>
+	
+	
+	<select id="getVentasProdMarked" resultMap="detVentaProdResult" parameterClass="ventaform">
+	select v.fecha,d.iddetventa, d.idventa, d.idproducto, p.idlaboratorio, d.cantidad,  d.valor, 
+			d.valorunit, d.marca, d.presentacion, d.dias, p.nombre as nombreProducto, u.nombre as usuario ,  l.nombre as labdesc 
+	FROM detventa d, venta v, usuario u, producto p, laboratorio l, familia f
+	WHERE d.idventa=v.idventa and d.idproducto=p.idproducto and p.idlaboratorio=l.idlaboratorio and v.idmedico=u.idusuario and p.idfamilia = f.idfamilia and marca=1	
+		<isNotEmpty prepend="AND" property="idlaboratorio">
+			l.idlaboratorio =#idlaboratorioNum# 
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="descproducto">
+			(upper(p.nombre) like '$descproducto$%' or upper(f.nombre) like '$descproducto$%')
+		</isNotEmpty>
+		<isNotEmpty property="fechaini">
+			<isNotEqual compareValue="0" prepend="AND" property="fechaini">
+				v.fecha &gt;= #fechainiNum# AND v.fecha &lt;= #fechafinNum#
+			</isNotEqual>
+		</isNotEmpty>
+	ORDER BY v.fecha	
+	</select>
+	
+	<select id="getPreventas" resultMap="preventaResult" parameterClass="ventaform">
+		SELECT c.idcliente, c.nombre, c.apellido, c.telefono, c.direccion, p.nombre as nombreProducto, p.presentacion,p.precioventa,
+			d.iddetventa, d.idventa, d.idproducto, p.idlaboratorio,
+			d.cantidad, d.valorunit, d.valor ,l.nombre as nombreLaboratorio, v.fecha as fechaVenta, d.dias as fechaProxVenta
+		FROM cliente c, producto p, detventa d, venta v, laboratorio l 
+		WHERE d.idventa=v.idventa and d.idproducto=p.idproducto and p.idlaboratorio=l.idlaboratorio and v.idcliente = c.idcliente 
+			and d.dias>0 and v.idcliente>0
+		<isNotEmpty property="fechaini">
+				<isNotEqual compareValue="0" prepend="AND" property="fechaini">
+					d.dias &gt;= #fechainiNum# AND d.dias &lt;= #fechafinNum#
+				</isNotEqual>
+			</isNotEmpty>
+		ORDER BY d.dias	
+	</select>
+	
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Venta' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getVentaListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idventa, fecha, idusuario, idmedico, valortotal, iva, idcliente, idfarmacia, codigo, valor, hora 
+		FROM ${schema}.venta
+		ORDER BY idventa ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Venta' DE LA BASE DE DATOS:
+	////-->	
+	
+		<select id="getVentaListConsulta" resultMap="ventaResult" parameterClass="ventaform">
+		SELECT v.idventa, v.fecha, v.idusuario, v.idmedico, v.valortotal, v.iva, v.idcliente, v.idfarmacia, v.codigo, v.valor, v.hora 
+		FROM ${schema}.venta v
+		<isNotEmpty property="cliente" >
+		, ${schema}.cliente c
+		</isNotEmpty>
+		where idfarmacia ='1'
+		
+	
+		
+		<isNotEmpty prepend="and" property="cliente" >
+			 v.idcliente=c.idcliente and
+		 (upper(c.nombre) like '$cliente$%' or upper(c.apellido) like '$cliente$%')
+		 <isNotEqual prepend="and" property="idclasificacion" compareValue="0">
+		 ( c.idclasificacion=#idclasificacionNum#)
+		</isNotEqual>
+		</isNotEmpty>
+		
+		
+		
+		ORDER BY v.fecha DESC
+	</select>
+	<select id="getIdVentas" resultClass="java.math.BigDecimal" parameterClass="java.lang.String">
+	SELECT distinct(d.idventa)
+		FROM ${schema}.detventa d, ${schema}.familia f, ${schema}.producto p
+		WHERE p.idfamilia = f.idfamilia and d.idproducto = p.idproducto
+		and (upper(p.nombre) like '$value$%' or upper(f.nombre) like '$value$%')
+		ORDER BY d.idventa ASC
+	</select>	
+	<select id="getVentaListClientes" resultMap="ventaResult"  parameterClass="java.lang.String">
+		SELECT v.idventa, v.fecha, v.idusuario, v.idmedico, v.valortotal, v.iva, v.idcliente, v.idfarmacia, v.codigo, v.valor, v.hora 
+		FROM ${schema}.venta v, ${schema}.cliente c
+		where idfarmacia ='1'
+		and v.idcliente=c.idcliente 
+		AND v.idventa IN(
+			SELECT distinct(d.idventa)
+			FROM detventa d, familia f, producto p
+			WHERE p.idfamilia = f.idfamilia and d.idproducto = p.idproducto
+			and (upper(p.nombre) like '$value$%' or upper(f.nombre) like '$value$%')
+			ORDER BY d.idventa ASC
+		)
+		ORDER BY v.fecha DESC
+	</select>
+	</sqlMap>

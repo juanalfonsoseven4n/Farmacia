@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Proveedor">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="proveedor" type="com.farmacia.domain.Proveedor" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="proveedorResult" class="proveedor">
+		<result property="idproveedor" column="idproveedor" />
+		<result property="nombre" column="nombre" />
+		<result property="descripcion" column="descripcion" />
+		<result property="codigo" column="codigo" />
+		<result property="telefono" column="telefono" />
+		<result property="direccion" column="direccion" />
+		<result property="representante" column="representante" />
+		<result property="telefono2" column="telefono2" />
+		<result property="mail" column="mail" />
+		<result property="nit" column="nit" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Proveedor' a la tabla de la base de datos-->
+	<insert id="insertProveedor" parameterClass="proveedor">	
+        INSERT INTO ${schema}.proveedor (idproveedor, nombre, descripcion, codigo, telefono, direccion, representante, telefono2, mail, nit)
+    	                      VALUES (#idproveedor# ,#nombre# ,#descripcion# ,#codigo# ,#telefono# ,#direccion# ,#representante# ,#telefono2# ,#mail# ,#nit# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Proveedor' a la tabla de la base de datos-->	
+	<update id="updateProveedor" parameterClass="proveedor">
+        UPDATE ${schema}.proveedor SET idproveedor = #idproveedor# ,nombre = #nombre# ,descripcion = #descripcion# ,codigo = #codigo# ,telefono = #telefono# ,direccion = #direccion# ,representante = #representante# ,telefono2 = #telefono2# ,mail = #mail# ,nit = #nit#     	WHERE idproveedor = #idproveedor# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Proveedor' de la tabla de la base de datos-->
+	<delete id="deleteProveedor" parameterClass="proveedor">
+    	DELETE FROM ${schema}.proveedor WHERE idproveedor = #idproveedor# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Proveedor' de la tabla de la base de datos-->
+	<select id="getProveedor" resultMap="proveedorResult" parameterClass="proveedor">
+		SELECT idproveedor, nombre, descripcion, codigo, telefono, direccion, representante, telefono2, mail, nit
+		FROM ${schema}.proveedor
+		WHERE idproveedor = #idproveedor# 	</select>
+		<!--Definici�n del proceso que consulta el registro maximo por llave primaria de 'Proveedor' de la tabla de la base de datos-->
+	<select id="getMaxProveedorIdproveedor" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idproveedor )
+		FROM ${schema}.proveedor
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Proveedor' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getProveedorXmlString" resultClass="xml" xmlResultName="Proveedor" parameterClass="java.math.BigDecimal">
+		SELECT idproveedor, nombre, descripcion, codigo, telefono, direccion, representante, telefono2, mail, nit		FROM ${schema}.proveedor
+		WHERE idproveedor = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Proveedor' de la tabla de la base de datos en una lista-->
+	<select id="getProveedorList" resultMap="proveedorResult">
+		SELECT idproveedor, nombre, descripcion, codigo, telefono, direccion, representante, telefono2, mail, nit
+		FROM ${schema}.proveedor
+		ORDER BY nombre ASC
+	</select>
+		<!--Definición del proceso de consulta de todos los registros de 'Laboratorio' de la tabla de la base de datos en una lista-->
+	<select id="getProveedorByName" resultMap="proveedorResult" parameterClass="java.lang.String">
+		SELECT idproveedor, nombre, descripcion, codigo, telefono, direccion, representante, telefono2, mail, nit
+		FROM ${schema}.proveedor
+		WHERE upper(nombre) like '$nombre$%'
+		ORDER BY nombre ASC
+	</select>
+	<!--Definición del proceso de consulta de todos los registros de 'Proveedor' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getProveedorListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idproveedor, nombre, descripcion, codigo, telefono, direccion, representante, telefono2, mail, nit
+		FROM ${schema}.proveedor
+		ORDER BY idproveedor ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Proveedor' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

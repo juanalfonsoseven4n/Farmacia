@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Perfil">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="perfil" type="com.farmacia.domain.Perfil" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="perfilResult" class="perfil">
+		<result property="idperfil" column="idperfil" />
+		<result property="nombre" column="nombre" />
+		<result property="descripcion" column="descripcion" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Perfil' a la tabla de la base de datos-->
+	<insert id="insertPerfil" parameterClass="perfil">	
+        INSERT INTO ${schema}.perfil (idperfil, nombre, descripcion)
+    	                      VALUES (#idperfil# ,#nombre# ,#descripcion# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Perfil' a la tabla de la base de datos-->	
+	<update id="updatePerfil" parameterClass="perfil">
+        UPDATE ${schema}.perfil SET idperfil = #idperfil# ,nombre = #nombre# ,descripcion = #descripcion#     	WHERE idperfil = #idperfil# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Perfil' de la tabla de la base de datos-->
+	<delete id="deletePerfil" parameterClass="perfil">
+    	DELETE FROM ${schema}.perfil WHERE idperfil = #idperfil# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Perfil' de la tabla de la base de datos-->
+	<select id="getPerfil" resultMap="perfilResult" parameterClass="perfil">
+		SELECT idperfil, nombre, descripcion
+		FROM ${schema}.perfil
+		WHERE idperfil = #idperfil# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Perfil' de la tabla de la base de datos-->
+	<select id="getMaxPerfilIdperfil" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idperfil )
+		FROM ${schema}.perfil
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Perfil' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getPerfilXmlString" resultClass="xml" xmlResultName="Perfil" parameterClass="java.math.BigDecimal">
+		SELECT idperfil, nombre, descripcion		FROM ${schema}.perfil
+		WHERE idperfil = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Perfil' de la tabla de la base de datos en una lista-->
+	<select id="getPerfilList" resultMap="perfilResult">
+		SELECT idperfil, nombre, descripcion
+		FROM ${schema}.perfil
+		ORDER BY idperfil ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Perfil' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getPerfilListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idperfil, nombre, descripcion
+		FROM ${schema}.perfil
+		ORDER BY idperfil ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Perfil' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

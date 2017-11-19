@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Detventa">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="detventa" type="com.farmacia.domain.Detventa" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="detventaResult" class="detventa">
+		<result property="iddetventa" column="iddetventa" />
+		<result property="idventa" column="idventa" />
+		<result property="idproducto" column="idproducto" />
+		<result property="cantidad" column="cantidad" />
+		<result property="valor" column="valor" />
+		<result property="iva" column="iva" />
+		<result property="valorunit" column="valorunit" />
+		<result property="marca" column="marca" />
+		<result property="presentacion" column="presentacion" />
+		<result property="dias" column="dias" />
+	</resultMap>
+	<resultMap id="detventaResultCompleto" class="detventa">
+		<result property="iddetventa" column="iddetventa" />
+		<result property="idventa" column="idventa" />
+		<result property="idproducto" column="idproducto" />
+		<result property="cantidad" column="cantidad" />
+		<result property="valor" column="valor" />
+		<result property="iva" column="iva" />
+		<result property="valorunit" column="valorunit" />
+		<result property="marca" column="marca" />
+		<result property="presentacion" column="presentacion" />
+		<result property="dias" column="dias" />
+		<result property="nombreProducto" column="nombreProducto" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Detventa' a la tabla de la base de datos-->
+	<insert id="insertDetventa" parameterClass="detventa">	
+        INSERT INTO ${schema}.detventa (iddetventa, idventa, idproducto, cantidad, valor, iva, valorunit, marca ,presentacion, dias)
+    	                      VALUES (#iddetventa# ,#idventa# ,#idproducto# ,#cantidad# ,#valor# ,#iva# ,#valorunit#, #marca# ,#presentacion#  ,#dias#  )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Detventa' a la tabla de la base de datos-->	
+	<update id="updateDetventa" parameterClass="detventa">
+        UPDATE ${schema}.detventa SET iddetventa = #iddetventa# ,idventa = #idventa# ,idproducto = #idproducto# ,cantidad = #cantidad# ,valor = #valor# ,iva = #iva# ,valorunit = #valorunit# ,marca = #marca# ,presentacion = #presentacion# ,dias = #dias# WHERE iddetventa = #iddetventa# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Detventa' de la tabla de la base de datos-->
+	<delete id="deleteDetventa" parameterClass="detventa">
+    	DELETE FROM ${schema}.detventa WHERE iddetventa = #iddetventa# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Detventa' de la tabla de la base de datos-->
+	<select id="getDetventa" resultMap="detventaResult" parameterClass="detventa">
+		SELECT iddetventa, idventa, idproducto, cantidad, valor, iva, valorunit, marca, presentacion, dias
+		FROM ${schema}.detventa
+		WHERE iddetventa = #iddetventa# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Detventa' de la tabla de la base de datos-->
+	<select id="getMaxDetventaIddetventa" resultClass="java.math.BigDecimal" >
+		SELECT MAX( iddetventa )
+		FROM ${schema}.detventa
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Detventa' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getDetventaXmlString" resultClass="xml" xmlResultName="Detventa" parameterClass="java.math.BigDecimal">
+		SELECT iddetventa, idventa, idproducto, cantidad, valor, iva, valorunit, marca, presentacion, dias		FROM ${schema}.detventa
+		WHERE iddetventa = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Detventa' de la tabla de la base de datos en una lista-->
+	<select id="getDetventaList" resultMap="detventaResult">
+		SELECT iddetventa, idventa, idproducto, cantidad, valor, iva, valorunit, marca, presentacion, dias
+		FROM ${schema}.detventa
+		ORDER BY iddetventa ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Detventa' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getDetventaListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT iddetventa, idventa, idproducto, cantidad, valor, iva, valorunit, marca, presentacion, dias
+		FROM ${schema}.detventa
+		ORDER BY iddetventa ASC
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Detventa' de la tabla de la base de datos en una lista-->
+	<select id="getDetventaListByVenta" resultMap="detventaResultCompleto" parameterClass="java.math.BigDecimal">
+		SELECT d.iddetventa, d.idventa, d.idproducto, d.cantidad, d.valor, d.iva, d.valorunit, d.marca, d.presentacion,  d.dias,  p.nombre as nombreProducto
+		FROM ${schema}.detventa d, ${schema}.producto p
+		WHERE idventa = #value# AND  d.idproducto = p.idproducto
+		ORDER BY iddetventa ASC
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Detventa' de la tabla de la base de datos en una lista-->
+	<select id="getDetventaListByVentaMarked" resultMap="detventaResultCompleto" parameterClass="java.math.BigDecimal">
+		SELECT d.iddetventa, d.idventa, d.idproducto, d.cantidad, d.valor, d.iva, d.valorunit, d.marca, d.presentacion,  d.dias,  p.nombre as nombreProducto
+		FROM ${schema}.detventa d, ${schema}.producto p
+		WHERE idventa = #value# AND  d.idproducto = p.idproducto and d.marca='1'
+		ORDER BY iddetventa ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Detventa' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

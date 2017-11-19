@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Cliente">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="cliente" type="com.farmacia.domain.Cliente" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="clienteResult" class="cliente" >
+		<result property="idcliente" column="idcliente" />
+		<result property="nombre" column="nombre" />
+		<result property="apellido" column="apellido" />
+		<result property="direccion" column="direccion" />
+		<result property="telefono" column="telefono" />
+		<result property="mail" column="mail" />
+		<result property="cedula" column="cedula" />
+		<result property="idclasificacion" column="idclasificacion" />
+		<result property="clasdesc" column="clasdesc" />
+		<result property="clasdesc2" column="clasdesc2" />
+		<result property="clasdesc3" column="clasdesc3" />
+		<result property="observacion" column="observacion" />
+		<result property="sexo" column="sexo" />
+		<result property="idclasificacion2" column="idclasificacion2" />
+		<result property="idclasificacion3" column="idclasificacion3" />
+		<result property="fechanac" column="fechanac" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Cliente' a la tabla de la base de datos-->
+	<insert id="insertCliente" parameterClass="cliente">	
+        INSERT INTO ${schema}.cliente (idcliente, nombre, apellido, direccion, telefono, mail, cedula, idclasificacion, observacion, sexo, idclasificacion2, idclasificacion3, fechanac)
+    	                      VALUES (#idcliente# ,#nombre# ,#apellido# ,#direccion# ,#telefono# ,#mail# ,#cedula#, #idclasificacion#, #observacion#, #sexo#, #idclasificacion2#, #idclasificacion3#, #fechanac# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Cliente' a la tabla de la base de datos-->	
+	<update id="updateCliente" parameterClass="cliente">
+        UPDATE ${schema}.cliente SET idcliente = #idcliente# ,nombre = #nombre# ,apellido = #apellido# ,direccion = #direccion# ,telefono = #telefono# ,mail = #mail# ,cedula = #cedula#, idclasificacion = #idclasificacion#, observacion = #observacion#, sexo=#sexo#, idclasificacion2=#idclasificacion2#, idclasificacion3=#idclasificacion3#, fechanac=#fechanac#     	
+        WHERE idcliente = #idcliente# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Cliente' de la tabla de la base de datos-->
+	<delete id="deleteCliente" parameterClass="cliente">
+    	DELETE FROM ${schema}.cliente WHERE idcliente = #idcliente# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Cliente' de la tabla de la base de datos-->
+	<select id="getCliente" resultMap="clienteResult" parameterClass="cliente">
+		SELECT c.idcliente, c.nombre,c.apellido, c.direccion, c.telefono, c.mail, c.cedula, c.idclasificacion, c.observacion, d.nombre as clasdesc, c.sexo, c.idclasificacion2, e.nombre as clasdesc2, c.idclasificacion3, f.nombre as clasdesc3, c.fechanac
+		FROM ${schema}.cliente c, ${schema}.clasificacion d, ${schema}.clasificacion e, ${schema}.clasificacion f
+		WHERE c.idcliente = #idcliente# and c.idclasificacion = d.idclasificacion and c.idclasificacion2 = e.idclasificacion and c.idclasificacion3 = f.idclasificacion	</select>
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Cliente' de la tabla de la base de datos-->
+	<select id="getClienteByName" resultMap="clienteResult" parameterClass="cliente">
+		SELECT c.idcliente, c.nombre,c.apellido, c.direccion, c.telefono, c.mail, c.cedula, c.idclasificacion, c.observacion, d.nombre as clasdesc, c.sexo, c.idclasificacion2, e.nombre as clasdesc2, c.idclasificacion3, f.nombre as clasdesc3, c.fechanac
+		FROM ${schema}.cliente c, ${schema}.clasificacion d, ${schema}.clasificacion e, ${schema}.clasificacion f
+		WHERE c.idclasificacion = d.idclasificacion and c.idclasificacion2 = e.idclasificacion and c.idclasificacion3 = f.idclasificacion
+			<isNotEmpty prepend="AND" property="nombre">
+			(upper(c.nombre) like '$nombre$%' or upper(c.apellido) like '$nombre$%' or c.cedula = '$nombre$') 
+			</isNotEmpty>
+			<isNotEmpty property="idclasificacion">
+			<isNotEqual compareValue="0" prepend="AND" property="idclasificacion">
+			(c.idclasificacion = #idclasificacion# or c.idclasificacion2 = #idclasificacion# or c.idclasificacion3 = #idclasificacion#) 
+	        </isNotEqual>
+	        </isNotEmpty>
+	     ORDER BY c.nombre ASC   	
+		
+		</select>
+		<!--Definici�n del proceso que consulta el registro maximo por llave primaria de 'Cliente' de la tabla de la base de datos-->
+	<select id="getMaxClienteIdcliente" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idcliente )
+		FROM ${schema}.cliente
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Cliente' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getClienteXmlString" resultClass="xml" xmlResultName="Cliente" parameterClass="java.math.BigDecimal">
+		SELECT c.idcliente, c.nombre,c.apellido, c.direccion, c.telefono, c.mail, c.cedula, c.idclasificacion, c.observacion, d.nombre as clasdesc, c.sexo, c.idclasificacion2, c.idclasificacion3, c.fechanac		
+		FROM ${schema}.cliente c, ${schema}.clasificacion d
+		WHERE c.idcliente = #idcliente# and c.idclasificacion = d.idclasificacion
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Cliente' de la tabla de la base de datos en una lista-->
+	<select id="getClienteList" resultMap="clienteResult">
+		SELECT c.idcliente, c.nombre,c.apellido, c.direccion, c.telefono, c.mail, c.cedula, c.idclasificacion, c.observacion, d.nombre as clasdesc, c.sexo, c.idclasificacion2, e.nombre as clasdesc2, c.idclasificacion3, f.nombre as clasdesc3, c.fechanac
+		FROM ${schema}.cliente c, ${schema}.clasificacion d, ${schema}.clasificacion e, ${schema}.clasificacion f
+		WHERE c.idclasificacion = d.idclasificacion and c.idclasificacion2 = e.idclasificacion and c.idclasificacion3 = f.idclasificacion
+		ORDER BY c.nombre ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Cliente' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getClienteListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT c.idcliente, c.nombre,c.apellido, c.direccion, c.telefono, c.mail, c.cedula, c.idclasificacion, c.observacion, d.nombre as clasdesc, c.sexo, c.idclasificacion2, c.idclasificacion3, c.fechanac
+		FROM ${schema}.cliente c, ${schema}.clasificacion d
+		WHERE c.idclasificacion = d.idclasificacion
+		ORDER BY idcliente ASC
+	</select>
+	<select id="getClienteByID" resultMap="clienteResult" parameterClass="java.math.BigDecimal">
+		SELECT c.idcliente, c.nombre,c.apellido, c.direccion, c.telefono, c.mail, c.cedula, c.idclasificacion, c.observacion, d.nombre as clasdesc, c.sexo, c.idclasificacion2, e.nombre as clasdesc2, c.idclasificacion3, f.nombre as clasdesc3, c.fechanac
+		FROM ${schema}.cliente c, ${schema}.clasificacion d, ${schema}.clasificacion e, ${schema}.clasificacion f
+		WHERE c.idcliente = #idcliente# and c.idclasificacion = d.idclasificacion and c.idclasificacion2 = e.idclasificacion and c.idclasificacion3 = f.idclasificacion
+	</select>
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Cliente' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

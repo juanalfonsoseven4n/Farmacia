@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Provprod">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="provprod" type="com.farmacia.domain.Provprod" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="provprodResult" class="provprod">
+		<result property="idproveedor" column="idproveedor" />
+		<result property="idproducto" column="idproducto" />
+		<result property="idprovprod" column="idprovprod" />
+		<result property="valor" column="valor" />
+		<result property="provdesc" column="provdesc" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Provprod' a la tabla de la base de datos-->
+	<insert id="insertProvprod" parameterClass="provprod">	
+        INSERT INTO ${schema}.provprod (idproveedor, idproducto, idprovprod, valor)
+    	                      VALUES (#idproveedor# ,#idproducto# ,#idprovprod# ,#valor# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Provprod' a la tabla de la base de datos-->	
+	<update id="updateProvprod" parameterClass="provprod">
+        UPDATE ${schema}.provprod SET idproveedor = #idproveedor# ,idproducto = #idproducto# ,idprovprod = #idprovprod# ,valor = #valor#     	WHERE idprovprod = #idprovprod# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Provprod' de la tabla de la base de datos-->
+	<delete id="deleteProvprod" parameterClass="provprod">
+    	DELETE FROM ${schema}.provprod WHERE idprovprod = #idprovprod# 
+	</delete>		
+	<delete id="deleteProvprodByProd" parameterClass="java.math.BigDecimal">
+    	DELETE FROM ${schema}.provprod WHERE idproducto = #idproducto# 
+	</delete>
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Provprod' de la tabla de la base de datos-->
+	<select id="getProvprod" resultMap="provprodResult" parameterClass="provprod">
+		SELECT idproveedor, idproducto, idprovprod, valor
+		FROM ${schema}.provprod
+		WHERE idprovprod = #idprovprod# 	</select>
+	<select id="getProvprodByProd" resultMap="provprodResult" parameterClass="java.math.BigDecimal">
+		SELECT pp.idproveedor, idproducto, idprovprod, valor, pv.nombre as provdesc
+		FROM ${schema}.provprod pp, ${schema}.proveedor pv
+		WHERE pp.idproveedor = pv.idproveedor and idproducto = #idproducto#
+	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de Provprod de la tabla de la base de datos-->
+	<select id="getMaxProvprodIdprovprod" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idprovprod )
+		FROM ${schema}.provprod
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Provprod' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getProvprodXmlString" resultClass="xml" xmlResultName="Provprod" parameterClass="java.math.BigDecimal">
+		SELECT idproveedor, idproducto, idprovprod, valor		FROM ${schema}.provprod
+		WHERE idprovprod = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Provprod' de la tabla de la base de datos en una lista-->
+	<select id="getProvprodList" resultMap="provprodResult">
+		SELECT idproveedor, idproducto, idprovprod, valor
+		FROM ${schema}.provprod
+		ORDER BY idprovprod ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Provprod' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getProvprodListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idproveedor, idproducto, idprovprod, valor
+		FROM ${schema}.provprod
+		ORDER BY idprovprod ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Provprod' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

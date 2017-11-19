@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Usuario">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="usuario" type="com.farmacia.domain.Usuario" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="usuarioResult" class="usuario">
+		<result property="idusuario" column="idusuario" />
+		<result property="idfarmacia" column="idfarmacia" />
+		<result property="idperfil" column="idperfil" />
+		<result property="nombre" column="nombre" />
+		<result property="apellido" column="apellido" />
+		<result property="direccion" column="direccion" />
+		<result property="mail" column="mail" />
+		<result property="cedula" column="cedula" />
+		<result property="telefono2" column="telefono2" />
+		<result property="telefono" column="telefono" />
+		<result property="especializacion" column="especializacion" />
+		<result property="descripcion" column="descripcion" />
+		<result property="password" column="password" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Usuario' a la tabla de la base de datos-->
+	<insert id="insertUsuario" parameterClass="usuario" >
+        INSERT INTO ${schema}.usuario (idusuario, nombre, apellido, direccion, mail, cedula, telefono2, telefono, especializacion, descripcion, password, idperfil, idfarmacia)
+    	                      VALUES (#idusuario# ,#nombre# ,#apellido# ,#direccion# ,#mail# ,#cedula# ,#telefono2# ,#telefono# ,#especializacion# ,#descripcion#, #password#, #idperfil#, #idfarmacia# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Usuario' a la tabla de la base de datos-->	
+	<update id="updateUsuario" parameterClass="usuario">
+        UPDATE ${schema}.usuario SET idusuario = #idusuario# ,nombre = #nombre# ,apellido = #apellido# ,direccion = #direccion# ,mail = #mail# ,cedula = #cedula# ,
+        telefono2 = #telefono2# ,telefono = #telefono# ,especializacion = #especializacion# ,descripcion = #descripcion#,  password=#password#, idperfil=#idperfil# , idfarmacia=#idfarmacia#	
+        WHERE idusuario = #idusuario#
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Usuario' de la tabla de la base de datos-->
+	<delete id="deleteUsuario" parameterClass="usuario">
+    	DELETE FROM ${schema}.usuario WHERE idusuario = #idusuario# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Usuario' de la tabla de la base de datos-->
+	<select id="getUsuario" resultMap="usuarioResult" parameterClass="usuario">
+		SELECT idusuario, nombre, apellido, direccion, mail, cedula, telefono2, telefono, especializacion, descripcion, password, idperfil, idfarmacia
+		FROM ${schema}.usuario
+		WHERE idusuario = #idusuario# 	</select>
+		
+	<select id="getUsuariobyUserName" resultMap="usuarioResult" parameterClass="usuario">
+		SELECT idusuario, nombre, apellido, direccion, mail, cedula, telefono2, telefono, especializacion, descripcion, password, idperfil, idfarmacia
+		FROM ${schema}.usuario
+		WHERE upper(descripcion) = #descripcion# 	</select>
+		<!--Definici�n del proceso que consulta el registro maximo por llave primaria de 'Usuario' de la tabla de la base de datos-->
+	<select id="getMaxUsuarioIdusuario" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idusuario )
+		FROM ${schema}.usuario
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Usuario' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getUsuarioXmlString" resultClass="xml" xmlResultName="Usuario" parameterClass="java.math.BigDecimal">
+		SELECT idusuario, nombre, apellido, direccion, mail, cedula, telefono2, telefono, especializacion, descripcion, password, idperfil, idfarmacia
+		FROM ${schema}.usuario
+		WHERE idusuario = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Usuario' de la tabla de la base de datos en una lista-->
+	<select id="getUsuarioList" resultMap="usuarioResult">
+		SELECT idusuario, nombre, apellido, direccion, mail, cedula, telefono2, telefono, especializacion, descripcion, password, idperfil, idfarmacia
+		FROM ${schema}.usuario
+		ORDER BY idusuario ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Usuario' de la tabla de la base de datos en una lista-->
+	<select id="getMedicosList" resultMap="usuarioResult" parameterClass="java.lang.String">
+		SELECT idusuario, u.nombre, u.apellido, direccion, mail, cedula, telefono2, telefono, especializacion, u.descripcion, password, u.idperfil, idfarmacia
+		FROM ${schema}.usuario u, perfil p
+		WHERE idfarmacia = $value$ AND p.idperfil = u.idperfil AND p.descripcion = 'medico'
+		ORDER BY idusuario ASC
+	</select>
+	<!--Definición del proceso de consulta de todos los registros de 'Usuario' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getUsuarioListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idusuario, nombre, apellido, direccion, mail, cedula, telefono2, telefono, especializacion, descripcion, password, idperfil, idfarmacia
+		FROM ${schema}.usuario
+		ORDER BY idusuario ASC
+	</select>
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Usuario' de la tabla de la base de datos-->
+	<select id="getUsuarioByID" resultMap="usuarioResult" parameterClass="java.math.BigDecimal">
+		SELECT idusuario, nombre, apellido, direccion, mail, cedula, telefono2, telefono, especializacion, descripcion, password, idperfil, idfarmacia
+		FROM ${schema}.usuario
+		WHERE idusuario = #idusuario# 	</select>
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Usuario' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

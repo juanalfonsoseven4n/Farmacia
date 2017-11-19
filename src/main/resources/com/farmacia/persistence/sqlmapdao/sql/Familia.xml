@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Familia">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="familia" type="com.farmacia.domain.Familia" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="familiaResult" class="familia">
+		<result property="nombre" column="nombre" />
+		<result property="idfamilia" column="idfamilia" />
+		<result property="descripcion" column="descripcion" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Familia' a la tabla de la base de datos-->
+	<insert id="insertFamilia" parameterClass="familia">	
+        INSERT INTO ${schema}.familia (nombre, idfamilia, descripcion)
+    	                      VALUES (#nombre# ,#idfamilia# ,#descripcion# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Familia' a la tabla de la base de datos-->	
+	<update id="updateFamilia" parameterClass="familia">
+        UPDATE ${schema}.familia SET nombre = #nombre# ,idfamilia = #idfamilia# ,descripcion = #descripcion#     	WHERE idfamilia = #idfamilia# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Familia' de la tabla de la base de datos-->
+	<delete id="deleteFamilia" parameterClass="familia">
+    	DELETE FROM ${schema}.familia WHERE idfamilia = #idfamilia# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Familia' de la tabla de la base de datos-->
+	<select id="getFamilia" resultMap="familiaResult" parameterClass="familia">
+		SELECT nombre, idfamilia, descripcion
+		FROM ${schema}.familia
+		WHERE idfamilia = #idfamilia# 	
+	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Familia' de la tabla de la base de datos-->
+	<select id="getMaxFamiliaIdfamilia" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idfamilia )
+		FROM ${schema}.familia
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Familia' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getFamiliaXmlString" resultClass="xml" xmlResultName="Familia" parameterClass="java.math.BigDecimal">
+		SELECT nombre, idfamilia, descripcion		FROM ${schema}.familia
+		WHERE idfamilia = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Familia' de la tabla de la base de datos en una lista-->
+	<select id="getFamiliaList" resultMap="familiaResult">
+		SELECT nombre, idfamilia, descripcion
+		FROM ${schema}.familia
+		ORDER BY nombre ASC
+	</select>
+	<select id="getFamiliaByName" resultMap="familiaResult" parameterClass="java.lang.String">
+		SELECT nombre, idfamilia, descripcion
+		FROM ${schema}.familia
+		WHERE upper(nombre) like '$nombre$%'
+		ORDER BY nombre ASC
+	</select>
+	<!--Definición del proceso de consulta de todos los registros de 'Familia' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getFamiliaListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT nombre, idfamilia, descripcion
+		FROM ${schema}.familia
+		ORDER BY idfamilia ASC
+	</select>
+
+	<!--DEFINICIoN DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Familia' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

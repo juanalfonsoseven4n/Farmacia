@@ -1,0 +1,152 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	padding:0;
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+}
+
+/*header*/
+header{
+	width: 100%;
+	background:#39E8F7;
+}
+
+/*login*/
+section.login{
+	width:100%;
+	height: 100%;
+	position: absolute;
+	background: #f7f7f7;
+	display: table;
+}
+section.login .left{
+	width:50%;
+	display: table-cell;
+	vertical-align: middle;
+	border-right: 4px solid #88eac2;
+	background: #27ccff; 
+	background: -webkit-linear-gradient(left, #27ccff , #5a9ff2); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #27ccff, #5a9ff2); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #27ccff, #5a9ff2); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #27ccff, #5a9ff2); /* Standard syntax */
+	position: relative;
+}
+section.login .left:before{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	content: "";
+	background: url(../images/bg_login.jpg) center center no-repeat;
+	background-size: cover;
+	opacity: 0.1;
+	top: 0;
+	left: 0;
+}
+section.login .left .brand{
+	width:70%;
+	display: table;
+	padding: 0 15%;
+	position: relative;
+}
+section.login .left .brand .imgBrand{
+	width:150px;
+	display: table-cell;
+	vertical-align: middle;
+}
+section.login .left .brand .imgBrand img{
+	width: 100%;
+	max-width: 150px;
+}
+section.login .left .brand .contBrand{
+	display: table-cell;
+	vertical-align: middle;
+}
+section.login .left .brand .contBrand h1{
+	color: #FFFFFF;
+	font-size: 30px;
+	margin: 0 0 15px 0;
+	font-weight: 700;
+}
+section.login .left .brand .contBrand p{
+	color: #FFFFFF;
+	font-size: 14px;
+}
+section.login .right{
+	width:50%;
+	display: table-cell;
+	background:#f7f7f7;
+	vertical-align: middle;
+}
+section.login .right .formLog{
+	width:55%;
+	background: #FFFFFF;
+	padding: 5%;
+	margin: 0 auto;
+	box-shadow: 0 0 8px rgba(40, 155, 206, .2);
+}
+section.login .right .formLog p{
+	font-size: 14px;
+	color: #a8a8a8;
+	text-align: center;
+}
+
+section.login .right .formLog .pRojo {
+	font-size: 14px;
+	color: red;
+	text-align: center;
+}
+
+section.login .right .formLog input{
+	width: 94%;
+	padding: 13px 3%;
+	font-size: 14px;
+	color: #a8a8a8;
+	border: 1px solid #dbdbdb;
+	margin: 0 0 20px 0;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-weight: 100;
+}
+section.login .right .formLog .btnLog{
+	width: 100%;
+	margin: 0 0 20px 0;
+}
+section.login .right .formLog .btnLog a{
+	width: 94%;
+	display: inline-block;
+	padding: 13px 3%;
+	font-size: 14px;
+	color: #FFFFFF;
+	border:0;
+	background: #6cc4f8;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-weight: 100;
+	text-decoration: none;
+	text-align: center;
+}
+section.login .right .formLog .btnLog a:hover{
+	background: #37a7f4;
+}
+section.login .right .formLog .olvido{
+	width: 100%;
+	text-align: center;
+}
+section.login .right .formLog .olvido a,
+section.login .right .formLog .olvido a:active,
+section.login .right .formLog .olvido a:focus{
+	color: #82afe8;
+	font-size: 13px;
+	text-decoration: none;
+}
+section.login .right .formLog .olvido a:hover{
+	color: #6cc4f8;
+	text-decoration: underline;
+}
+
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Farmacia">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="farmacia" type="com.farmacia.domain.Farmacia" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="farmaciaResult" class="farmacia">
+		<result property="idfarmacia" column="idfarmacia" />
+		<result property="nombre" column="nombre" />
+		<result property="descripcion" column="descripcion" />
+		<result property="representante" column="representante" />
+		<result property="telefono" column="telefono" />
+		<result property="direccion" column="direccion" />
+		<result property="telefono2" column="telefono2" />
+		<result property="mail" column="mail" />
+		<result property="nit" column="nit" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Farmacia' a la tabla de la base de datos-->
+	<insert id="insertFarmacia" parameterClass="farmacia">	
+        INSERT INTO ${schema}.farmacia (idfarmacia, nombre, descripcion, representante, telefono, direccion, telefono2, mail, nit)
+    	                      VALUES (#idfarmacia# ,#nombre# ,#descripcion# ,#representante# ,#telefono# ,#direccion# ,#telefono2# ,#mail# ,#nit# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Farmacia' a la tabla de la base de datos-->	
+	<update id="updateFarmacia" parameterClass="farmacia">
+        UPDATE ${schema}.farmacia SET idfarmacia = #idfarmacia# ,nombre = #nombre# ,descripcion = #descripcion# ,representante = #representante# ,telefono = #telefono# ,direccion = #direccion# ,telefono2 = #telefono2# ,mail = #mail# ,nit = #nit#     	WHERE idfarmacia = #idfarmacia# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Farmacia' de la tabla de la base de datos-->
+	<delete id="deleteFarmacia" parameterClass="farmacia">
+    	DELETE FROM ${schema}.farmacia WHERE idfarmacia = #idfarmacia# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Farmacia' de la tabla de la base de datos-->
+	<select id="getFarmacia" resultMap="farmaciaResult" parameterClass="farmacia">
+		SELECT idfarmacia, nombre, descripcion, representante, telefono, direccion, telefono2, mail, nit
+		FROM ${schema}.farmacia
+		WHERE idfarmacia = #idfarmacia# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Farmacia' de la tabla de la base de datos-->
+	<select id="getMaxFarmaciaIdfarmacia" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idfarmacia )
+		FROM ${schema}.farmacia
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Farmacia' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getFarmaciaXmlString" resultClass="xml" xmlResultName="Farmacia" parameterClass="java.math.BigDecimal">
+		SELECT idfarmacia, nombre, descripcion, representante, telefono, direccion, telefono2, mail, nit		FROM ${schema}.farmacia
+		WHERE idfarmacia = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Farmacia' de la tabla de la base de datos en una lista-->
+	<select id="getFarmaciaList" resultMap="farmaciaResult">
+		SELECT idfarmacia, nombre, descripcion, representante, telefono, direccion, telefono2, mail, nit
+		FROM ${schema}.farmacia
+		ORDER BY nombre ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Farmacia' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getFarmaciaListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idfarmacia, nombre, descripcion, representante, telefono, direccion, telefono2, mail, nit
+		FROM ${schema}.farmacia
+		ORDER BY idfarmacia ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Farmacia' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

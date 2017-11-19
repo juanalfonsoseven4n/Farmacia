@@ -1,0 +1,127 @@
+body {
+	height:100px;
+		margin:0px;
+		padding:0px;
+		font-family: Trebuchet MS, Lucida Sans Unicode, Arial, sans-serif;
+}
+
+html{
+		height:100%;
+	}
+	
+	#pageContent{
+	width:200px;
+			}
+	.ad{
+		margin-top:120px;
+	}
+	h1{
+		font-size:13px;
+	}
+
+	a{
+		color:red;
+	}
+	/* Entire pane */
+	
+	#dhtmlgoodies_xpPane{
+		background-color:#0000CC;
+		float:left;
+		width:200px;
+		
+	}
+	#dhtmlgoodies_xpPane .dhtmlgoodies_panel{
+		margin-left:10px;
+		margin-right:10px;
+		margin-top:10px;	
+	}
+	#dhtmlgoodies_xpPane .panelContent{
+		font-size:12px;
+		background-image:url('../images/bg_pane_right.gif');
+		background-position:top right;
+		background-repeat:repeat-y;
+		border-left:1px solid #FFF;
+		border-bottom:1px solid #FFF;	
+		padding-left:2px;
+		padding-right:2px;	
+		overflow:hidden;
+		position:relative;
+		clear:both;
+	}
+	#dhtmlgoodies_xpPane .panelContent div{
+		position:relative;
+	}
+	#dhtmlgoodies_xpPane .dhtmlgoodies_panel .topBar{
+		background-image:url('../images/bg_panel_top_right.gif');
+		background-repeat:no-repeat;
+		background-position:top right;
+		height:25px;
+		padding-right:5px;
+		cursor:pointer;
+		overflow:hidden;		
+
+	}
+	#dhtmlgoodies_xpPane .dhtmlgoodies_panel .topBar span{
+		line-height:25px;
+		vertical-align:middle;
+		font-family:arial;
+		font-size:13px;
+		color:#215DC6;
+		font-weight:bold;
+		float:left;
+		padding-left:5px;
+	}
+	#dhtmlgoodies_xpPane .dhtmlgoodies_panel .topBar img{
+		float:right;
+		cursor:pointer;
+	}
+	#otherContent{	/* Normal text content */
+		float:left;	/* Firefox - to avoid blank white space above panel */
+		padding-left:10px;	/* A little space at the left */
+	}
+.titulos {
+		color: #FEFEFE; 
+		font-weight: bold; 
+		background-color: #3F7F7F;
+		text-align: center;
+		font-size:13px;
+		font-family: arial,helvetica,sans-serif
+		}
+.listado {
+	color: #000000;
+	background-color: #d6dff7;
+	}
+.formulario {
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: right;	
+	}
+.detalle {
+	color: #000000;
+	background-color: #d6dff7;
+	font-weight: bold; 
+	text-align: right;
+	}	
+.requerido{
+	color: #FF0000;
+	text-align: left;
+	}
+.exito{
+	color: #3f7f7f;
+	text-align: left;
+	}
+.boton{
+		font-size: 11px;
+		font-weight: bold;
+		background: #d6e7ef;
+		cursor: hand;
+		color: #3F7F7F;
+		font-family: tahoma, sans-serif;
+		text-decoration: none;
+		padding:1 1 1 1;
+		
+		}
+.recibo {
+	font-weight: normal; 
+	font-size: 11px;
+	}

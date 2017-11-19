@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Opcion">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="opcion" type="com.farmacia.domain.Opcion" />
+	<typeAlias alias="menu" type="com.farmacia.domain.Menu" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="opcionResult" class="opcion">
+		<result property="idopcion" column="idopcion" />
+		<result property="idmenu" column="idmenu" />
+		<result property="nombre" column="nombre" />
+		<result property="descripcion" column="descripcion" />
+		<result property="linkopcion" column="linkopcion" />
+		<result property="orden" column="orden" />
+		<result property="estado" column="estado" />
+		<result property="titulo" column="titulo" />
+		<result property="menu" column="idmenu"  select="getMenuById" />
+	</resultMap>
+	
+	
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="menuResult" class="menu">
+		<result property="idmenu" column="idmenu" />
+		<result property="nombre" column="nombre" />
+		<result property="orden" column="orden" />
+		<result property="descripcion" column="descripcion" />
+		<result property="titulo" column="titulo" />
+	</resultMap>
+
+	<resultMap id="opcionesMenu" class="opcion">
+		<result property="idopcion" column="idopcion" />
+		<result property="idmenu" column="idmenu" />
+		<result property="nombre" column="nombre" />
+		<result property="descripcion" column="descripcion" />
+		<result property="linkopcion" column="linkopcion" />
+		<result property="orden" column="orden" />
+		<result property="estado" column="estado" />
+		<result property="titulo" column="titulo" />
+
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Opcion' a la tabla de la base de datos-->
+	<insert id="insertOpcion" parameterClass="opcion">	
+        INSERT INTO ${schema}.opcion (idopcion, idmenu, nombre, descripcion, linkopcion, orden, estado, titulo)
+    	                      VALUES (#idopcion# ,#idmenu# ,#nombre# ,#descripcion# ,#linkopcion# ,#orden# ,#estado# ,#titulo#    )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Opcion' a la tabla de la base de datos-->	
+	<update id="updateOpcion" parameterClass="opcion">
+        UPDATE ${schema}.opcion SET idopcion = #idopcion# ,idmenu = #idmenu# ,nombre = #nombre# ,descripcion = #descripcion# ,linkopcion = #linkopcion# ,orden = #orden# ,estado = #estado# ,titulo = #titulo#     	WHERE idopcion = #idopcion# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Opcion' de la tabla de la base de datos-->
+	<delete id="deleteOpcion" parameterClass="opcion">
+    	DELETE FROM ${schema}.opcion WHERE idopcion = #idopcion# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Opcion' de la tabla de la base de datos-->
+	<select id="getOpcion" resultMap="opcionResult" parameterClass="opcion">
+		SELECT idopcion, idmenu, nombre, descripcion, linkopcion, orden, estado, titulo
+		FROM ${schema}.opcion
+		WHERE idopcion = #idopcion# 	</select>
+		<!--Definici�n del proceso que consulta el registro maximo por llave primaria de 'Opcion' de la tabla de la base de datos-->
+	<select id="getMaxOpcionId_opcion" resultClass="java.lang.Long" >
+		SELECT MAX( idopcion )
+		FROM ${schema}.opcion
+	</select>
+	
+
+	<!--Definición del proceso de consulta de todos los registros de 'Opcion' de la tabla de la base de datos en una lista-->
+	<select id="getOpcionList" resultMap="opcionResult" parameterClass="opcion">
+		SELECT idopcion, idmenu, nombre, descripcion, linkopcion, orden, estado, titulo
+		FROM ${schema}.opcion
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="nombre">
+        		NOMBRE LIKE '%$nombre$%'
+	      	</isNotNull>
+    	</dynamic>
+    	ORDER BY idmenu, orden
+	</select>
+	
+	<!--Definición del proceso de consultalos registros de 'Opcion'por Menu de la tabla de la base de datos en una lista-->
+	<select id="getOpcionListByIdMenu" resultMap="opcionesMenu" parameterClass="java.lang.Long">
+		SELECT idopcion, idmenu, nombre, descripcion, linkopcion, orden, estado, titulo
+		FROM ${schema}.opcion WHERE idmenu =  #value#  ORDER BY orden
+	</select>
+	<!--Definición del proceso de consulta de todos los registros de 'Opcion' de la tabla de la base de datos en una lista-->
+	<select id="getOpcionesByMenuPerfil" resultMap="opcionResult" parameterClass="java.util.HashMap">
+		SELECT oc.idopcion, oc.idmenu, oc.nombre, oc.descripcion, oc.linkopcion, oc.orden, oc.estado, oc.titulo
+		FROM ${schema}.opcion oc, ${schema}.opcper op
+		WHERE idmenu =  #idmenu# and op.idperfil= #idperfil# and  oc.idopcion = op.idopcion
+    	ORDER BY orden
+	</select>
+	
+</sqlMap>

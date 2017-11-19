@@ -1,0 +1,137 @@
+td { font-family: arial,helvetica,sans-serif}
+
+.fondo_balnco {color: #3F7F7F; padding: 5px; background-color: #FFFFFF; font-weight: bold; font-size:11px }
+.fondo_gris {color: #3F7F7F; padding: 5px; background-color: #CCCCCC; font-weight: bold; font-size:11px } 
+.fondo_error {color: #663333; padding: 5px; background-color: #FFFFFF; font-weight: bold; font-size:11px }
+.fondo_mensaje {color: #3F7F7F; padding: 5px; background-color: #FFFFFF; font-weight: bold; font-size:11px } 
+.fondo_azulLineaTitulo {color:#FFFFFF; padding: 5px; background-color: #3F7F7F; font-size:6px;} 
+.fondo_azul {color:#FFFFFF; padding: 5px; background-color: #3F7F7F; font-size:11px } 
+.fondo_azulC {color:#FFFFFF; padding: 5px; background-color: #d6dff7; font-size:11px}
+.fondo_rojo {color:#c1171a; padding: 5px; background-color: #3F7F7F; font-size:11px}
+.fondo_rojoIntro {color:#eeee00; padding: 5px; background-color: #3F7F7F; font-size:12px; font-weight: bold;}
+.fondo_azulC2 {color:#FFFFFF; padding: 5px; background-color: #d6dff7; font-size:11px; font-weight: bold; cursor: hand} 
+.boton_azulC { color: #3F7F7F; padding: 5px; background-color: #D9ECFF; font-size:11px; border-right: 1px solid #3F7F7F; border-top: 1px solid #3F7F7F; border-bottom: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F; font-weight:bold; cursor: hand }
+.boton_azulTitulo { color:#FFFFFF; padding: 3px; background-color: #d6dff7; font-size:11px; border-right: 1px solid #6699CC; border-top: 1px solid #6699CC; border-bottom: 1px solid #6699CC; border-left: 1px solid #6699CC; font-weight:bold; cursor: hand}
+.letras_label{color: #3F7F7F; padding: 5px; font-size:11px }
+.letras_labelN{color: #3F7F7F; padding: 5px; font-size:11px; font-weight: bold }
+.tituloTag { color: #FFFFFF; padding: 5px; font-weight: bold; text-align:center;  font-size:11px; padding-left: 5px; padding-top:3px; padding-right: 5px; padding-bottom: 3px; background-color: #6699CC; border-right: 1px solid #3F7F7F; border-top: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+.convenciones { width: 100%;  padding: 5px; font-size:11px; text-align: center; border: thin }
+
+.fondo_grisN {color: #3F7F7F; padding: 5px; background-color: #CCCCCC; font-size:11px } 
+.fondo_balncoN {color: #3F7F7F; padding: 5px; background-color: #FFFFFF; font-size:11px }
+
+.headline { color: #036; padding: 5px; font-weight: bold; font-weight: bold; font-size:11px }
+
+.white { background-color: #FFFFFF }
+.grey1 { background-color: #E6E6E6 }
+.grey2 { background-color: #D9D9D9 }
+.grey3 { background-color: #CCCCCC }
+.grey4 { background-color: #999999 }
+.grey5 { background-color: #666666 }
+.grey6 { background-color: #333333 }
+.black { background-color: #000000 }
+
+.shade1 { background-color: #D9ECFF }
+.shade2 { background-color: #BFDFFF }
+.shade3 { background-color: #99CCFF }
+.shade4 { background-color: #d6dff7 }
+.shade5 { background-color: #6699CC }
+.shade6 { background-color: #3F7F7F }
+.shade7 { background-color: #3F7F7F }
+
+
+.box0-border7t { padding: 5px; background-color: #FFFFFF; border-right: 1px solid #3F7F7F; border-top: 1px solid #3F7F7F; border-bottom: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+
+.box1-border7b { padding: 5px; background-color: #D9ECFF; border-right: 1px solid #3F7F7F; border-bottom: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+.box1-border7 { padding: 5px; background-color: #D9ECFF; border-right: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+
+.box1-border6 { padding: 5px; background-color: #D9ECFF; border-right: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+
+.box2-border7 { padding: 5px; background-color: #BFDFFF; border-right: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+.box2-border7tonly { padding: 5px; background-color: #BFDFFF; border-top: 1px solid #3F7F7F }
+
+.box4-border6b { padding: 5px; background-color: #d6dff7; border-right: 1px solid #3F7F7F; border-bottom: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+.box4-border6 { padding: 5px; background-color: #d6dff7; border-right: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+
+.box5-border7b { padding: 5px; background-color: #6699CC; border-right: 1px solid #3F7F7F; border-bottom: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+
+.head5-border7 { color: #FFFFFF; font-weight: bold; font-size: 11px; padding-left: 5px; padding-top:3px; padding-right: 5px; padding-bottom: 3px; background-color: #6699CC; border-right: 1px solid #3F7F7F; border-top: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+.head6-border6 { color: #FFFFFF; font-weight: bold; font-size: 11px; padding-left: 5px; padding-top:3px; padding-right: 5px; padding-bottom: 3px; background-color: #3F7F7F; border-right: 1px solid #3F7F7F; border-top: 1px solid #3F7F7F; border-left: 1px solid #3F7F7F }
+
+.requerido{	color: #FF0000;	text-align: left;  font-size: 11px;	}
+
+
+
+.selinv { border: 0px; font-size: 12px; background: #ffffff; cursor: hand; color: #3F7F7F; font-family: BISans, Arial, Helvetica, sans-serif; height: 19px; text-decoration: none; background-color: transparent;}
+.selinvn { border: 0px; font-size: 12px; background: #ffffff; cursor: hand; color: #3F7F7F; font-family: BISans, Arial, Helvetica, sans-serif; height: 19px; text-decoration: none; background-color: transparent; font-weight: bold; text-align: right;}
+.sel {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff;border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; height: 21px; text-decoration: none;	background-color: transparent;}
+.selText {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff; background-color: #ffffff; border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; height: 19px; text-decoration: none;	}
+.selNum {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff; background-color: #ffffff; border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; height: 19px; text-decoration: none;	text-align: right;}
+.selMulti {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff;border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; text-decoration: none;	background-color: transparent; width: 220px;}
+.selObser {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff;border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; text-decoration: none;	background-color: transparent; width: 380px;}
+
+#header {
+  float:left;
+  width:100%;
+  background:#369 url("/CallcenterBI/images/bg.gif") repeat-x bottom;
+  font-size:11px;
+  line-height:normal;
+  }
+#header ul {
+  margin:0;
+  padding:10px 10px 0;
+  list-style:none;
+  }
+#header li {
+  float:left;
+  background:url("/CallcenterBI/images/right.gif") no-repeat right top;
+  margin:0;
+  padding:0 5px 0 0;
+  }
+#header a {
+  float:left;
+  display:block;
+  background:url("/CallcenterBI/images/left.gif") no-repeat left top;
+  padding:5px 7px 4px 20px;
+  text-decoration:none;
+  font-weight:bold;
+  color:#9cf;
+  }
+/* Commented Backslash Hack
+   hides rule from IE5-Mac \*/
+#header a {float:none;}
+/* End IE5-Mac hack */
+#header a:hover {
+  color:#fff;
+  }
+#header #current {
+  background-image:url("/CallcenterBI/images/right_on.gif");
+  }
+#header #current a {
+  background-image:url("/CallcenterBI/images/left_on.gif");
+  color:#3F7F7F;
+  padding-bottom:5px;
+  }
+
+
+tR.navon {
+background-color: #BAE8CD;
+cursor: hand;
+color: #3F7F7F; padding: 5px; font-weight: bold; font-size:11px
+}
+tR.navoff {
+background-color: #FFFFFF;
+cursor: hand;
+color: #3F7F7F; padding: 5px; font-weight: bold; font-size:11px
+}
+tR.navcuarentena {
+background-color: #efef11;
+cursor: hand;
+color: #3F7F7F; padding: 5px; font-weight: bold; font-size:11px
+}
+
+tR.navprioridad {
+background-color: #E65F00;
+cursor: hand;
+color: #FFFFFF; padding: 5px; font-weight: bold; font-size:11px
+}

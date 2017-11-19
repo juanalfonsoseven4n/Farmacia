@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Inventario">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="inventario" type="com.farmacia.domain.Inventario" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="inventarioResult" class="inventario">
+		<result property="idinventario" column="idinventario" />
+		<result property="idproducto" column="idproducto" />
+		<result property="cantidad" column="cantidad" />
+		<result property="fechaexpir" column="fechaexpir" />
+		<result property="fechaing" column="fechaing" />
+		<result property="codigo" column="codigo" />
+		<result property="preciocosto" column="preciocosto" />
+		<result property="idfarmacia" column="idfarmacia" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Inventario' a la tabla de la base de datos-->
+	<insert id="insertInventario" parameterClass="inventario">	
+        INSERT INTO ${schema}.inventario (idinventario, idproducto, cantidad, fechaexpir, fechaing, codigo, preciocosto, idfarmacia)
+    	                      VALUES (#idinventario# ,#idproducto# ,#cantidad# ,#fechaexpir# ,#fechaing# ,#codigo# ,#preciocosto# ,#idfarmacia# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Inventario' a la tabla de la base de datos-->	
+	<update id="updateInventario" parameterClass="inventario">
+        UPDATE ${schema}.inventario SET idinventario = #idinventario# ,idproducto = #idproducto# ,cantidad = #cantidad# ,fechaexpir = #fechaexpir# ,fechaing = #fechaing# ,codigo = #codigo# ,preciocosto = #preciocosto# ,idfarmacia = #idfarmacia#     	WHERE idinventario = #idinventario# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Inventario' de la tabla de la base de datos-->
+	<delete id="deleteInventario" parameterClass="inventario">
+    	DELETE FROM ${schema}.inventario WHERE idinventario = #idinventario# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Inventario' de la tabla de la base de datos-->
+	<select id="getInventario" resultMap="inventarioResult" parameterClass="inventario">
+		SELECT idinventario, idproducto, cantidad, fechaexpir, fechaing, codigo, preciocosto, idfarmacia
+		FROM ${schema}.inventario
+		WHERE idinventario = #idinventario# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Inventario' de la tabla de la base de datos-->
+	<select id="getMaxInventarioIdinventario" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idinventario )
+		FROM ${schema}.inventario
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Inventario' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getInventarioXmlString" resultClass="xml" xmlResultName="Inventario" parameterClass="java.math.BigDecimal">
+		SELECT idinventario, idproducto, cantidad, fechaexpir, fechaing, codigo, preciocosto, idfarmacia		FROM ${schema}.inventario
+		WHERE idinventario = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Inventario' de la tabla de la base de datos en una lista-->
+	<select id="getInventarioList" resultMap="inventarioResult">
+		SELECT idinventario, idproducto, cantidad, fechaexpir, fechaing, codigo, preciocosto, idfarmacia
+		FROM ${schema}.inventario
+		ORDER BY idinventario ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Inventario' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getInventarioListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idinventario, idproducto, cantidad, fechaexpir, fechaing, codigo, preciocosto, idfarmacia
+		FROM ${schema}.inventario
+		ORDER BY idinventario ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Inventario' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+ 
+
+
+	<!-- ============ Form beans ============ -->
+	<form-beans>
+			<form-bean type="com.farmacia.form.InventarioForm" name="inventarioForm" />
+			<form-bean type="com.farmacia.form.DetventaForm" name="detventaForm" />
+			<form-bean type="com.farmacia.form.FarmaciaForm" name="farmaciaForm" />
+			<form-bean type="com.farmacia.form.MovimientoForm" name="movimientoForm" />
+			<form-bean type="com.farmacia.form.ProveedorForm" name="proveedorForm" />
+			<form-bean type="com.farmacia.form.GastoForm" name="gastoForm" />
+			<form-bean type="com.farmacia.form.ClienteForm" name="clienteForm" />
+			<form-bean type="com.farmacia.form.UsuarioForm" name="usuarioForm" />
+			<form-bean type="com.farmacia.form.VentaForm" name="ventaForm" />
+			<form-bean type="com.farmacia.form.OpcperForm" name="opcperForm" />
+			<form-bean type="com.farmacia.form.PerfilForm" name="perfilForm" />
+			<form-bean type="com.farmacia.form.ProductoForm" name="productoForm" />
+			<form-bean type="com.farmacia.form.OpcionForm" name="opcionForm" />
+			<form-bean type="com.farmacia.form.FamiliaForm" name="familiaForm" />
+			<form-bean type="com.farmacia.form.LaboratorioForm" name="laboratorioForm" />
+			<form-bean type="com.farmacia.form.CategoriaForm" name="categoriaForm" />
+			<form-bean type="com.farmacia.form.ClasificacionForm" name="clasificacionForm" />
+			<form-bean type="com.farmacia.form.ProvprodForm" name="provprodForm" />
+		</form-beans>
+	<!-- ============ Global forwards ============ -->
+   <global-exceptions>
+  	<exception key="errors.system" type="com.farmacia.exceptions.ApplicationException"
+              path="/html/jsp/error/error.jsp" handler="com.farmacia.exceptions.ExceptionHandler">
+              </exception>
+  </global-exceptions>
+ 
+	<!-- ============ Action Mapping definitions ============ -->
+	 <action-mappings>
+
+
+		<!-- Static pages -->
+
+		<action path="/Inventario" name="inventarioForm"
+			type="com.farmacia.controller.InventarioAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="inventario.list" />
+			<forward name="toadd" path="inventario.add" />
+			<forward name="todetail" path="inventario.view" />
+			<forward name="toedit" path="inventario.edit" />
+			<forward name="todelete" path="inventario.delete" />
+			<forward name="tolistpopup" path="inventario.listpopup" />
+			  <forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+		<action path="/Detventa" name="detventaForm"
+			type="com.farmacia.controller.DetventaAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="detventa.list" />
+			<forward name="toadd" path="detventa.add" />
+			<forward name="todetail" path="detventa.view" />
+			<forward name="toedit" path="detventa.edit" />
+			<forward name="todelete" path="detventa.delete" />
+			<forward name="tolistpopup" path="detventa.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+			<action path="/Farmacia" name="farmaciaForm"
+			type="com.farmacia.controller.FarmaciaAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="farmacia.list" />
+			<forward name="toadd" path="farmacia.add" />
+			<forward name="todetail" path="farmacia.view" />
+			<forward name="toedit" path="farmacia.edit" />
+			<forward name="todelete" path="farmacia.delete" />
+			<forward name="tolistpopup" path="farmacia.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+			<action path="/Movimiento" name="movimientoForm"
+			type="com.farmacia.controller.MovimientoAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="movimiento.list" />
+			<forward name="tolistCompras" path="movimiento.listCompras" />
+			<forward name="tolistCuarentena" path="movimiento.listCuarentena" />
+			<forward name="tolistExistentes" path="movimiento.listExistentes" />
+			<forward name="tolistExistenciasLab" path="movimiento.listExistentesLab" />			
+			<forward name="tolistConsol" path="movimiento.listConsol" />
+			<forward name="tolistSaldo" path="movimiento.listSaldo" />
+			<forward name="toadd" path="movimiento.add" />
+			<forward name="todetail" path="movimiento.view" />
+			<forward name="toedit" path="movimiento.edit" />
+			<forward name="todelete" path="movimiento.delete" />
+			<forward name="tolistpopup" path="movimiento.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+			<action path="/Proveedor" name="proveedorForm"
+			type="com.farmacia.controller.ProveedorAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="proveedor.list" />
+			<forward name="toadd" path="proveedor.add" />
+			<forward name="todetail" path="proveedor.view" />
+			<forward name="toedit" path="proveedor.edit" />
+			<forward name="todelete" path="proveedor.delete" />
+			<forward name="tolistpopup" path="proveedor.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+			<action path="/Gasto" name="gastoForm"
+			type="com.farmacia.controller.GastoAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="gasto.list" />
+			<forward name="toadd" path="gasto.add" />
+			<forward name="todetail" path="gasto.view" />
+			<forward name="toedit" path="gasto.edit" />
+			<forward name="todelete" path="gasto.delete" />
+			<forward name="tolistpopup" path="gasto.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+			<action path="/Cliente" name="clienteForm"
+			type="com.farmacia.controller.ClienteAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="cliente.list" />
+			<forward name="toadd" path="cliente.add" />
+			<forward name="todetail" path="cliente.view" />
+			<forward name="toedit" path="cliente.edit" />
+			<forward name="todelete" path="cliente.delete" />
+			<forward name="tolistpopup" path="cliente.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+			<action path="/Usuario" name="usuarioForm"
+			type="com.farmacia.controller.UsuarioAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="usuario.list" />
+			<forward name="toadd" path="usuario.add" />
+			<forward name="todetail" path="usuario.view" />
+			<forward name="toedit" path="usuario.edit" />
+			<forward name="todelete" path="usuario.delete" />
+			<forward name="tolistpopup" path="usuario.listpopup" />
+			<forward name="tomain" path="main.page" />
+			<forward name="tointro" path="/index.jsp" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+			<forward name="tochange" path="usuario.changepassword" />			
+		</action>
+			<action path="/Venta" name="ventaForm"
+			type="com.farmacia.controller.VentaAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="venta.list" />
+			<forward name="tolistConsulta" path="venta.listConsulta" />
+			<forward name="tolistVentas" path="venta.listVentas" />
+			<forward name="toadd" path="venta.add" />
+			<forward name="todetail" path="venta.view" />
+			<forward name="todetailConsulta" path="venta.viewConsulta" />
+			<forward name="todetailVenta" path="venta.viewVenta" />
+			<forward name="toedit" path="venta.edit" />
+			<forward name="todelete" path="venta.delete" />
+			<forward name="tolistpopup" path="venta.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+			<forward name="toregistrar" path="venta.registrar" />
+			<forward name="tolistVentasProd" path="venta.listVentasProd" />
+			<forward name="tolistFacturas" path="venta.listFacturas" />
+			<forward name="toPreventas" path="venta.preventas" />
+
+		</action>
+			<action path="/Opcper" name="opcperForm"
+			type="com.farmacia.controller.OpcperAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="opcper.list" />
+			<forward name="toadd" path="opcper.add" />
+			<forward name="todetail" path="opcper.view" />
+			<forward name="toedit" path="opcper.edit" />
+			<forward name="todelete" path="opcper.delete" />
+			<forward name="tolistpopup" path="opcper.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+			<action path="/Perfil" name="perfilForm"
+			type="com.farmacia.controller.PerfilAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="perfil.list" />
+			<forward name="toadd" path="perfil.add" />
+			<forward name="todetail" path="perfil.view" />
+			<forward name="toedit" path="perfil.edit" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+			<forward name="todelete" path="perfil.delete" />
+			<forward name="tolistpopup" path="perfil.listpopup" />
+		</action>
+			<action path="/Producto" name="productoForm"
+			type="com.farmacia.controller.ProductoAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="producto.list" />
+			<forward name="toadd" path="producto.add" />
+			<forward name="todetail" path="producto.view" />
+			<forward name="toedit" path="producto.edit" />
+			<forward name="todelete" path="producto.delete" />
+			<forward name="tolistpopup" path="producto.listpopup" />
+			<forward name="tolistpopupv" path="producto.listpopupv" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+			<action path="/Opcion" name="opcionForm"
+			type="com.farmacia.controller.OpcionAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="opcion.list" />
+			<forward name="toadd" path="opcion.add" />
+			<forward name="todetail" path="opcion.view" />
+			<forward name="toedit" path="opcion.edit" />
+			<forward name="todelete" path="opcion.delete" />
+			<forward name="tolistpopup" path="opcion.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+			<action path="/Familia" name="familiaForm"
+			type="com.farmacia.controller.FamiliaAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="familia.list" />
+			<forward name="toadd" path="familia.add" />
+			<forward name="todetail" path="familia.view" />
+			<forward name="toedit" path="familia.edit" />
+			<forward name="todelete" path="familia.delete" />
+			<forward name="tolistpopup" path="familia.listpopup" />
+			<forward name="invalidsession" path="paginas.invalidsession" />
+		</action>
+		<action path="/Provprod" name="provprodForm"
+			type="com.farmacia.controller.ProvprodAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="provprod.list" />
+			<forward name="toadd" path="provprod.add" />
+			<forward name="todetail" path="provprod.view" />
+			<forward name="toedit" path="provprod.edit" />
+			<forward name="todelete" path="provprod.delete" />
+			<forward name="tolistpopup" path="provprod.listpopup" />
+		</action>
+		<action path="/Laboratorio" name="laboratorioForm"
+			type="com.farmacia.controller.LaboratorioAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="laboratorio.list" />
+			<forward name="toadd" path="laboratorio.add" />
+			<forward name="todetail" path="laboratorio.view" />
+			<forward name="toedit" path="laboratorio.edit" />
+			<forward name="todelete" path="laboratorio.delete" />
+			<forward name="tolistpopup" path="laboratorio.listpopup" />
+		</action>
+		<action path="/Categoria" name="categoriaForm"
+			type="com.farmacia.controller.CategoriaAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="categoria.list" />
+			<forward name="toadd" path="categoria.add" />
+			<forward name="todetail" path="categoria.view" />
+			<forward name="toedit" path="categoria.edit" />
+			<forward name="todelete" path="categoria.delete" />
+			<forward name="tolistpopup" path="categoria.listpopup" />
+		</action>
+		<action path="/Clasificacion" name="clasificacionForm"
+			type="com.farmacia.controller.ClasificacionAction" scope="session"
+			parameter="method" validate="false">
+			<forward name="tolist" path="clasificacion.list" />
+			<forward name="toadd" path="clasificacion.add" />
+			<forward name="todetail" path="clasificacion.view" />
+			<forward name="toedit" path="clasificacion.edit" />
+			<forward name="todelete" path="clasificacion.delete" />
+			<forward name="tolistpopup" path="clasificacion.listpopup" />
+		</action>
+		</action-mappings>
+	<!-- ============ Tiles Request Definitions ============ -->
+	 <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+  	<!-- ============ Message Resources Definitions ============ -->
+
+  	<message-resources parameter="MessageResources"/>
+	<plug-in className="com.farmacia.controller.ServiciosPlugIn"/>
+  	
+  	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
+    <set-property property="moduleAware" value="true"/>
+  	</plug-in>
+	<!-- ============ Validator Definitions ============ --> 
+  	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    	<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+  	</plug-in>
+	
+
+</struts-config>

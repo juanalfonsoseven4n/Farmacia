@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Opcper">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="opcper" type="com.farmacia.domain.Opcper" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="opcperResult" class="opcper">
+		<result property="idopcion" column="idopcion" />
+		<result property="idperfil" column="idperfil" />
+		<result property="idopcper" column="idopcper" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Opcper' a la tabla de la base de datos-->
+	<insert id="insertOpcper" parameterClass="opcper">	
+        INSERT INTO ${schema}.opcper (idopcion, idperfil, idopcper)
+    	                      VALUES (#idopcion# ,#idperfil# ,#idopcper# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Opcper' a la tabla de la base de datos-->	
+	<update id="updateOpcper" parameterClass="opcper">
+        UPDATE ${schema}.opcper SET idopcion = #idopcion# ,idperfil = #idperfil# ,idopcper = #idopcper#     	WHERE idopcper = #idopcper# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Opcper' de la tabla de la base de datos-->
+	<delete id="deleteOpcper" parameterClass="opcper">
+    	DELETE FROM ${schema}.opcper WHERE idopcper = #idopcper# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Opcper' de la tabla de la base de datos-->
+	<select id="getOpcper" resultMap="opcperResult" parameterClass="opcper">
+		SELECT idopcion, idperfil, idopcper
+		FROM ${schema}.opcper
+		WHERE idopcper = #idopcper# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Opcper' de la tabla de la base de datos-->
+	<select id="getMaxOpcperIdopcper" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idopcper )
+		FROM ${schema}.opcper
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Opcper' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getOpcperXmlString" resultClass="xml" xmlResultName="Opcper" parameterClass="java.math.BigDecimal">
+		SELECT idopcion, idperfil, idopcper		FROM ${schema}.opcper
+		WHERE idopcper = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Opcper' de la tabla de la base de datos en una lista-->
+	<select id="getOpcperList" resultMap="opcperResult">
+		SELECT idopcion, idperfil, idopcper
+		FROM ${schema}.opcper
+		ORDER BY idopcper ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Opcper' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getOpcperListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idopcion, idperfil, idopcper
+		FROM ${schema}.opcper
+		ORDER BY idopcper ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Opcper' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

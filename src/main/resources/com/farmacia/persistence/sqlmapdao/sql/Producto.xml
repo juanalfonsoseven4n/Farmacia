@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Producto">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="producto" type="com.farmacia.domain.Producto" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="productoResult" class="producto">
+		<result property="idproducto" column="idproducto" />
+		<result property="nombre" column="nombre" />
+		<result property="presentacion" column="presentacion" />
+		<result property="idcategoria" column="idcategoria" />
+		<result property="idcategoriad" column="idcategoriad" />
+		<result property="codigo" column="codigo" />
+		<result property="iva" column="iva" />
+		<result property="valorunit" column="valorunit" />
+		<result property="valor" column="valor" />
+		<result property="precioventa" column="precioventa" />
+		<result property="cantidadmin" column="cantidadmin" />
+		<result property="idlaboratorio" column="idlaboratorio" />
+		<result property="comentarios" column="comentarios" />
+		<result property="indicaciones" column="indicaciones" />
+		<result property="idfamilia" column="idfamilia" />
+		<result property="labdesc" column="labdesc" />
+		<result property="catdesc" column="catdesc" />
+		<result property="catdescd" column="catdescd" />
+		<result property="famdesc" column="famdesc" />
+		<result property="sobre" column="sobre" />
+		<result property="caja" column="caja" />
+		<result property="invima" column="invima" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Producto' a la tabla de la base de datos-->
+	<insert id="insertProducto" parameterClass="producto">	
+        INSERT INTO ${schema}.producto (idproducto, nombre, presentacion, idcategoria, idcategoriad, codigo, iva, valorunit, valor,  precioventa, cantidadmin, idlaboratorio, comentarios, indicaciones, idfamilia, sobre, caja, invima)
+    	                      VALUES (#idproducto# ,#nombre# ,#presentacion# ,#idcategoria# ,#idcategoriad# ,#codigo# ,#iva# ,#valorunit# ,#valor# ,#precioventa# ,#cantidadmin# ,#idlaboratorio# ,#comentarios# ,#indicaciones# ,#idfamilia#, #sobre#, #caja#, #invima# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Producto' a la tabla de la base de datos-->	
+	<update id="updateProducto" parameterClass="producto">
+        UPDATE ${schema}.producto SET idproducto = #idproducto# ,nombre = #nombre# ,presentacion = #presentacion# ,idcategoria = #idcategoria# ,idcategoriad = #idcategoriad# ,
+        codigo = #codigo# ,iva = #iva# ,valorunit = #valorunit# ,valor = #valor# , precioventa = #precioventa# ,cantidadmin = #cantidadmin# ,
+        idlaboratorio = #idlaboratorio# ,comentarios = #comentarios# ,indicaciones = #indicaciones# ,idfamilia = #idfamilia#,
+        caja = #caja# , sobre = #sobre#, invima = #invima# 
+        WHERE idproducto = #idproducto# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Producto' de la tabla de la base de datos-->
+	<delete id="deleteProducto" parameterClass="producto">
+    	DELETE FROM ${schema}.producto WHERE idproducto = #idproducto# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Producto' de la tabla de la base de datos-->
+	<select id="getProducto" resultMap="productoResult" parameterClass="producto">
+		SELECT idproducto, p.nombre, presentacion, p.idcategoria, p.idcategoriad,codigo, iva, valorunit, valor,  precioventa, cantidadmin, p.idlaboratorio, l.nombre as labdesc, c.nombre as catdesc, k.nombre as catdescd, comentarios, indicaciones, p.idfamilia, f.nombre as famdesc, sobre, caja, invima
+		FROM ${schema}.producto p, ${schema}.familia f, ${schema}.laboratorio l, ${schema}.categoria c, ${schema}.categoria k
+		where p.idfamilia = f.idfamilia and p.idlaboratorio = l.idlaboratorio and p.idcategoria = c.idcategoria  and p.idcategoriad = k.idcategoria and idproducto = #idproducto# 	
+	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Producto' de la tabla de la base de datos-->
+	<select id="getMaxProductoIdproducto" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idproducto )
+		FROM ${schema}.producto
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Producto' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getProductoXmlString" resultClass="xml" xmlResultName="Producto" parameterClass="java.math.BigDecimal">
+		SELECT idproducto, nombre, presentacion, idcategoria, idcategoriad, codigo, iva, valorunit, valor,  precioventa, cantidadmin, idlaboratorio, comentarios, indicaciones, idfamilia, sobre, caja, invima
+		FROM ${schema}.producto
+		WHERE idproducto = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Producto' de la tabla de la base de datos en una lista-->
+	<select id="getProductoList" resultMap="productoResult">
+		SELECT idproducto, p.nombre, presentacion, p.idcategoria, p.idcategoriad, codigo, iva, valorunit, valor,  precioventa, cantidadmin, p.idlaboratorio, l.nombre as labdesc, c.nombre as catdesc, k.nombre as catdescd, comentarios, indicaciones, p.idfamilia, f.nombre as famdesc, sobre, caja, invima
+		FROM ${schema}.producto p, ${schema}.familia f, ${schema}.laboratorio l, ${schema}.categoria c, ${schema}.categoria k
+		where p.idfamilia = f.idfamilia and p.idlaboratorio = l.idlaboratorio and p.idcategoria = c.idcategoria and p.idcategoriad = k.idcategoria
+		ORDER BY f.nombre ASC, p.nombre ASC
+	</select>
+	
+	<select id="getProductoByName" resultMap="productoResult" parameterClass="java.lang.String">
+		SELECT idproducto, p.nombre, presentacion, p.idcategoria, p.idcategoriad, codigo, iva, valorunit, valor,  precioventa, cantidadmin, p.idlaboratorio, l.nombre as labdesc, c.nombre as catdesc, k.nombre as catdescd,comentarios, indicaciones, p.idfamilia, f.nombre as famdesc, sobre, caja, invima
+		FROM ${schema}.producto p, ${schema}.familia f, ${schema}.laboratorio l, ${schema}.categoria c, ${schema}.categoria k
+		where p.idfamilia = f.idfamilia and p.idlaboratorio = l.idlaboratorio and p.idcategoria = c.idcategoria and p.idcategoriad = k.idcategoria and (upper(p.nombre) like '$nombre$%' or upper(f.nombre) like '$nombre$%')
+		ORDER BY f.nombre ASC, p.nombre ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Producto' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getProductoListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idproducto, nombre, presentacion, idcategoria, idcategoriad, codigo, iva, valorunit, valor,  precioventa, cantidadmin, p.idlaboratorio, comentarios, indicaciones, idfamilia, sobre, caja, invima
+		FROM ${schema}.producto
+		ORDER BY idproducto ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Producto' DE LA BASE DE DATOS:
+	////-->	
+	<select id="getProductoByBarcode" resultMap="productoResult" parameterClass="java.lang.String">
+		SELECT idproducto, p.nombre, presentacion, p.idcategoria, p.idcategoriad, codigo, iva, valorunit, valor,  precioventa, cantidadmin, p.idlaboratorio, l.nombre as labdesc, c.nombre as catdesc, k.nombre as catdescd,comentarios, indicaciones, p.idfamilia, f.nombre as famdesc, sobre, caja, invima
+		FROM ${schema}.producto p, ${schema}.familia f, ${schema}.laboratorio l, ${schema}.categoria c, ${schema}.categoria k
+		where p.idfamilia = f.idfamilia and p.idlaboratorio = l.idlaboratorio and p.idcategoria = c.idcategoria and p.idcategoriad = k.idcategoria 
+			and p.codigo like '$barcode$%'
+		ORDER BY f.nombre ASC, p.nombre ASC
+	</select>
+
+		
+	</sqlMap>

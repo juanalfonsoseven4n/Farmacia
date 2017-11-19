@@ -1,0 +1,419 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	padding:0;
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+}
+
+/*header*/
+header{
+	width: 100%;
+	box-shadow: 0 0 4px #cccccc;
+}
+header .brandCont{
+	width: 98%;
+	display: inline-block;
+	padding: 10px 1% 0 1%;
+}
+header .brandCont .logo{
+	float: left;
+}
+header .brandCont .logo a{
+	display: table;
+	text-decoration: none;
+}
+header .brandCont .logo a .imgLogo{
+	display: table-cell;
+	text-decoration: none;
+	vertical-align: middle;
+}
+header .brandCont .logo a .imgLogo img{
+	width: 70px;
+	height: auto
+}
+header .brandCont .logo a .txt{
+	color: #366177;
+	display: table-cell;
+	font-size: 23px;
+	vertical-align: middle;
+	font-weight: 400;
+	padding: 0 15px;
+}
+header .brandCont .rightCont{
+	float: right;
+	display: table;
+	margin: 20px 0 0 0;
+}
+header .brandCont .rightCont .name{
+	display: table-cell;
+	vertical-align: middle;
+}
+header .brandCont .rightCont .name .texto{
+	font-size: 14px;
+	font-weight: 200;
+	display: inline-block;
+	color: #ababab;
+}
+header .brandCont .rightCont .name .ima{
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 0 0 5px;
+}
+header .brandCont .rightCont .btnCont{
+	display: table-cell;
+	padding: 3px 0 0 20px;
+}
+header .brandCont .rightCont .btnCont a{
+	border:1px solid #6cc4f8;
+	padding: 5px 10px;
+	text-align: center;
+	color: #6cc4f8;
+	font-size: 12px;
+	text-decoration: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+header .brandCont .rightCont .btnCont a:hover{
+	background: #6cc4f8;
+	color: #FFFFFF;
+}
+
+/*menu*/
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a,
+#cssmenu #menu-button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#cssmenu:after,
+#cssmenu > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#cssmenu #menu-button {
+  display: none;
+}
+#cssmenu {
+	font-family: Montserrat, sans-serif;
+	background: #FFFFFF;
+	border-top:1px solid #e7f2f7;
+}
+#cssmenu > ul > li {
+  float: left;
+}
+#cssmenu.align-center > ul {
+  font-size: 0;
+  text-align: center;
+}
+#cssmenu.align-center > ul > li {
+  display: inline-block;
+  float: none;
+}
+#cssmenu.align-center ul ul {
+  text-align: left;
+}
+#cssmenu.align-right > ul > li {
+  float: right;
+}
+#cssmenu > ul > li > a {
+  padding: 17px 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #0e4b63;
+  font-weight: 400;
+}
+#cssmenu > ul > li:hover > a {
+  color: #3f92bc;
+}
+#cssmenu > ul > li.has-sub > a {
+  padding-right: 30px;
+}
+#cssmenu > ul > li.has-sub > a:after {
+  position: absolute;
+  top: 22px;
+  right: 11px;
+  width: 8px;
+  height: 2px;
+  display: block;
+  background: #0e4b63;
+  content: '';
+}
+#cssmenu > ul > li.has-sub > a:before {
+  position: absolute;
+  top: 19px;
+  right: 14px;
+  display: block;
+  width: 2px;
+  height: 8px;
+  background: #0e4b63;
+  content: '';
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+#cssmenu > ul > li.has-sub:hover > a:before {
+  top: 23px;
+  height: 0;
+}
+#cssmenu ul ul {
+  position: absolute;
+  left: -9999px;
+}
+#cssmenu.align-right ul ul {
+  text-align: right;
+}
+#cssmenu ul ul li {
+  height: 0;
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+#cssmenu li:hover > ul {
+  left: auto;
+}
+#cssmenu.align-right li:hover > ul {
+  left: auto;
+  right: 0;
+}
+#cssmenu li:hover > ul > li {
+  height: 35px;
+}
+#cssmenu ul ul ul {
+  margin-left: 100%;
+  top: 0;
+}
+#cssmenu.align-right ul ul ul {
+  margin-left: 0;
+  margin-right: 100%;
+}
+#cssmenu ul ul li a {
+  border-bottom: 1px solid rgba(150, 150, 150, 0.15);
+  padding: 11px 15px;
+  width: 170px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #0e4b63;
+  font-weight: 400;
+  background: #f4f4f4;
+}
+#cssmenu ul ul li:last-child > a,
+#cssmenu ul ul li.last-item > a {
+  border-bottom: 0;
+}
+#cssmenu ul ul li:hover > a,
+#cssmenu ul ul li a:hover {
+  color: #3f92bc;
+}
+#cssmenu ul ul li.has-sub > a:after {
+  position: absolute;
+  top: 16px;
+  right: 11px;
+  width: 8px;
+  height: 2px;
+  display: block;
+  background: #0e4b63;
+  content: '';
+}
+#cssmenu.align-right ul ul li.has-sub > a:after {
+  right: auto;
+  left: 11px;
+}
+#cssmenu ul ul li.has-sub > a:before {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  display: block;
+  width: 2px;
+  height: 8px;
+  background: #0e4b63;
+  content: '';
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+#cssmenu.align-right ul ul li.has-sub > a:before {
+  right: auto;
+  left: 14px;
+}
+#cssmenu ul ul > li.has-sub:hover > a:before {
+  top: 17px;
+  height: 0;
+}
+
+
+
+/*login*/
+section.login{
+	width:100%;
+	height: 100%;
+	position: absolute;
+	background: #f7f7f7;
+	display: table;
+}
+section.login .left{
+	width:50%;
+	display: table-cell;
+	vertical-align: middle;
+	border-right: 4px solid #88eac2;
+	background: #27ccff; 
+	background: -webkit-linear-gradient(left, #27ccff , #5a9ff2); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #27ccff, #5a9ff2); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #27ccff, #5a9ff2); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #27ccff, #5a9ff2); /* Standard syntax */
+	position: relative;
+}
+section.login .left:before{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	content: "";
+	background: url(../images/bg_login.jpg) center center no-repeat;
+	background-size: cover;
+	opacity: 0.1;
+	top: 0;
+	left: 0;
+}
+section.login .left .brand{
+	width:70%;
+	display: table;
+	padding: 0 15%;
+	position: relative;
+}
+section.login .left .brand .imgBrand{
+	width:150px;
+	display: table-cell;
+	vertical-align: middle;
+}
+section.login .left .brand .imgBrand img{
+	width: 100%;
+	max-width: 150px;
+}
+section.login .left .brand .contBrand{
+	display: table-cell;
+	vertical-align: middle;
+}
+section.login .left .brand .contBrand h1{
+	color: #FFFFFF;
+	font-size: 30px;
+	margin: 0 0 15px 0;
+	font-weight: 700;
+}
+section.login .left .brand .contBrand p{
+	color: #FFFFFF;
+	font-size: 14px;
+}
+section.login .right{
+	width:50%;
+	display: table-cell;
+	background:#f7f7f7;
+	vertical-align: middle;
+}
+section.login .right .formLog{
+	width:55%;
+	background: #FFFFFF;
+	padding: 5%;
+	margin: 0 auto;
+	box-shadow: 0 0 8px rgba(40, 155, 206, .2);
+}
+section.login .right .formLog p{
+	font-size: 14px;
+	color: #ababab;
+	text-align: center;
+}
+section.login .right .formLog input{
+	width: 94%;
+	padding: 13px 3%;
+	font-size: 14px;
+	color: #ababab;
+	border: 1px solid #dbdbdb;
+	margin: 0 0 20px 0;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-weight: 100;
+}
+section.login .right .formLog .btnLog{
+	width: 100%;
+	margin: 0 0 20px 0;
+}
+section.login .right .formLog .btnLog a{
+	width: 94%;
+	display: inline-block;
+	padding: 13px 3%;
+	font-size: 14px;
+	color: #FFFFFF;
+	border:0;
+	background: #6cc4f8;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-weight: 100;
+	text-decoration: none;
+	text-align: center;
+}
+section.login .right .formLog .btnLog a:hover{
+	background: #37a7f4;
+}
+section.login .right .formLog .olvido{
+	width: 100%;
+	text-align: center;
+}
+section.login .right .formLog .olvido a,
+section.login .right .formLog .olvido a:active,
+section.login .right .formLog .olvido a:focus{
+	color: #82afe8;
+	font-size: 13px;
+	text-decoration: none;
+}
+section.login .right .formLog .olvido a:hover{
+	color: #6cc4f8;
+	text-decoration: underline;
+}
+.btnPrint{
+	position: absolute;
+	right: 15px;
+	top: 10px;
+}
+.btnPrint a{
+	font-size: 11px;
+	font-weight: 100;
+	color: #6cc4f8;
+	text-decoration: none;
+	display: table;
+}
+.btnPrint a span{
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0 10px 0 0;
+}
+.btnPrint a img{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+

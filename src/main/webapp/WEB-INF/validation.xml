@@ -1,0 +1,944 @@
+<?xml version="1.0"?>
+<!DOCTYPE form-validation PUBLIC "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1.3//EN" "http://jakarta.apache.org/commons/dtds/validator_1_1_3.dtd">
+
+<form-validation>
+
+
+<formset>
+  <form name="inventarioForm">
+  
+
+     <!-- field property="idinventario" depends="required, integer">
+       <arg0 key="inventario.field.idinventario"/>
+     </field -->
+
+
+     <field property="idproducto" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="inventario.field.idproducto"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+
+     <field property="cantidad" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="inventario.field.cantidad"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="fechaexpir" depends="required">
+       <arg0 key="inventario.field.fechaexpir"/>
+     </field>
+
+
+     <field property="fechaing" depends="required">
+       <arg0 key="inventario.field.fechaing"/>
+     </field>
+
+
+     <field property="codigo" depends="">
+       <arg0 key="inventario.field.codigo"/>
+     </field>
+
+
+     <field property="preciocosto" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="inventario.field.preciocosto"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+       
+       
+     </field>
+
+
+     <field property="idfarmacia" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="inventario.field.idfarmacia"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+   </form>
+     <form name="usperForm">
+  
+
+     <field property="idperfil" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="usper.field.idperfil"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="idusuario" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="usper.field.idusuario"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+
+     <!--field property="idusper" depends="required, integer">
+       <arg0 key="usper.field.idusper"/>
+     </field-->
+
+   </form>
+     <form name="detventaForm">
+  
+
+     <!--field property="iddetventa" depends="required, integer">
+       <arg0 key="detventa.field.iddetventa"/>
+     </field-->
+
+
+    
+ 	<field property="idproducto" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	   <arg0 key="detventa.field.idventa"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+     
+     </field>
+     
+      <field property="idventa" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	   <arg0 key="detventa.field.idventa"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+     
+     </field>
+     
+
+
+     <field property="cantidad" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="detventa.field.cantidad"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="valor" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="detventa.field.valor"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="iva" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="detventa.field.iva"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="valorunit" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="detventa.field.valorunit"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+   </form>
+     <form name="farmaciaForm">
+  
+
+     <!--field property="idfarmacia" depends="required, integer">
+       <arg0 key="farmacia.field.idfarmacia"/>
+     </field-->
+
+
+     <field property="nombre" depends="required">
+       <arg0 key="farmacia.field.nombre"/>
+     </field>
+
+
+     <field property="descripcion" depends="">
+       <arg0 key="farmacia.field.descripcion"/>
+     </field>
+
+
+     <field property="representante" depends="">
+       <arg0 key="farmacia.field.representante"/>
+     </field>
+
+
+     <field property="telefono" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="farmacia.field.telefono"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+
+     <field property="direccion" depends="">
+       <arg0 key="farmacia.field.direccion"/>
+     </field>
+
+
+     <field property="telefono2" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="farmacia.field.telefono2"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="mail" depends="email">
+       <arg0 key="farmacia.field.mail"/>
+     </field>
+
+
+     <field property="nit" depends="">
+       <arg0 key="farmacia.field.nit"/>
+     </field>
+
+   </form>
+     <form name="movimientoForm">
+  
+
+     <field property="idinventario" depends="">
+	           
+            	<arg0 key="movimiento.field.idinventario"/>
+            	
+       
+     </field>
+
+
+     <field property="fecha" depends="required">
+       <arg0 key="movimiento.field.fecha"/>
+     </field>
+
+
+     <field property="cantidad" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="movimiento.field.cantidad"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="valor" depends="">
+	            
+            	<arg0 key="movimiento.field.valor"/>
+            	
+       
+     </field>
+
+
+     <field property="codigo" depends="">
+       <arg0 key="movimiento.field.codigo"/>
+     </field>
+
+
+     <field property="idusuario" depends="">
+	            
+            	<arg0 key="movimiento.field.idusuario"/>
+            	
+       
+     </field>
+
+
+     <field property="tipo" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="movimiento.field.tipo"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+
+     <field property="preciocosto" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	  <arg0 key="movimiento.field.preciocosto"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+
+     <field property="precio" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	  <arg0 key="movimiento.field.precio"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+
+     <!-- field property="idmovimiento" depends="required, integer">
+       <arg0 key="movimiento.field.idmovimiento"/>
+     </field -->
+
+
+     <field property="idfarmacia" depends="">
+	           <arg0 key="movimiento.field.idfarmacia"/>
+            	
+       
+     </field>
+
+
+     <field property="idproducto" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="movimiento.field.idproducto"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="horas" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="movimiento.field.hora"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+      <field property="minutos" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="movimiento.field.hora"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+   </form>
+     <form name="proveedorForm">
+  
+
+     <!--field property="idproveedor" depends="required, integer">
+       <arg0 key="proveedor.field.idproveedor"/>
+     </field-->
+
+
+     <field property="nombre" depends="required">
+       <arg0 key="proveedor.field.nombre"/>
+     </field>
+
+
+     <field property="descripcion" depends="">
+       <arg0 key="proveedor.field.descripcion"/>
+     </field>
+
+
+     <field property="codigo" depends="">
+       <arg0 key="proveedor.field.codigo"/>
+     </field>
+
+
+     <field property="telefono" depends="required,mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="proveedor.field.telefono"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="direccion" depends="">
+       <arg0 key="proveedor.field.direccion"/>
+     </field>
+
+
+     <field property="representante" depends="">
+       <arg0 key="proveedor.field.representante"/>
+     </field>
+
+
+     <field property="telefono2" depends="required,mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="proveedor.field.telefono2"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="mail" depends="email">
+       <arg0 key="proveedor.field.mail"/>
+     </field>
+
+
+     <field property="nit" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="proveedor.field.nit"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+   </form>
+     <form name="gastoForm">
+  
+
+     <!--field property="idgasto" depends="required, integer">
+       <arg0 key="gasto.field.idgasto"/>
+     </field-->
+
+
+     <field property="descripcion" depends="">
+       <arg0 key="gasto.field.descripcion"/>
+     </field>
+
+
+     <field property="nombre" depends="required">
+       <arg0 key="gasto.field.nombre"/>
+     </field>
+
+
+     <field property="fecha" depends="required">
+       <arg0 key="gasto.field.fecha"/>
+     </field>
+
+
+     <field property="valor" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="gasto.field.valor"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+
+     <field property="idusuario" depends="">
+	           
+            	 <arg0 key="gasto.field.idusuario"/>
+     
+     </field>
+
+
+     <field property="idfarmacia" depends="">
+	            
+            	<arg0 key="gasto.field.idfarmacia"/>
+
+     </field>
+
+   </form>
+     <form name="clienteForm">
+  
+
+     <!--field property="idcliente" depends="required, integer">
+       <arg0 key="cliente.field.idcliente"/>
+     </field-->
+
+
+     <field property="nombre" depends="required">
+       <arg0 key="cliente.field.nombre"/>
+     </field>
+
+
+     <field property="apellido" depends="">
+       <arg0 key="cliente.field.apellido"/>
+     </field>
+
+
+     <field property="direccion" depends="">
+       <arg0 key="cliente.field.direccion"/>
+     </field>
+
+
+     <field property="telefono" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="cliente.field.telefono"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9\. \-]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="mail" depends="email">
+       <arg0 key="cliente.field.mail"/>
+     </field>
+
+
+     <field property="cedula" depends="">
+         	<arg0 key="cliente.field.cedula"/>
+     </field>
+
+   </form>
+     <form name="usuarioForm">
+  
+
+     <!--field property="idusuario" depends="required, integer">
+       <arg0 key="usuario.field.idusuario"/>
+     </field-->
+
+
+     <field property="nombre" depends="required">
+       <arg0 key="usuario.field.nombre"/>
+     </field>
+
+
+     <field property="apellido" depends="required">
+       <arg0 key="usuario.field.apellido"/>
+     </field>
+
+
+     <field property="direccion" depends="">
+       <arg0 key="usuario.field.direccion"/>
+     </field>
+
+
+     <field property="mail" depends="email">
+       <arg0 key="usuario.field.mail"/>
+     </field>
+
+
+     <field property="cedula" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="usuario.field.cedula"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9\.]*$</var-value>
+   				</var>
+       
+       
+     </field>
+
+
+     <field property="telefono2" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="usuario.field.telefono2"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9\.]*$</var-value>
+   				</var>
+       
+       
+     </field>
+
+
+     <field property="telefono" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="usuario.field.telefono"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9\.]*$</var-value>
+   				</var>
+       
+       
+     </field>
+  	<field property="idperfil" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="usuario.field.idperfil"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+	<field property="idfarmacia" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="usuario.field.idfarmacia"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+     <field property="especializacion" depends="">
+       <arg0 key="usuario.field.especializacion"/>
+     </field>
+
+
+     <field property="descripcion" depends="required">
+       <arg0 key="usuario.field.descripcion"/>
+     </field>
+	<field property="password" depends="required">
+       <arg0 key="usuario.field.password"/>
+     </field>
+   </form>
+     <form name="ventaForm">
+  
+
+     <field property="valorunit" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="detventa.field.valorunit"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+     <field property="valor" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="detventa.field.valor"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+  	 <field property="cantidad" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="detventa.field.cantidad"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+     <field property="idproducto" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="detventa.field.idproducto"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+   </form>
+     <form name="opcperForm">
+  
+
+     <field property="idopcion" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="opcper.field.idopcion"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="idperfil" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="opcper.field.idperfil"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <!--field property="idopcper" depends="required, integer">
+       <arg0 key="opcper.field.idopcper"/>
+     </field-->
+
+   </form>
+     <form name="perfilForm">
+  
+
+     <!--field property="idperfil" depends="required, integer">
+       <arg0 key="perfil.field.idperfil"/>
+     </field-->
+
+
+     <field property="nombre" depends="">
+       <arg0 key="perfil.field.nombre"/>
+     </field>
+
+
+     <field property="descripcion" depends="">
+       <arg0 key="perfil.field.descripcion"/>
+     </field>
+
+   </form>
+     <form name="productoForm">
+  
+
+     <!--field property="idproducto" depends="required, integer">
+       <arg0 key="producto.field.idproducto"/>
+     </field-->
+
+
+     <field property="nombre" depends="required">
+       <arg0 key="producto.field.nombre"/>
+     </field>
+
+
+     <field property="presentacion" depends="required">
+       <arg0 key="producto.field.presentacion"/>
+     </field>
+
+
+     <field property="cantidad" depends="">
+	            
+            	<arg0 key="producto.field.cantidad"/>
+            	
+     </field>
+
+
+     <field property="codigo" depends="">
+       <arg0 key="producto.field.codigo"/>
+     </field>
+
+
+     <field property="iva" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="producto.field.iva"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+
+     <field property="valorunit" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="producto.field.valorunit"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="valor" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	 <arg0 key="producto.field.valor"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9]{1}[0-9\.]*$</var-value>
+   				</var>
+      
+     </field>
+
+
+
+     <field property="precioventa" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="producto.field.precioventa"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+
+     <field property="cantidadmin" depends="mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="producto.field.cantidadmin"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[0-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+     <field property="idlaboratorio" depends="required,, mask">
+            <msg name="mask" key="errors.invalid"/>
+           	 <arg0 key="producto.field.idlaboratorio"/>
+           	<var>
+      			<var-name>mask</var-name>
+      			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+			</var>
+    </field>
+
+
+     <field property="comentarios" depends="">
+       <arg0 key="producto.field.comentarios"/>
+     </field>
+
+
+     <field property="indicaciones" depends="">
+       <arg0 key="producto.field.indicaciones"/>
+     </field>
+
+
+     <field property="idfamilia" depends="required, mask">
+	            <msg name="mask" key="errors.invalid"/>
+            	<arg0 key="producto.field.idfamilia"/>
+            	<var>
+          			<var-name>mask</var-name>
+          			<var-value>^[1-9]{1}[0-9\.]*$</var-value>
+   				</var>
+       
+     </field>
+
+   </form>
+     <form name="opcionForm">
+  
+
+     <!--field property="idopcion" depends="required, integer">
+       <arg0 key="opcion.field.idopcion"/>
+     </field-->
+
+
+     <field property="nombre" depends="">
+       <arg0 key="opcion.field.nombre"/>
+     </field>
+
+
+     <field property="descripcion" depends="">
+       <arg0 key="opcion.field.descripcion"/>
+     </field>
+
+   </form>
+     <form name="familiaForm">
+  
+
+     <field property="nombre" depends="required">
+       <arg0 key="familia.field.nombre"/>
+     </field>
+
+
+     <!--field property="idfamilia" depends="required, integer">
+       <arg0 key="familia.field.idfamilia"/>
+     </field-->
+
+
+     <field property="descripcion" depends="">
+       <arg0 key="familia.field.descripcion"/>
+     </field>
+
+   </form>
+   
+   <form name="provprodForm">
+  
+
+     <field property="idproveedor" depends="required, integer">
+       <arg0 key="provprod.field.idproveedor"/>
+     </field>
+
+
+     <field property="idproducto" depends="integer">
+       <arg0 key="provprod.field.idproducto"/>
+     </field>
+
+
+     <field property="idprovprod" depends="required, integer">
+       <arg0 key="provprod.field.idprovprod"/>
+     </field>
+
+
+     <field property="valor" depends="integer">
+       <arg0 key="provprod.field.valor"/>
+     </field>
+
+   </form>
+    <form name="laboratorioForm">
+  
+
+     <!-- field property="idlaboratorio" depends="required, integer">
+       <arg0 key="laboratorio.field.idlaboratorio"/>
+     </field -->
+
+
+     <field property="nombre" depends="required">
+       <arg0 key="laboratorio.field.nombre"/>
+     </field>
+
+
+     <field property="descripcion" depends="">
+       <arg0 key="laboratorio.field.descripcion"/>
+     </field>
+
+   </form>
+   <form name="categoriaForm">
+  
+
+     <!-- field property="idcategoria" depends="required, integer">
+       <arg0 key="categoria.field.idcategoria"/>
+     </field -->
+
+
+     <field property="nombre" depends="required">
+       <arg0 key="categoria.field.nombre"/>
+     </field>
+
+
+     <field property="descripcion" depends="">
+       <arg0 key="categoria.field.descripcion"/>
+     </field>
+
+   </form>
+   <form name="clasificacionForm">
+  
+
+     <!-- field property="idclasificacion" depends="required, integer">
+       <arg0 key="clasificacion.field.idclasificacion"/>
+     </field -->
+
+
+     <field property="nombre" depends="required">
+       <arg0 key="clasificacion.field.nombre"/>
+     </field>
+
+
+     <field property="descripcion" depends="">
+       <arg0 key="clasificacion.field.descripcion"/>
+     </field>
+
+   </form>
+    </formset>
+</form-validation>

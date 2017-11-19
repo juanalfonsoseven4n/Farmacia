@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Menu">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="menu" type="com.farmacia.domain.Menu" />
+	<typeAlias alias="opcion" type="com.farmacia.domain.Opcion" />
+
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="menuResult" class="menu">
+		<result property="idmenu" column="idmenu" />
+		<result property="nombre" column="nombre" />
+		<result property="orden" column="orden" />
+		<result property="descripcion" column="descripcion" />
+		<result property="titulo" column="titulo" />
+	</resultMap>
+	<resultMap id="menuOpciones" class="menu">
+		<result property="idmenu" column="idmenu" />
+		<result property="nombre" column="nombre" />
+		<result property="orden" column="orden" />
+		<result property="descripcion" column="descripcion" />
+		<result property="titulo" column="titulo" />
+	
+	</resultMap>
+	<resultMap id="opcionesMenu" class="opcion">
+		<result property="idopcion" column="idopcion" />
+		<result property="idmenu" column="idmenu" />
+		<result property="nombre" column="nombre" />
+		<result property="descripcion" column="descripcion" />
+		<result property="linkopcion" column="linkopcion" />
+		<result property="orden" column="orden" />
+		<result property="estado" column="estado" />
+		<result property="titulo" column="titulo" />
+
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Menu' a la tabla de la base de datos-->
+	<insert id="insertMenu" parameterClass="menu">	
+        INSERT INTO ${schema}.menu (idmenu, nombre, orden, descripcion, titulo)
+    	                      VALUES (#idmenu# ,#nombre# ,#orden# ,#descripcion# ,#titulo# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Menu' a la tabla de la base de datos-->	
+	<update id="updateMenu" parameterClass="menu">
+        UPDATE ${schema}.menu SET idmenu = #idmenu# ,nombre = #nombre# ,orden = #orden# ,descripcion = #descripcion# ,titulo = #titulo#  	WHERE idmenu = #idmenu# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Menu' de la tabla de la base de datos-->
+	<delete id="deleteMenu" parameterClass="menu">
+    	DELETE FROM ${schema}.menu WHERE idmenu = #idmenu# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Menu' de la tabla de la base de datos-->
+	<select id="getMenu" resultMap="menuResult" parameterClass="menu">
+		SELECT idmenu, nombre, orden, descripcion, titulo
+		FROM ${schema}.menu
+		WHERE idmenu = #idmenu# 	</select>
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Menu' de la tabla de la base de datos-->
+	<select id="getMenuById" resultMap="menuResult" parameterClass="java.lang.Long">
+		SELECT idmenu, nombre, orden, descripcion, titulo
+		FROM ${schema}.menu
+		WHERE idmenu = #idmenu# 	</select>
+		<!--Definici�n del proceso que consulta el registro maximo por llave primaria de 'Menu' de la tabla de la base de datos-->
+	<select id="getMaxMenuId_menu" resultClass="java.lang.Long" >
+		SELECT MAX( idmenu )
+		FROM ${schema}.menu
+	</select>
+	
+
+	<!--Definición del proceso de consulta de todos los registros de 'Menu' de la tabla de la base de datos en una lista-->
+	<select id="getMenuList" resultMap="menuResult">
+		SELECT idmenu, nombre, orden, descripcion, titulo
+		FROM ${schema}.menu
+		ORDER BY idmenu ASC
+	</select>
+	<!--Definición del proceso de consulta de todos los registros de 'Menu' de la tabla de la base de datos en una lista-->
+	<select id="getMenuListByPerfil" resultMap="menuOpciones" parameterClass="java.math.BigDecimal">
+		SELECT distinct(mn.idmenu) as idmenu, mn.nombre as nombre, mn.orden as orden, mn.descripcion as descripcion, mn.titulo as titulo
+		FROM ${schema}.menu mn, ${schema}.opcper op, ${schema}.opcion oc
+		WHERE op.idperfil= #value# and  oc.idopcion = op.idopcion and mn.idmenu= oc.idmenu
+		ORDER BY mn.orden
+	</select>
+	
+	
+
+	</sqlMap>

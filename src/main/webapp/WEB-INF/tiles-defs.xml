@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+ 
+<tiles-definitions>
+	<definition name="doc.mainLayout" path="/tilesPags/layout1.jsp">
+		<put name="title" value="Farmacia 20 de Julio" />
+		<put name="body" value="/main.jsp" />
+	</definition>
+	
+	<definition name="doc.popupLayout" path="/tilesPags/PopUp.jsp">
+		<put name="title" value="Farmacia 20 de Julio" />
+		<put name="body" value="/index1.jsp" />
+	</definition>
+
+	<definition name="paginas.invalidsession"
+		extends="doc.mainLayout">
+		<put name="body" value="/invalidsession.jsp" />
+	</definition>
+
+	<definition name="error.page" extends="doc.mainLayout">
+		<put name="title" value="Error" />
+		<put name="body" value="/error.jsp" />
+	</definition>
+
+	<definition name="nosession.page" extends="doc.mainLayout">
+		<put name="title" value="Sesion Finalizada" />
+		<put name="body" value="/index.jsp" />
+	</definition>
+
+	<definition name="info.page" extends="doc.mainLayout">
+		<put name="title" value="Informativo" />
+		<put name="body" value="/index.jsp" />
+	</definition>
+
+	<definition name="operacion_satisfactoria.page"
+		extends="doc.mainLayout">
+		<put name="title" value="Operacion Satisfactoria" />
+		<put name="body" value="/index.jsp" />
+	</definition>
+	<definition name="main.page" extends="doc.mainLayout">
+		<put name="body" value="/main.jsp" />
+	</definition>
+	
+	<definition name="inventario.list" extends="doc.mainLayout">
+		<put name="body" value="/inventario/list.jsp" />
+	</definition>
+	<definition name="inventario.add" extends="doc.mainLayout">
+		<put name="body" value="/inventario/add.jsp" />
+	</definition>
+	<definition name="inventario.view" extends="doc.mainLayout">
+		<put name="body" value="/inventario/view.jsp" />
+	</definition>
+	<definition name="inventario.delete" extends="doc.mainLayout">
+		<put name="body" value="/inventario/delete.jsp" />
+	</definition>
+	<definition name="inventario.edit" extends="doc.mainLayout">
+		<put name="body" value="/inventario/edit.jsp" />
+	</definition>
+	<definition name="inventario.listpopup" extends="doc.popupLayout">
+		<put name="body" value="/inventario/listpopup.jsp" />
+	</definition>
+
+		
+	
+			<definition name="detventa.list" extends="doc.mainLayout">
+ <put name="body" value="/detventa/list.jsp" /> </definition>
+			<definition name="detventa.add" extends="doc.mainLayout">
+ <put name="body" value="/detventa/add.jsp" /> </definition>
+			<definition name="detventa.view" extends="doc.mainLayout">
+ <put name="body" value="/detventa/view.jsp" /> </definition>
+			<definition name="detventa.edit" extends="doc.mainLayout">
+ <put name="body" value="/detventa/edit.jsp" /> </definition>
+			<definition name="detventa.delete" extends="doc.mainLayout">
+ <put name="body" value="/detventa/delete.jsp" /> </definition>
+			<definition name="detventa.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/detventa/listpopup.jsp" /> </definition>
+		
+			<definition name="farmacia.list" extends="doc.mainLayout">
+ <put name="body" value="/farmacia/list.jsp" /> </definition>
+			<definition name="farmacia.add" extends="doc.mainLayout">
+ <put name="body" value="/farmacia/add.jsp" /> </definition>
+			<definition name="farmacia.view" extends="doc.mainLayout">
+ <put name="body" value="/farmacia/view.jsp" /> </definition>
+			<definition name="farmacia.edit" extends="doc.mainLayout">
+ <put name="body" value="/farmacia/edit.jsp" /> </definition>
+			<definition name="farmacia.delete" extends="doc.mainLayout">
+ <put name="body" value="/farmacia/delete.jsp" /> </definition>
+			<definition name="farmacia.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/farmacia/listpopup.jsp" /> </definition>
+		
+			<definition name="movimiento.list" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/list.jsp" /> </definition>
+ 			<definition name="movimiento.listCompras" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/listCompras.jsp" /> </definition>
+ 			<definition name="movimiento.listCuarentena" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/listCuarentena.jsp" /> </definition>
+ 			<definition name="movimiento.listExistentes" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/listExistentes.jsp" /> </definition>
+  			<definition name="movimiento.listExistentesLab" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/listExistentesLab.jsp" /> </definition>
+			<definition name="movimiento.listConsol" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/listConsol.jsp" /> </definition>
+			<definition name="movimiento.listSaldo" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/listSaldo.jsp" /> </definition>
+			<definition name="movimiento.add" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/add.jsp" /> </definition>
+			<definition name="movimiento.view" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/view.jsp" /> </definition>
+			<definition name="movimiento.edit" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/edit.jsp" /> </definition>
+			<definition name="movimiento.delete" extends="doc.mainLayout">
+ <put name="body" value="/movimiento/delete.jsp" /> </definition>
+			<definition name="movimiento.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/movimiento/listpopup.jsp" /> </definition>
+		
+			<definition name="proveedor.list" extends="doc.mainLayout">
+ <put name="body" value="/proveedor/list.jsp" /> </definition>
+			<definition name="proveedor.add" extends="doc.mainLayout">
+ <put name="body" value="/proveedor/add.jsp" /> </definition>
+			<definition name="proveedor.view" extends="doc.mainLayout">
+ <put name="body" value="/proveedor/view.jsp" /> </definition>
+			<definition name="proveedor.edit" extends="doc.mainLayout">
+ <put name="body" value="/proveedor/edit.jsp" /> </definition>
+			<definition name="proveedor.delete" extends="doc.mainLayout">
+ <put name="body" value="/proveedor/delete.jsp" /> </definition>
+			<definition name="proveedor.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/proveedor/listpopup.jsp" /> </definition>
+	
+			<definition name="gasto.list" extends="doc.mainLayout">
+ <put name="body" value="/gasto/list.jsp" /> </definition>
+			<definition name="gasto.add" extends="doc.mainLayout">
+ <put name="body" value="/gasto/add.jsp" /> </definition>
+			<definition name="gasto.view" extends="doc.mainLayout">
+ <put name="body" value="/gasto/view.jsp" /> </definition>
+			<definition name="gasto.edit" extends="doc.mainLayout">
+ <put name="body" value="/gasto/edit.jsp" /> </definition>
+			<definition name="gasto.delete" extends="doc.mainLayout">
+ <put name="body" value="/gasto/delete.jsp" /> </definition>
+			<definition name="gasto.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/gasto/listpopup.jsp" /> </definition>
+		
+			<definition name="cliente.list" extends="doc.mainLayout">
+ <put name="body" value="/cliente/list.jsp" /> </definition>
+			<definition name="cliente.add" extends="doc.mainLayout">
+ <put name="body" value="/cliente/add.jsp" /> </definition>
+			<definition name="cliente.view" extends="doc.mainLayout">
+ <put name="body" value="/cliente/view.jsp" /> </definition>
+			<definition name="cliente.edit" extends="doc.mainLayout">
+ <put name="body" value="/cliente/edit.jsp" /> </definition>
+			<definition name="cliente.delete" extends="doc.mainLayout">
+ <put name="body" value="/cliente/delete.jsp" /> </definition>
+			<definition name="cliente.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/cliente/listpopup.jsp" /> </definition>
+		
+			<definition name="usuario.list" extends="doc.mainLayout">
+ <put name="body" value="/usuario/list.jsp" /> </definition>
+			<definition name="usuario.add" extends="doc.mainLayout">
+ <put name="body" value="/usuario/add.jsp" /> </definition>
+			<definition name="usuario.view" extends="doc.mainLayout">
+ <put name="body" value="/usuario/view.jsp" /> </definition>
+			<definition name="usuario.edit" extends="doc.mainLayout">
+ <put name="body" value="/usuario/edit.jsp" /> </definition>
+			<definition name="usuario.delete" extends="doc.mainLayout">
+ <put name="body" value="/usuario/delete.jsp" /> </definition>
+			<definition name="usuario.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/usuario/listpopup.jsp" /> </definition>
+			 <definition name="usuario.changepassword" extends="doc.mainLayout">
+ <put name="body" value="/usuario/cambiapassword.jsp" /> </definition>
+	
+			<definition name="venta.list" extends="doc.mainLayout">
+ <put name="body" value="/venta/list.jsp" /> </definition>
+ 			<definition name="venta.listConsulta" extends="doc.mainLayout">
+ <put name="body" value="/venta/listConsulta.jsp" /> </definition>
+			<definition name="venta.listVentas" extends="doc.mainLayout">
+ <put name="body" value="/venta/listVentas.jsp" /> </definition>
+			<definition name="venta.add" extends="doc.mainLayout">
+ <put name="body" value="/venta/add.jsp" /> </definition>
+			<definition name="venta.view" extends="doc.mainLayout">
+ <put name="body" value="/venta/view.jsp" /> </definition>
+ 			<definition name="venta.viewConsulta" extends="doc.mainLayout">
+ <put name="body" value="/venta/viewConsulta.jsp" /> </definition>
+ 			<definition name="venta.viewVenta" extends="doc.mainLayout">
+ <put name="body" value="/venta/viewVenta.jsp" /> </definition>
+			<definition name="venta.edit" extends="doc.mainLayout">
+ <put name="body" value="/venta/edit.jsp" /> </definition>
+			<definition name="venta.delete" extends="doc.mainLayout">
+ <put name="body" value="/venta/delete.jsp" /> </definition>
+			<definition name="venta.listpopup" extends="doc.mainLayout">
+ <put name="body" value="/venta/listpopup.jsp" /> </definition>
+			<definition name="venta.registrar" extends="doc.mainLayout">
+ <put name="body" value="/venta/registrar.jsp" /> </definition>
+			<definition name="venta.listVentasProd" extends="doc.mainLayout">
+ <put name="body" value="/venta/listVentasProd.jsp" /> </definition>
+ <definition name="venta.preventas" extends="doc.mainLayout">
+ <put name="body" value="/venta/preventas.jsp" /> </definition>
+		<definition name="venta.listFacturas" extends="doc.mainLayout">
+ <put name="body" value="/venta/listFacturas.jsp" /> </definition>
+ 
+			<definition name="opcper.list" extends="doc.mainLayout">
+ <put name="body" value="/opcper/list.jsp" /> </definition>
+			<definition name="opcper.add" extends="doc.mainLayout">
+ <put name="body" value="/opcper/add.jsp" /> </definition>
+			<definition name="opcper.view" extends="doc.mainLayout">
+ <put name="body" value="/opcper/view.jsp" /> </definition>
+			<definition name="opcper.edit" extends="doc.mainLayout">
+ <put name="body" value="/opcper/edit.jsp" /> </definition>
+			<definition name="opcper.delete" extends="doc.mainLayout">
+ <put name="body" value="/opcper/delete.jsp" /> </definition>
+			<definition name="opcper.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/opcper/listpopup.jsp" /> </definition>
+		
+			<definition name="perfil.list" extends="doc.mainLayout">
+ <put name="body" value="/perfil/list.jsp" /> </definition>
+			<definition name="perfil.add" extends="doc.mainLayout">
+ <put name="body" value="/perfil/add.jsp" /> </definition>
+			<definition name="perfil.view" extends="doc.mainLayout">
+ <put name="body" value="/perfil/view.jsp" /> </definition>
+			<definition name="perfil.edit" extends="doc.mainLayout">
+ <put name="body" value="/perfil/edit.jsp" /> </definition>
+			<definition name="perfil.delete" extends="doc.mainLayout">
+ <put name="body" value="/perfil/delete.jsp" /> </definition>
+			<definition name="perfil.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/perfil/listpopup.jsp" /> </definition>
+		
+			<definition name="producto.list" extends="doc.mainLayout">
+ <put name="body" value="/producto/list.jsp" /> </definition>
+			<definition name="producto.add" extends="doc.mainLayout">
+ <put name="body" value="/producto/add.jsp" /> </definition>
+			<definition name="producto.view" extends="doc.mainLayout">
+ <put name="body" value="/producto/view.jsp" /> </definition>
+			<definition name="producto.edit" extends="doc.mainLayout">
+ <put name="body" value="/producto/edit.jsp" /> </definition>
+			<definition name="producto.delete" extends="doc.mainLayout">
+ <put name="body" value="/producto/delete.jsp" /> </definition>
+			<definition name="producto.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/producto/listpopup.jsp" /> </definition>
+ <definition name="producto.listpopupv" extends="doc.popupLayout">
+ <put name="body" value="/producto/listpopupv.jsp" /> </definition>
+		
+			<definition name="opcion.list" extends="doc.mainLayout">
+ <put name="body" value="/opcion/list.jsp" /> </definition>
+			<definition name="opcion.add" extends="doc.mainLayout">
+ <put name="body" value="/opcion/add.jsp" /> </definition>
+			<definition name="opcion.view" extends="doc.mainLayout">
+ <put name="body" value="/opcion/view.jsp" /> </definition>
+			<definition name="opcion.edit" extends="doc.mainLayout">
+ <put name="body" value="/opcion/edit.jsp" /> </definition>
+			<definition name="opcion.delete" extends="doc.mainLayout">
+ <put name="body" value="/opcion/delete.jsp" /> </definition>
+			<definition name="opcion.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/opcion/listpopup.jsp" /> </definition>
+		
+			<definition name="familia.list" extends="doc.mainLayout">
+ <put name="body" value="/familia/list.jsp" /> </definition>
+			<definition name="familia.add" extends="doc.mainLayout">
+ <put name="body" value="/familia/add.jsp" /> </definition>
+			<definition name="familia.view" extends="doc.mainLayout">
+ <put name="body" value="/familia/view.jsp" /> </definition>
+			<definition name="familia.edit" extends="doc.mainLayout">
+ <put name="body" value="/familia/edit.jsp" /> </definition>
+			<definition name="familia.delete" extends="doc.mainLayout">
+ <put name="body" value="/familia/delete.jsp" /> </definition>
+			<definition name="familia.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/familia/listpopup.jsp" /> </definition>
+		
+  			<definition name="inventario.list" extends="doc.mainLayout">
+ <put name="body" value="/inventario/list.jsp" /> </definition>
+			<definition name="inventario.add" extends="doc.mainLayout">
+ <put name="body" value="/inventario/add.jsp" /> </definition>
+			<definition name="inventario.view" extends="doc.mainLayout">
+ <put name="body" value="/inventario/view.jsp" /> </definition>
+			<definition name="inventario.edit" extends="doc.mainLayout">
+ <put name="body" value="/inventario/edit.jsp" /> </definition>
+			<definition name="inventario.delete" extends="doc.mainLayout">
+ <put name="body" value="/inventario/delete.jsp" /> </definition>
+			<definition name="inventario.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/inventario/listpopup.jsp" /> </definition>
+		
+			<definition name="provprod.list" extends="doc.mainLayout">
+ <put name="body" value="/provprod/list.jsp" /> </definition>
+			<definition name="provprod.add" extends="doc.mainLayout">
+ <put name="body" value="/provprod/add.jsp" /> </definition>
+			<definition name="provprod.view" extends="doc.mainLayout">
+ <put name="body" value="/provprod/view.jsp" /> </definition>
+			<definition name="provprod.edit" extends="doc.mainLayout">
+ <put name="body" value="/provprod/edit.jsp" /> </definition>
+			<definition name="provprod.delete" extends="doc.mainLayout">
+ <put name="body" value="/provprod/delete.jsp" /> </definition>
+			<definition name="provprod.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/provprod/listpopup.jsp" /> </definition>		
+		
+		<definition name="laboratorio.list" extends="doc.mainLayout">
+ <put name="body" value="/laboratorio/list.jsp" /> </definition>
+			<definition name="laboratorio.add" extends="doc.mainLayout">
+ <put name="body" value="/laboratorio/add.jsp" /> </definition>
+			<definition name="laboratorio.view" extends="doc.mainLayout">
+ <put name="body" value="/laboratorio/view.jsp" /> </definition>
+			<definition name="laboratorio.edit" extends="doc.mainLayout">
+ <put name="body" value="/laboratorio/edit.jsp" /> </definition>
+			<definition name="laboratorio.delete" extends="doc.mainLayout">
+ <put name="body" value="/laboratorio/delete.jsp" /> </definition>
+			<definition name="laboratorio.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/laboratorio/listpopup.jsp" /> </definition>		
+		
+		<definition name="categoria.list" extends="doc.mainLayout">
+ <put name="body" value="/categoria/list.jsp" /> </definition>
+			<definition name="categoria.add" extends="doc.mainLayout">
+ <put name="body" value="/categoria/add.jsp" /> </definition>
+			<definition name="categoria.view" extends="doc.mainLayout">
+ <put name="body" value="/categoria/view.jsp" /> </definition>
+			<definition name="categoria.edit" extends="doc.mainLayout">
+ <put name="body" value="/categoria/edit.jsp" /> </definition>
+			<definition name="categoria.delete" extends="doc.mainLayout">
+ <put name="body" value="/categoria/delete.jsp" /> </definition>
+			<definition name="categoria.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/categoria/listpopup.jsp" /> </definition>
+		
+	<definition name="clasificacion.list" extends="doc.mainLayout">
+ <put name="body" value="/clasificacion/list.jsp" /> </definition>
+			<definition name="clasificacion.add" extends="doc.mainLayout">
+ <put name="body" value="/clasificacion/add.jsp" /> </definition>
+			<definition name="clasificacion.view" extends="doc.mainLayout">
+ <put name="body" value="/clasificacion/view.jsp" /> </definition>
+			<definition name="clasificacion.edit" extends="doc.mainLayout">
+ <put name="body" value="/clasificacion/edit.jsp" /> </definition>
+			<definition name="clasificacion.delete" extends="doc.mainLayout">
+ <put name="body" value="/clasificacion/delete.jsp" /> </definition>
+			<definition name="clasificacion.listpopup" extends="doc.popupLayout">
+ <put name="body" value="/clasificacion/listpopup.jsp" /> </definition>
+		
+</tiles-definitions>

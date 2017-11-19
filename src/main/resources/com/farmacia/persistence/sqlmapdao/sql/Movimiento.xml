@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Movimiento">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="movimiento" type="com.farmacia.domain.Movimiento" />
+	<typeAlias alias="movimientoform" type="com.farmacia.form.MovimientoForm" />
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="movimientoResult" class="movimiento">
+		<result property="fecha" column="fecha" />
+		<result property="cantidad" column="cantidad" />
+		<result property="valor" column="valor" />
+		<result property="codigo" column="codigo" />
+		<result property="idusuario" column="idusuario" />
+		<result property="tipo" column="tipo" />
+		<result property="preciocosto" column="preciocosto" />
+		<result property="precio" column="precio" />
+		<result property="idmovimiento" column="idmovimiento" />
+		<result property="idfarmacia" column="idfarmacia" />
+		<result property="idproducto" column="idproducto" />
+		<result property="hora" column="hora" />
+		<result property="usudesc" column="usudesc" />
+		<result property="farmdesc" column="farmdesc" />
+		<result property="proddesc" column="proddesc" />
+		<result property="fechaexp" column="fechaexp" />
+		<result property="lote" column="lote" />
+		<result property="iddetventa" column="iddetventa" />
+		<result property="vendido" column="vendido"/>
+		<result property="codigofac" column="codigofac"/>
+	</resultMap>
+	<resultMap id="movimientoConsolResult" class="movimiento">
+		<result property="cantidad" column="cantidad" />
+		<result property="tipo" column="tipo" />
+		<result property="preciocosto" column="preciocosto" />
+		<result property="precio" column="precio" />
+		<result property="idproducto" column="idproducto" />
+		<result property="proddesc" column="proddesc" />
+		<result property="valor" column="valor" />
+		
+	</resultMap>
+	<resultMap id="movimientoMinResult" class="movimiento">
+		<result property="fechaexp" column="fechaexp" />
+		<result property="idproducto" column="idproducto" />
+	</resultMap>
+	<!--Definición del proceso de inserción de un registro de 'Movimiento' a la tabla de la base de datos-->
+	<insert id="insertMovimiento" parameterClass="movimiento">	
+        INSERT INTO ${schema}.movimiento ( fecha, cantidad, valor, codigo, idusuario, tipo, preciocosto, precio, idmovimiento, idfarmacia, idproducto, hora, fechaexp, lote, iddetventa, vendido, codigofac)
+    	        VALUES (#fecha# ,#cantidad# ,#valor# ,#codigo# ,#idusuario# ,#tipo# ,#preciocosto# ,#precio# ,#idmovimiento# ,#idfarmacia# ,#idproducto# ,#hora#, #fechaexp#, #lote#, #iddetventa#, #vendido#, #codigofac# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Movimiento' a la tabla de la base de datos-->	
+	<update id="updateMovimiento" parameterClass="movimiento">
+        UPDATE ${schema}.movimiento SET fecha = #fecha# ,cantidad = #cantidad# ,valor = #valor# ,codigo = #codigo# ,idusuario = #idusuario# ,tipo = #tipo# ,
+        preciocosto = #preciocosto# ,precio = #precio# ,idmovimiento = #idmovimiento# ,idfarmacia = #idfarmacia# ,idproducto = #idproducto# ,hora = #hora#,  
+        fechaexp = #fechaexp#,  lote = #lote#, iddetventa = #iddetventa#, vendido = #vendido#, codigofac = #codigofac#   	WHERE idmovimiento = #idmovimiento# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Movimiento' de la tabla de la base de datos-->
+	<delete id="deleteMovimiento" parameterClass="movimiento">
+    	DELETE FROM ${schema}.movimiento WHERE idmovimiento = #idmovimiento# 
+	</delete>		
+
+	<!--Definición del proceso de borrado de un registro de 'Movimiento' de la tabla de la base de datos-->
+	<delete id="deleteMovimientoByDetVenta" parameterClass="java.math.BigDecimal">
+    	DELETE FROM ${schema}.movimiento WHERE iddetventa = #iddetventa# 
+	</delete>	
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Movimiento' de la tabla de la base de datos-->
+	<select id="getMovimiento" resultMap="movimientoResult" parameterClass="movimiento">
+		SELECT  m.fecha, m.cantidad, m.valor, m.codigo, m.idusuario, m.tipo, preciocosto, m.precio, m.idmovimiento, m.idfarmacia, m.idproducto, m.hora, m.fechaexp, m.lote, m.iddetventa, m.vendido, m.codigofac, u.descripcion as usudesc, f.nombre as farmdesc, p.nombre as proddesc
+		FROM ${schema}.movimiento m, ${schema}.usuario u , ${schema}.farmacia f , ${schema}.producto p
+		WHERE m.idusuario = u.idusuario and m.idfarmacia = f.idfarmacia and m.idproducto = p.idproducto and idmovimiento = #idmovimiento# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Movimiento' de la tabla de la base de datos-->
+	<select id="getMaxMovimientoIdmovimiento" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idmovimiento )
+		FROM ${schema}.movimiento
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Movimiento' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getMovimientoXmlString" resultClass="xml" xmlResultName="Movimiento" parameterClass="java.math.BigDecimal">
+		SELECT fecha, cantidad, valor, codigo, idusuario, tipo, preciocosto, precio, idmovimiento, idfarmacia, idproducto, hora, fechaexp, vendido, codigofac		FROM ${schema}.movimiento
+		WHERE idmovimiento = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Movimiento' de la tabla de la base de datos en una lista-->
+	<select id="getMovimientoList" resultMap="movimientoResult">
+		SELECT  m.fecha, m.cantidad, m.valor, m.codigo, m.idusuario, m.tipo, preciocosto, m.precio, m.idmovimiento, m.idfarmacia, m.idproducto, m.hora, m.fechaexp, m.lote, m.iddetventa, m.vendido, m.codigofac, u.descripcion as usudesc, f.nombre as farmdesc, p.nombre as proddesc
+		FROM ${schema}.movimiento m, ${schema}.usuario u , ${schema}.farmacia f , ${schema}.producto p
+		WHERE m.idusuario = u.idusuario and m.idfarmacia = f.idfarmacia and m.idproducto = p.idproducto  
+		ORDER BY m.fecha DESC, m.idproducto ASC
+	</select>
+	<select id="getMovimientosFiltradosList" resultMap="movimientoResult" parameterClass="movimientoform">
+		SELECT  m.fecha, m.cantidad, m.valor, m.codigo, m.idusuario, m.tipo, preciocosto, m.precio, m.idmovimiento, m.idfarmacia, m.idproducto, m.hora, m.fechaexp, m.lote, m.iddetventa, m.vendido, m.codigofac, u.descripcion as usudesc, f.nombre as farmdesc, p.nombre as proddesc
+		FROM ${schema}.movimiento m, ${schema}.usuario u , ${schema}.farmacia f , ${schema}.producto p
+		WHERE m.idusuario = u.idusuario and m.idfarmacia = f.idfarmacia and m.idproducto = p.idproducto  
+		<isNotEmpty prepend="AND" property="proddesc">
+			upper(p.nombre) like '$proddesc$%'
+		</isNotEmpty>
+			<isNotEmpty prepend="AND" property="tipo">
+			upper( m.tipo) = #tipo#
+		</isNotEmpty>
+		<isNotEmpty property="fechaini">
+		<isNotEqual compareValue="0" prepend="AND" property="fechainiNum">
+			m.fecha &gt;= #fechainiNum# AND m.fecha &lt;= #fechafinNum#
+		</isNotEqual>
+		</isNotEmpty>
+		ORDER BY m.fecha DESC,  p.nombre ASC
+		
+	</select>
+
+	<select id="getMovimientosConsByProdTipoProd" resultMap="movimientoConsolResult" parameterClass="movimientoform">
+		SELECT  sum( m.cantidad) as cantidad, m.tipo as tipo, sum(preciocosto) as preciocosto, sum(m.precio) as precio,  m.idproducto,  m.valor, p.nombre as proddesc
+		FROM ${schema}.movimiento m, ${schema}.usuario u, ${schema}.farmacia f , ${schema}.producto p, ${schema}.familia fm
+		WHERE m.idusuario = u.idusuario and m.idfarmacia = f.idfarmacia and m.idproducto = p.idproducto and p.idfamilia = fm.idfamilia   
+		<isNotEmpty prepend="AND" property="proddesc">
+			( upper(p.nombre) like '$proddesc$%' or upper(fm.nombre) like '$proddesc$%' )
+		</isNotEmpty>
+		GROUP BY m.idproducto, p.nombre, m.tipo, m.valor
+		ORDER BY p.nombre, m.tipo, m.valor ASC
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Movimiento' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getMovimientoListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT fecha, cantidad, valor, codigo, idusuario, tipo, preciocosto, precio, idmovimiento, idfarmacia, idproducto, hora, fechaexp, vendido
+		FROM ${schema}.movimiento
+		ORDER BY idmovimiento ASC
+	</select>
+	<!--Consulta los proximos a vencer-->
+	<select id="getMovimientosCuarentena" resultMap="movimientoMinResult">
+		select min(fechaexp) as fechaexp, idproducto from movimiento where tipo = '1' and vendido = '0' group by idproducto
+	</select>
+
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Movimiento' DE LA BASE DE DATOS:
+	////-->	
+	</sqlMap>

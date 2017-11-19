@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--Definir la ubicación de la DTD de iBatis 'sql-map-2.dtd'-->
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://localhost:8080/Farmacia/sql-map-2.dtd">
+
+<sqlMap namespace="Gasto">
+
+	<!--Definición de alias de reconocimiento de Objeto al cual mapear los resultados de los querys y updates-->
+	<typeAlias alias="gasto" type="com.farmacia.domain.Gasto" />
+	<typeAlias alias="gastoForm" type="com.farmacia.form.GastoForm" />
+	<!--Definición del mapeo de campos y columnas de 'objeto' Vs. 'tabla' base de datos-->
+	<resultMap id="gastoResult" class="gasto">
+		<result property="idgasto" column="idgasto" />
+		<result property="descripcion" column="descripcion" />
+		<result property="nombre" column="nombre" />
+		<result property="fecha" column="fecha" />
+		<result property="valor" column="valor" />
+		<result property="idusuario" column="idusuario" />
+		<result property="idfarmacia" column="idfarmacia" />
+		<result property="userdesc" column="userdesc" />
+		<result property="farmdesc" column="farmdesc" />
+	</resultMap>
+
+	<!--Definición del proceso de inserción de un registro de 'Gasto' a la tabla de la base de datos-->
+	<insert id="insertGasto" parameterClass="gasto">	
+        INSERT INTO ${schema}.gasto (idgasto, descripcion, nombre, fecha, valor, idusuario, idfarmacia)
+    	                      VALUES (#idgasto# ,#descripcion# ,#nombre# ,#fecha# ,#valor# ,#idusuario# ,#idfarmacia# )
+	</insert>
+
+	<!--Definición del proceso de actualización de un registro de 'Gasto' a la tabla de la base de datos-->	
+	<update id="updateGasto" parameterClass="gasto">
+        UPDATE ${schema}.gasto SET idgasto = #idgasto# ,descripcion = #descripcion# ,nombre = #nombre# ,fecha = #fecha# ,valor = #valor# ,idusuario = #idusuario# ,idfarmacia = #idfarmacia#     	WHERE idgasto = #idgasto# 
+	</update>
+	
+	<!--Definición del proceso de borrado de un registro de 'Gasto' de la tabla de la base de datos-->
+	<delete id="deleteGasto" parameterClass="gasto">
+    	DELETE FROM ${schema}.gasto WHERE idgasto = #idgasto# 
+	</delete>		
+
+	<!--Definición del proceso de consulta por llave primaria de un registro de 'Gasto' de la tabla de la base de datos-->
+	<select id="getGasto" resultMap="gastoResult" parameterClass="gasto">
+		SELECT idgasto, descripcion, nombre, fecha, valor, idusuario, idfarmacia
+		FROM ${schema}.gasto
+		WHERE idgasto = #idgasto# 	</select>
+		<!--Definicion del proceso que consulta el registro maximo por llave primaria de 'Gasto' de la tabla de la base de datos-->
+	<select id="getMaxGastoIdgasto" resultClass="java.math.BigDecimal" >
+		SELECT MAX( idgasto )
+		FROM ${schema}.gasto
+	</select>
+		<!--Definición del proceso de consulta por llave primaria de un registro de 'Gasto' de la tabla de la base de datos con retorno de tipo XML-->
+	<select id="getGastoXmlString" resultClass="xml" xmlResultName="Gasto" parameterClass="java.math.BigDecimal">
+		SELECT idgasto, descripcion, nombre, fecha, valor, idusuario, idfarmacia		FROM ${schema}.gasto
+		WHERE idgasto = #value#
+	</select>
+
+	<!--Definición del proceso de consulta de todos los registros de 'Gasto' de la tabla de la base de datos en una lista-->
+	<select id="getGastoList" resultMap="gastoResult">
+		SELECT idgasto, g.descripcion, g.nombre, g.fecha, g.valor, g.idusuario, g.idfarmacia, u.descripcion as userdesc, f.nombre as farmdesc
+		FROM ${schema}.gasto g, ${schema}.usuario u , ${schema}.farmacia f 
+		WHERE g.idusuario = u.idusuario and g.idfarmacia = f.idfarmacia
+		ORDER BY g.nombre ASC
+	</select>
+	
+	<!--Definición del proceso de consulta de todos los registros de 'Gasto' de la tabla de la base de datos en una lista con objetos String XML-->
+	<select id="getGastoListXmlString" resultClass="xml" xmlResultName="map">
+		SELECT idgasto, descripcion, nombre, fecha, valor, idusuario, idfarmacia
+		FROM ${schema}.gasto
+		ORDER BY idgasto ASC
+	</select>
+
+	<!--DEFINICI�?N DE PROCESOS ADICIONALES PERSONALIZADOS DE CONSULTA Y/O ACCESO A LA TABLA 'Gasto' DE LA BASE DE DATOS:
+	////-->	
+	<select id="getGastoListFiltro" resultMap="gastoResult" parameterClass="gastoForm">
+		SELECT idgasto, g.descripcion, g.nombre, g.fecha, g.valor, g.idusuario, g.idfarmacia, u.descripcion as userdesc, f.nombre as farmdesc
+		FROM ${schema}.gasto g, ${schema}.usuario u , ${schema}.farmacia f 
+		WHERE g.idusuario = u.idusuario and g.idfarmacia = f.idfarmacia
+		<isNotEmpty prepend="AND" property="userdesc">
+			upper(u.descripcion) like '$userdesc$%'
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="nombre">
+			upper(g.nombre) like '$nombre$%'
+		</isNotEmpty>
+		ORDER BY g.nombre ASC
+	</select>
+	</sqlMap>

@@ -1,0 +1,252 @@
+@charset "UTF-8";
+/* CSS Document */
+.main{
+	width: 96%;
+	max-width: 1200px;
+	margin: 30px auto 40px auto;
+	padding: 0 2%;
+	display: inline-block;
+}
+.main .tit{
+	width: 100%;
+	margin: 0 0 20px 0;
+	display: inline-block;
+}
+.main .tit span{
+	background: #6cc4f8;
+	font-size: 18px;
+	font-weight: 300;
+	padding: 5px 20px;
+	position: relative;
+	color: #FFFFFF;
+	float: left;
+}
+.main .contBus{
+	float: right;
+	text-align: right;
+}
+.main .more{
+	float: right;
+}
+.main .more a{
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+	color: #FFFFFF;
+	border:0;
+	background: #6cc4f8;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-weight: 100;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	line-height: 28px;
+}
+.main .more a:hover{
+	background: #37a7f4;
+}
+
+.main .contBus input{
+	padding: 8px 10px;
+	font-size: 14px;
+	color: #a8a8a8;
+	border: 1px solid #dbdbdb;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	font-weight: 100;
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 0 0 7px;
+}
+.main .contBus input.big{
+	width: 20%;
+}
+.main .contBus input.small{
+	width: 13%;
+}
+.main .contBus button{
+	padding: 3px 7px;
+	font-size: 11px;
+	color: #FFFFFF;
+	border:0;
+	background: #6cc4f8;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-weight: 100;
+	text-decoration: none;
+	text-align: center;
+	margin: 0 0 0 10px;
+	cursor: pointer;
+	display: inline-block;
+}
+.main .contBus button:hover{
+	background: #37a7f4;
+}
+.main .tableCont{
+	width: 100%;
+}
+.main .tableCont thead{
+	background: #e1eff4;
+}
+.main .tableCont thead tr th{
+	padding: 13px 5px;
+	color: #0e4b63;
+	font-weight: 600;
+	font-size: 13px;
+	text-align: center;
+	position: relative;
+}
+.main .tableCont thead tr th:before{
+	width: 1px;
+	height: 10px;
+	content:"";
+	top: 37%;
+	right: -1px;
+	background: #FFFFFF;
+	position: absolute;
+}
+.main .tableCont tbody tr td{
+	border-bottom: 1px solid #e1eff4;
+	padding: 5px;
+	font-size: 12px;
+	font-weight: 400;
+}
+.main .tableCont tbody tr:hover{
+	background: #719cf8;
+	color: #FFFFFF;
+}
+.main .tableCont a{
+	padding: 3px 4px 1px 4px;
+	font-size: 11px;
+	color: #FFFFFF;
+	background: #6cc4f8;
+	border: 1px solid #6cc4f8;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-weight: 100;
+	text-decoration: none;
+	text-align: center;
+	margin: 0 0 0 10px;
+	cursor: pointer;
+	display: inline-block;
+}
+.main .tableCont a:hover{
+	background: none;
+	border: 1px solid #FFFFFF;
+}
+.main .tableCont a img{
+	width: 13px;
+}
+.prevNext{
+	width: 100%;
+	display: inline-block;
+	margin: 0 0 5px 0;
+}
+.prevNext a{
+	float: right;
+	padding: 3px 15px;
+	font-size: 11px;
+	color: #FFFFFF;
+	border:0;
+	background: #6cc4f8;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-weight: 100;
+	text-decoration: none;
+	text-align: center;
+	margin: 0 0 0 10px;
+}
+.main .tableCont .prevNext a:hover{
+	background: #37a7f4;
+}
+
+/*form*/
+.formCont{
+	width: 100%;
+}
+.formCont .row{
+	width: 100%;
+	display: inline-block;
+}
+.formCont  label{
+	width: 100%;
+	font-size: 14px;
+	font-weight: 300;
+	color: #0e4b63;
+	margin: 0 0 5px 0;
+	display: inline-block;
+}
+.formCont  input{
+	width: 94%;
+	padding: 10px 3%;
+	font-size: 14px;
+	color: #a8a8a8;
+	border: 1px solid #dbdbdb;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-weight: 100;
+}
+.formCont  select{
+	width: 100%;
+	padding: 10px 3%;
+	font-size: 14px;
+	color: #a8a8a8;
+	border: 1px solid #dbdbdb;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-weight: 100;
+}
+.formCont .check{
+	width: 94%;
+	font-size: 14px;
+	color: #a8a8a8;
+	padding: 9px 3%;
+	border: 1px solid #dbdbdb;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-weight: 100;
+	background: #FFFFFF;
+}
+.formCont .col25{
+	width: 23.5%;
+	float: left;
+	margin: 0 2% 20px 0;
+}
+.formCont .col25:nth-child(4){
+	margin: 0 0 20px 0;
+}
+.formCont .contBtnFo{
+	width: 100%;
+	text-align: center;
+}
+.formCont .contBtnFo a{
+	display: inline-block;
+	padding: 13px 3%;
+	font-size: 14px;
+	color: #FFFFFF;
+	border:0;
+	background: #6cc4f8;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	font-weight: 100;
+	text-decoration: none;
+	text-align: center;
+}
+.formCont .contBtnFo a:hover{
+	background: #37a7f4;
+}
+
+
+
+
+

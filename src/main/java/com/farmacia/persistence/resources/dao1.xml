@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE daoConfig
+    PUBLIC "-//iBATIS.com//DTD DAO Configuration 2.0//EN"
+    "http://localhost:8080/Farmacia/dao-2.dtd">
+    
+<daoConfig>
+
+	<context>
+
+		<transactionManager type="SQLMAP">
+			<property name="SqlMapConfigResource"
+				value="com/farmacia/persistence/resources/sql-map-configasasa.xml" />
+		</transactionManager>
+		<dao interface="com.farmacia.persistence.iface.IInventarioDao" implementation="com.farmacia.persistence.sqlmapdao.InventarioSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IDetventaDao" implementation="com.farmacia.persistence.sqlmapdao.DetventaSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IFarmaciaDao" implementation="com.farmacia.persistence.sqlmapdao.FarmaciaSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IMovimientoDao" implementation="com.farmacia.persistence.sqlmapdao.MovimientoSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IProveedorDao" implementation="com.farmacia.persistence.sqlmapdao.ProveedorSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IGastoDao" implementation="com.farmacia.persistence.sqlmapdao.GastoSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IClienteDao" implementation="com.farmacia.persistence.sqlmapdao.ClienteSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IUsuarioDao" implementation="com.farmacia.persistence.sqlmapdao.UsuarioSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IVentaDao" implementation="com.farmacia.persistence.sqlmapdao.VentaSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IOpcperDao" implementation="com.farmacia.persistence.sqlmapdao.OpcperSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IPerfilDao" implementation="com.farmacia.persistence.sqlmapdao.PerfilSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IProductoDao" implementation="com.farmacia.persistence.sqlmapdao.ProductoSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IOpcionDao" implementation="com.farmacia.persistence.sqlmapdao.OpcionSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IFamiliaDao" implementation="com.farmacia.persistence.sqlmapdao.FamiliaSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IMenuDao" implementation="com.farmacia.persistence.sqlmapdao.MenuDAOImpl" />
+		<dao interface="com.farmacia.persistence.iface.ILaboratorioDao" implementation="com.farmacia.persistence.sqlmapdao.LaboratorioSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.ICategoriaDao" implementation="com.farmacia.persistence.sqlmapdao.CategoriaSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IClasificacionDao" implementation="com.farmacia.persistence.sqlmapdao.ClasificacionSqlMapDao" />
+		<dao interface="com.farmacia.persistence.iface.IProvprodDao" implementation="com.farmacia.persistence.sqlmapdao.ProvprodSqlMapDao" />
+	</context>
+
+</daoConfig>

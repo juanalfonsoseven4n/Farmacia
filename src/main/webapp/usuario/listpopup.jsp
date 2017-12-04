@@ -12,7 +12,9 @@
 <%@ taglib uri="/WEB-INF/tiles.tld" prefix="comp"%>
 
 <link href="<%=request.getContextPath()%>/styles/diseno.css" rel="stylesheet" type="text/css">
-
+<link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/responsive.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/internas.css" rel="stylesheet" type="text/css">
 
 <html:form target="_self" action="/Usuario.do?method=listPopup">
 <script type="text/javascript">
@@ -34,22 +36,17 @@
 		window.close();
 	}   
 </script>
+<section class="main">
 	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Usuario.do?method=pager" />
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
 
-	<table border="0" cellpadding="0" cellspacing="0" width=100% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="usuario.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+	<div class="tit">
+		<span><bean:message
+				key="usuario.title.list" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -65,33 +62,27 @@
 						</logic:messagesPresent></td>
 					</tr>
 				</logic:messagesPresent>
-
-
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
-				
+	</div>
+	<div class="prevNext"><c:out
+						value="${sessionScope.stringpag}" escapeXml="false" /></div>
+						
 				<logic:notEmpty name="USUARIOS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="3" width="100%" align="center">
-							<tr class="titulos">
-								<td colspan="1"><bean:message key="label.global.acciones" /></td>
-								<td><bean:message key="usuario.field.nombre" /></td>
-								<td><bean:message key="usuario.field.apellido" /></td>
-								<td><bean:message key="usuario.field.idusuario" /></td>
-								<td style="display: none;"><bean:message key="usuario.field.direccion" /></td>
-								<td><bean:message key="usuario.field.telefono" /></td>
-								<td style="display: none;"><bean:message key="usuario.field.especializacion" /></td>
-								<td style="display: none;"><bean:message key="usuario.field.descripcion" /></td>
+					<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th colspan="1"><bean:message key="label.global.acciones" /></th>
+								<th><bean:message key="usuario.field.nombre" /></th>
+								<th><bean:message key="usuario.field.apellido" /></th>
+								<th><bean:message key="usuario.field.idusuario" /></th>
+								<th style="display: none;"><bean:message key="usuario.field.direccion" /></th>
+								<th><bean:message key="usuario.field.telefono" /></th>
+								<th style="display: none;"><bean:message key="usuario.field.especializacion" /></th>
+								<th style="display: none;"><bean:message key="usuario.field.descripcion" /></th>
 						
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="usuario" name="USUARIOS"
 								type="com.farmacia.domain.Usuario">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -120,10 +111,9 @@
 								
 								</tr>
 							</logic:iterate>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -135,9 +125,5 @@
 					</tr>
 				</logic:empty>
 			
-			</table>
-			</td>
-			</tr>
-			</table>
-			
+</section>
 </html:form>

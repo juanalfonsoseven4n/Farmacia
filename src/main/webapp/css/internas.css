@@ -2,7 +2,7 @@
 /* CSS Document */
 .main{
 	width: 96%;
-	max-width: 1200px;
+	/*max-width: 1200px;*/
 	margin: 30px auto 40px auto;
 	padding: 0 2%;
 	display: inline-block;
@@ -13,14 +13,24 @@
 	display: inline-block;
 }
 .main .tit span{
-	background: #6cc4f8;
-	font-size: 18px;
-	font-weight: 300;
-	padding: 5px 20px;
+	
+	font-size: 20px;
+	font-weight: 600;
 	position: relative;
-	color: #FFFFFF;
+	color: #366177;
 	float: left;
 }
+
+.main .contBus .spanName{
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 0px 0px 9px;
+    position: relative;
+    color: #366177;
+    float: none;
+    background: none;
+}
+
 .main .contBus{
 	float: right;
 	text-align: right;
@@ -48,7 +58,7 @@
 	background: #37a7f4;
 }
 
-.main .contBus input{
+.main .contBus input.text{
 	padding: 8px 10px;
 	font-size: 14px;
 	color: #a8a8a8;
@@ -59,23 +69,28 @@
 	font-weight: 100;
 	display: inline-block;
 	vertical-align: top;
-	margin: 0 0 0 7px;
+	margin: 0 5 0 0px;
 }
 .main .contBus input.big{
 	width: 20%;
 }
+
+.main .contBus input.big{
+	width: 20%;
+}
+
 .main .contBus input.small{
 	width: 13%;
 }
-.main .contBus button{
-	padding: 3px 7px;
-	font-size: 11px;
+.main .contBus input.boton{
+	padding: 10px 5px;
+	font-size: 12px;
 	color: #FFFFFF;
 	border:0;
 	background: #6cc4f8;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
 	font-weight: 100;
 	text-decoration: none;
 	text-align: center;
@@ -83,17 +98,22 @@
 	cursor: pointer;
 	display: inline-block;
 }
-.main .contBus button:hover{
+.main .contBus input.boton:hover{
 	background: #37a7f4;
 }
 .main .tableCont{
 	width: 100%;
 }
+
+.main .tableCont table{
+	width: 100%;
+}
+
 .main .tableCont thead{
 	background: #e1eff4;
 }
 .main .tableCont thead tr th{
-	padding: 13px 5px;
+	padding: 11px 3px;
 	color: #0e4b63;
 	font-weight: 600;
 	font-size: 13px;
@@ -120,7 +140,7 @@
 	color: #FFFFFF;
 }
 .main .tableCont a{
-	padding: 3px 4px 1px 4px;
+	padding: 3px 4px 3px 4px;
 	font-size: 11px;
 	color: #FFFFFF;
 	background: #6cc4f8;
@@ -146,9 +166,11 @@
 	width: 100%;
 	display: inline-block;
 	margin: 0 0 5px 0;
+	text-align: right;
+    /*display: block;*/
 }
 .prevNext a{
-	float: right;
+	/*float: right;*/
 	padding: 3px 15px;
 	font-size: 11px;
 	color: #FFFFFF;
@@ -157,7 +179,7 @@
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
-	font-weight: 100;
+	font-weight: 400;
 	text-decoration: none;
 	text-align: center;
 	margin: 0 0 0 10px;
@@ -204,6 +226,17 @@
 	border-radius: 10px;
 	font-weight: 100;
 }
+select{
+
+	padding: 8px 9px;
+	font-size: 12px;
+	color: #a8a8a8;
+	border: 1px solid #dbdbdb;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	font-weight: 100;
+}
 .formCont .check{
 	width: 94%;
 	font-size: 14px;
@@ -243,6 +276,30 @@
 	text-align: center;
 }
 .formCont .contBtnFo a:hover{
+	background: #37a7f4;
+}
+
+.row .contBtnFo{
+	text-align: center;
+	padding: 5px;
+}
+
+.row .contBtnFo input{
+	padding: 11px 3%;
+	font-size: 14px;
+	color: #FFFFFF;
+	border:0;
+	background: #6cc4f8;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	font-weight: 100;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	display: inline-block;
+}
+.row .contBtnFo input:hover{
 	background: #37a7f4;
 }
 

@@ -12,7 +12,9 @@
 <%@ taglib uri="/WEB-INF/tiles.tld" prefix="comp"%>
 
 <link href="<%=request.getContextPath()%>/styles/diseno.css" rel="stylesheet" type="text/css">
-
+<link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/responsive.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/internas.css" rel="stylesheet" type="text/css">
 
 <html:form target="_self" action="/Proveedor.do?method=listPopup">
 <script type="text/javascript">
@@ -34,22 +36,17 @@
 		window.close();
 	}   
 </script>
+<section class="main">
 	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Proveedor.do?method=pager" />
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
 
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="proveedor.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+	<div class="tit">
+		<span><bean:message
+				key="proveedor.title.list" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -67,50 +64,42 @@
 				</logic:messagesPresent>
 
 
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3">Nombre: &nbsp;
-					<html:text  property="nombre" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
+		<div class="contBus">
+			<span class="spanName" >Nombre:</span>
+			<html:text  property="nombre" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text>
 					<html:submit styleClass="boton"
 						property="Buscar" >
 						<bean:message key="label.global.buscar" />
-					</html:submit>&nbsp;
+					</html:submit>
 					<html:button styleClass="boton"	property="LimpiarBt" property="Buscar" onclick="limpiarNombre(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
 					</td>
-
-				</tr>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
-				
+		</div>
+	</div>
+	<div class="prevNext"><c:out
+						value="${sessionScope.stringpag}" escapeXml="false" /></div>
+						
 				<logic:notEmpty name="PROVEEDORS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-								<td colspan="1"><bean:message key="label.global.acciones" /></td>
-																	<td><bean:message key="proveedor.field.idproveedor" /></td>
-																	<td><bean:message key="proveedor.field.nombre" /></td>
-																	<td><bean:message key="proveedor.field.descripcion" /></td>
-																	<td style="display: none;"><bean:message key="proveedor.field.codigo" /></td>
-																	<td><bean:message key="proveedor.field.telefono" /></td>
-																	<td style="display: none;"><bean:message key="proveedor.field.direccion" /></td>
-																	<td><bean:message key="proveedor.field.representante" /></td>
-																	<td style="display: none;"><bean:message key="proveedor.field.telefono2" /></td>
-																	<td style="display: none;"><bean:message key="proveedor.field.mail" /></td>
-																	<td><bean:message key="proveedor.field.nit" /></td>
-																								
+					<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th colspan="1"><bean:message key="label.global.acciones" /></th>
+								<th><bean:message key="proveedor.field.idproveedor" /></th>
+								<th><bean:message key="proveedor.field.nombre" /></th>
+								<th><bean:message key="proveedor.field.descripcion" /></th>
+								<th style="display: none;"><bean:message key="proveedor.field.codigo" /></th>
+								<th><bean:message key="proveedor.field.telefono" /></th>
+								<th style="display: none;"><bean:message key="proveedor.field.direccion" /></th>
+								<th><bean:message key="proveedor.field.representante" /></th>
+								<th style="display: none;"><bean:message key="proveedor.field.telefono2" /></th>
+								<th style="display: none;"><bean:message key="proveedor.field.mail" /></th>
+								<th><bean:message key="proveedor.field.nit" /></th>																								
 
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="proveedor" name="PROVEEDORS"
 								type="com.farmacia.domain.Proveedor">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -146,10 +135,9 @@
 
 								</tr>
 							</logic:iterate>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -161,9 +149,6 @@
 					</tr>
 				</logic:empty>
 			
-			</table>
-			</td>
-			</tr>
-			</table>
+	</section>
 			
 </html:form>

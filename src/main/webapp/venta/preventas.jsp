@@ -23,22 +23,17 @@
 		forma.submit();
 	}
 </script>
+<section class="main">
 	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Venta.do?method=pager" />
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
 
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="venta.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+		<div class="tit">
+		<span><bean:message
+				key="venta.title.list" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -54,61 +49,50 @@
 						</logic:messagesPresent></td>
 					</tr>
 				</logic:messagesPresent>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-					<td align="center" colspan=3">
-					
-					
-					<bean:message key="movimiento.field.fechaini"/>: &nbsp;
-					<html:text styleClass="selText"    property="fechaini" size="10" maxlength="10" onfocus="this.select()" 
+		<div class="contBus">
+			<span class="spanName" ><bean:message key="movimiento.field.fechaini"/>:</span>
+			<html:text styleClass="selText"    property="fechaini" size="10" maxlength="10" onfocus="this.select()" 
 					    readonly="true"/>&nbsp;<IMG src="<%=request.getContextPath()%>/images/calendario.gif"
 				 		alt="Obtener Fecha" onclick="return showCalendar('fechaini', 'y/mm/dd');"> &nbsp;
 					
-					<bean:message key="movimiento.field.fechafin"/>: &nbsp;
-					<html:text styleClass="selText"    property="fechafin" size="10" maxlength="10" onfocus="this.select()" 
+			<span class="spanName" ><bean:message key="movimiento.field.fechafin"/>:</span>
+			<html:text styleClass="selText"    property="fechafin" size="10" maxlength="10" onfocus="this.select()" 
 					    readonly="true"/>&nbsp;<IMG src="<%=request.getContextPath()%>/images/calendario.gif"
 				   		alt="Obtener Fecha" onclick="return showCalendar('fechafin', 'y/mm/dd');"> &nbsp;			
 					
 					<html:submit styleClass="boton"
 						property="Buscar" >
 						<bean:message key="label.global.buscar" />
-					</html:submit>&nbsp;
+					</html:submit>
 					
 					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarFiltro(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
-					</td>
-
-				</tr>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
-			
+		</div>
+	</div>
+	<div class="prevNext"><c:out
+						value="${sessionScope.stringpag}" escapeXml="false" /></div>
+						
 				<logic:notEmpty name="PREVENTAS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-								<td><bean:message key="cliente.title" /></td>
-								<td><bean:message key="cliente.field.telefono" /></td>
-								<td><bean:message key="cliente.field.direccion" /></td>
-								<td><bean:message key="producto.title" /></td>
-								<td><bean:message key="detventa.field.cantidad" /></td>
-								<td><bean:message key="producto.field.presentacion" /></td>
-								<td><bean:message key="detventa.field.valor" /></td>
-								<td><bean:message key="detventa.field.valorunit" /></td>
-								<!--  td>< bean :message key="producto.field.precioventa" /></td-->
-								<td><bean:message key="inventario.field.fechaing" /></td>
-								<td><bean:message key="detventa.field.dias" /></td>
-								<td><bean:message key="producto.field.idlaboratorio" /></td>
+					<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th><bean:message key="cliente.title" /></th>
+								<th><bean:message key="cliente.field.telefono" /></th>
+								<th><bean:message key="cliente.field.direccion" /></th>
+								<th><bean:message key="producto.title" /></th>
+								<th><bean:message key="detventa.field.cantidad" /></th>
+								<th><bean:message key="producto.field.presentacion" /></th>
+								<th><bean:message key="detventa.field.valor" /></th>
+								<th><bean:message key="detventa.field.valorunit" /></th>
+								<!--  th>< bean :message key="producto.field.precioventa" /></th-->
+								<th><bean:message key="inventario.field.fechaing" /></th>
+								<th><bean:message key="detventa.field.dias" /></th>
+								<th><bean:message key="producto.field.idlaboratorio" /></th>
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="ventaProd" name="PREVENTAS"
 								type="com.farmacia.domain.Preventa">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -129,11 +113,9 @@
 									
 								</tr>
 							</logic:iterate>
-							
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -144,15 +126,7 @@
 						<td colspan="1">&nbsp;</td>
 					</tr>
 				</logic:empty>
-				<tr  align="center" class="titulos" >
-					<td colspan="3" >&nbsp;
-					</td>
-				</tr>
-			
-				
-			</table>
-			</td>
-			</tr>
-			</table>
+							
+		</section>
 			
 </html:form>

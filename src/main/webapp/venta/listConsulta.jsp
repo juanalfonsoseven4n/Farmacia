@@ -33,21 +33,15 @@
 		forma.submit();
 	}
 </script>
+<section class="main">
 		<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
-
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="venta.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+	<div class="tit">
+		<span><bean:message
+				key="venta.title.list" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -64,18 +58,17 @@
 					</tr>
 				</logic:messagesPresent>
 
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3"><bean:message key="cliente.title" />: &nbsp;
-					<html:text  property="cliente" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;&nbsp;
-					<bean:message key="producto.title" />: &nbsp;
-					<html:text  property="descproducto" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;&nbsp;
-					<bean:message key="cliente.field.idclasificacion" />: &nbsp;
-					<html:select property="idclasificacion" styleClass="sel">
+		
+		<div class="contBus">
+			<span class="spanName" ><bean:message key="cliente.title" />:</span>
+					<html:text styleClass="text" property="cliente" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text>
+					<span class="spanName" ><bean:message key="producto.title" />:</span>
+					<html:text styleClass="text" property="descproducto" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text>
+					<span class="spanName" ><bean:message key="cliente.field.idclasificacion" />:</span>
+					<html:select property="idclasificacion">
 						<html:option value="0">Seleccione</html:option>
 						<html:options collection="clasLista" labelProperty="nombre" property="idclasificacion" />
-					</html:select> &nbsp;&nbsp;
+					</html:select> 
 					<html:submit styleClass="boton"
 						property="Buscar" >
 						<bean:message key="label.global.buscar" />
@@ -83,28 +76,30 @@
 					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarFiltro(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
-					</td>
+			</div>
+	</div>
 
-				</tr>
 
 			
 				<%double totalpag=0; %>
 				<logic:notEmpty name="VENTAS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-								<td><bean:message key="venta.field.fecha" /></td>
-								<td><bean:message key="venta.field.hora" /></td>
-								<td><bean:message key="venta.field.idusuario" /></td>
-								<td><bean:message key="venta.field.idmedico" /></td>
-								<td><bean:message key="venta.field.valortotal" /></td>
-								<td><bean:message key="venta.field.iva" /></td>
-								<td><bean:message key="venta.field.idcliente" /></td>
-								<td><bean:message key="cliente.field.idclasificacion" /></td>
-								<td colspan="1"><bean:message key="label.global.acciones" /></td>
+					
+						<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th><bean:message key="venta.field.fecha" /></th>
+								<th><bean:message key="venta.field.hora" /></th>
+								<th><bean:message key="venta.field.idusuario" /></th>
+								<th><bean:message key="venta.field.idmedico" /></th>
+								<th><bean:message key="venta.field.valortotal" /></th>
+								<th><bean:message key="venta.field.iva" /></th>
+								<th><bean:message key="venta.field.idcliente" /></th>
+								<th><bean:message key="cliente.field.idclasificacion" /></th>
+								<th><bean:message key="label.global.acciones" /></th>
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="venta" name="VENTAS"
 								type="com.farmacia.domain.Venta">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -138,10 +133,14 @@
 
 								</tr>
 							</logic:iterate>
+							<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+			                    <td colspan="9" align="right">
+			                    	<bean:message key="venta.field.totalVentas" /> : $<%= totalpag %> &nbsp; <br>
+			                    </td>
+							</tr>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -152,20 +151,10 @@
 						<td colspan="1">&nbsp;</td>
 					</tr>
 				</logic:empty>
-				<tr  align="center" class="titulos" >
-					<td colspan="3" >&nbsp;
-					</td>
-				</tr>
 				
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-                    <td colspan="3" align="right">
-                    	<bean:message key="venta.field.totalVentas" /> : $<%= totalpag %> &nbsp; <br>
-                    </td>
-				</tr>
 				
-			</table>
-			</td>
-			</tr>
-			</table>
+				
+				
+			</section>
 			
 </html:form>

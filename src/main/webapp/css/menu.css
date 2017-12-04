@@ -59,7 +59,7 @@ div.menu {
   position: absolute;
   top: 0px;
   visibility: hidden;
-  z-index: 101;
+  z-index: 1101;
 }
 
 div.menu a.menuItem {

@@ -33,22 +33,17 @@
 		forma.submit();
 	}
 </script>
+<section class="main">
 	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Movimiento.do?method=pager" />
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
 
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="movimiento.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+	<div class="tit">
+		<span><bean:message
+				key="movimiento.title.list" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -65,17 +60,15 @@
 					</tr>
 				</logic:messagesPresent>
 
-		<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3">Nombre de <bean:message key="movimiento.field.idproducto"/>: &nbsp;
-					<html:text  property="proddesc" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
-					<bean:message key="movimiento.field.fechaini"/>: &nbsp;
-					<html:text styleClass="selText"    property="fechaini" size="10" maxlength="10" onfocus="this.select()" 
+		<div class="contBus">
+			<span class="spanName" >Nombre de <bean:message key="movimiento.field.idproducto"/>:</span> &nbsp;
+					<html:text styleClass="text" property="proddesc" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
+					<span class="spanName" ><bean:message key="movimiento.field.fechaini"/>:</span> &nbsp;
+					<html:text styleClass="text" property="fechaini" size="10" maxlength="10" onfocus="this.select()" 
 					    readonly="true"/>&nbsp;<IMG src="<%=request.getContextPath()%>/images/calendario.gif"
 				   alt="Obtener Fecha" onclick="return showCalendar('fechaini', 'y/mm/dd');"> &nbsp;
-					<bean:message key="movimiento.field.fechafin"/>: &nbsp;
-					<html:text styleClass="selText"    property="fechafin" size="10" maxlength="10" onfocus="this.select()" 
+					<span class="spanName" ><bean:message key="movimiento.field.fechafin"/>:</span> &nbsp;
+					<html:text styleClass="text" property="fechafin" size="10" maxlength="10" onfocus="this.select()" 
 					    readonly="true"/>&nbsp;<IMG src="<%=request.getContextPath()%>/images/calendario.gif"
 				   alt="Obtener Fecha" onclick="return showCalendar('fechafin', 'y/mm/dd');"> &nbsp;			
 					<html:submit styleClass="boton"
@@ -85,40 +78,33 @@
 					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarFiltro(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
-					</td>
-
-				</tr>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
-				
+					</div>
+	</div>
+	<div class="prevNext"><c:out
+						value="${sessionScope.stringpag}" escapeXml="false" /></div>
+						
 				<logic:notEmpty name="MOVIMIENTOS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-								<td><bean:message key="movimiento.field.fecha" /></td>
-								<td ><bean:message key="movimiento.field.idmovimiento" /></td>
-								<td><bean:message key="movimiento.field.idproducto" /></td>
-								<td style="display: none;"><bean:message key="movimiento.field.valor" /></td>
-								<td style="display: none;"><bean:message key="movimiento.field.codigo" /></td>
-								<td><bean:message key="movimiento.field.tipo" /></td>
-								<td><bean:message key="movimiento.field.cantidad" /></td>
-								<td><bean:message key="movimiento.field.precio" /></td>
-								<td><bean:message key="movimiento.field.preciocosto" /></td>
-								<td><bean:message key="movimiento.field.fechaexp" /></td>
-								<td><bean:message key="movimiento.field.idusuario" /></td>
-								
-								<td style="display: none;"><bean:message key="movimiento.field.idfarmacia" /></td>
-								<td style="display: none;"><bean:message key="movimiento.field.hora" /></td>
-								<td colspan="3"><bean:message key="label.global.acciones" /></td>
+					<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th><bean:message key="movimiento.field.fecha" /></th>
+								<th ><bean:message key="movimiento.field.idmovimiento" /></th>
+								<th><bean:message key="movimiento.field.idproducto" /></th>
+								<th style="display: none;"><bean:message key="movimiento.field.valor" /></th>
+								<th style="display: none;"><bean:message key="movimiento.field.codigo" /></th>
+								<th><bean:message key="movimiento.field.tipo" /></th>
+								<th><bean:message key="movimiento.field.cantidad" /></th>
+								<th><bean:message key="movimiento.field.precio" /></th>
+								<th><bean:message key="movimiento.field.preciocosto" /></th>
+								<th><bean:message key="movimiento.field.fechaexp" /></th>
+								<th><bean:message key="movimiento.field.idusuario" /></th>
+								<th style="display: none;"><bean:message key="movimiento.field.idfarmacia" /></th>
+								<th style="display: none;"><bean:message key="movimiento.field.hora" /></th>
+								<th ><bean:message key="label.global.acciones" /></th>
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="movimiento" name="MOVIMIENTOS"
 								type="com.farmacia.domain.Movimiento">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -144,7 +130,7 @@
 									<td style="display: none;"><bean:write name="movimiento" property="idfarmacia"	scope="page" /></td>
 									<td style="display: none;"><bean:write name="movimiento" property="hora"	scope="page" /></td>
 								
-									<td width="2%">
+									<td nowrap="nowrap" align="center">
 									<%
 											java.util.HashMap map = new java.util.HashMap();
 																				map.put("idmovimiento", String.valueOf(movimiento.getIdmovimiento()));
@@ -155,15 +141,11 @@
 													width="14" height="14" titleKey="label.global.ver" />
 											</html:link>&nbsp;&nbsp;
 											
-											</td>
-										<td width="2%">
 											<html:link href="/Farmacia/Movimiento.do?method=edit" name="map"	scope="page">
 												<html:img border="0" src="/Farmacia/images/editar.gif"
 													width="14" height="14" titleKey="label.global.editar" />
 											</html:link>&nbsp;&nbsp;
-											
-										</td>
-										<td width="2%">
+										
 											<html:link href="/Farmacia/Movimiento.do?method=delete" name="map"	scope="page">
 												<html:img border="0" src="/Farmacia/images/eliminar.gif"
 													width="14" height="14" titleKey="label.global.eliminar" />
@@ -173,10 +155,9 @@
 
 								</tr>
 							</logic:iterate>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -187,15 +168,13 @@
 						<td colspan="1">&nbsp;</td>
 					</tr>
 				</logic:empty>
-				<tr  align="center" class="titulos">
-					<td colspan="3" ><input type="button" class="boton"
+				<div class="row">
+					<div class="contBtnFo">
+						<input type="button" class="boton"
 						name="agregar" onclick="cambioAction(this.form, '<%=request.getContextPath()%>/Movimiento.do?method=add')"
 						value="<bean:message key="label.global.agregar" />">
-					</td>
-				</tr>
-			</table>
-			</td>
-			</tr>
-			</table>
-			
+					</div>
+				</div>
+							
+		</section>
 </html:form>

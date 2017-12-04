@@ -173,6 +173,10 @@ public class MovimientoForm extends ValidatorForm  {
 		return tipo;
 	}
 	
+	public int getTipoNum() {
+		return Integer.parseInt(tipo);
+	}
+	
 	/**
 	 * @return java.math.BigDecimal
 	 */

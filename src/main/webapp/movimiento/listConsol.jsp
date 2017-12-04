@@ -33,21 +33,15 @@
 		forma.submit();
 	}
 </script>
+<section class="main">
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
-
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="movimiento.title.listConsol" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+	<div class="tit">
+		<span><bean:message
+				key="movimiento.title.listConsol" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -63,50 +57,44 @@
 						</logic:messagesPresent></td>
 					</tr>
 				</logic:messagesPresent>
-
-		<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3">Nombre de <bean:message key="movimiento.field.idproducto"/>: &nbsp;
-					<html:text  property="proddesc" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
-					<bean:message key="movimiento.field.fechaini"/>: &nbsp;
-					<html:text styleClass="selText"    property="fechaini" size="10" maxlength="10" onfocus="this.select()" 
+		<div class="contBus">
+			<span class="spanName" >Nombre de <bean:message key="movimiento.field.idproducto"/>:</span>
+			<html:text  property="proddesc" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
+			<span class="spanName" ><bean:message key="movimiento.field.fechaini"/>:</span>
+			<html:text styleClass="selText"    property="fechaini" size="10" maxlength="10" onfocus="this.select()" 
 					    readonly="true"/>&nbsp;<IMG src="<%=request.getContextPath()%>/images/calendario.gif"
 				   alt="Obtener Fecha" onclick="return showCalendar('fechaini', 'y/mm/dd');"> &nbsp;
-					<bean:message key="movimiento.field.fechafin"/>: &nbsp;
-					<html:text styleClass="selText"    property="fechafin" size="10" maxlength="10" onfocus="this.select()" 
+			<span class="spanName" ><bean:message key="movimiento.field.fechafin"/>:</span>
+			<html:text styleClass="selText"    property="fechafin" size="10" maxlength="10" onfocus="this.select()" 
 					    readonly="true"/>&nbsp;<IMG src="<%=request.getContextPath()%>/images/calendario.gif"
 				   alt="Obtener Fecha" onclick="return showCalendar('fechafin', 'y/mm/dd');"> &nbsp;			
 					<html:submit styleClass="boton"
 						property="Buscar" >
 						<bean:message key="label.global.buscar" />
-					</html:submit>&nbsp;
+					</html:submit>
 					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarFiltro(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
-					</td>
+		</div>
+	</div>
 
-				</tr>
 
 				
 				
 				<logic:notEmpty name="MOVIMIENTOS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-																	
-																	<td><bean:message key="movimiento.field.idproducto" /></td>
-																	<td width="15%"><bean:message key="movimiento.field.tipo" /></td>
-																	<td width="15%"><bean:message key="movimiento.field.cantidadCaja" /></td>
-																	<td width="15%"><bean:message key="movimiento.field.cantidadSobre" /></td>
-																	<td width="15%"><bean:message key="movimiento.field.preciocosto" /></td>
-																
-																	
-																
+					<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th><bean:message key="movimiento.field.idproducto" /></th>
+								<th width="15%"><bean:message key="movimiento.field.tipo" /></th>
+								<th width="15%"><bean:message key="movimiento.field.cantidadCaja" /></th>
+								<th width="15%"><bean:message key="movimiento.field.cantidadSobre" /></th>
+								<th width="15%"><bean:message key="movimiento.field.preciocosto" /></th>
 								
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="movimiento" name="MOVIMIENTOS"
 								type="com.farmacia.domain.Movimiento">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -125,10 +113,9 @@
 
 								</tr>
 							</logic:iterate>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -139,13 +126,7 @@
 						<td colspan="1">&nbsp;</td>
 					</tr>
 				</logic:empty>
-				<tr  align="center" class="titulos" >
-					<td colspan="3" >&nbsp;
-					</td>
-				</tr>
-			</table>
-			</td>
-			</tr>
-			</table>
+							
+		</section>
 			
 </html:form>

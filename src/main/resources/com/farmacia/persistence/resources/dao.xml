@@ -11,7 +11,7 @@
 			<property name="SqlMapConfigResource"
 				value="com/farmacia/persistence/resources/sql-map-config.xml" />
 		</transactionManager>
-		<dao interface="com.farmacia.persistence.iface.IInventarioDao" implementation="com.farmacia.persistence.sqlmapdao.InventarioSqlMapDao" />
+<dao interface="com.farmacia.persistence.iface.IInventarioDao" implementation="com.farmacia.persistence.sqlmapdao.InventarioSqlMapDao" />
 		<dao interface="com.farmacia.persistence.iface.IDetventaDao" implementation="com.farmacia.persistence.sqlmapdao.DetventaSqlMapDao" />
 		<dao interface="com.farmacia.persistence.iface.IFarmaciaDao" implementation="com.farmacia.persistence.sqlmapdao.FarmaciaSqlMapDao" />
 		<dao interface="com.farmacia.persistence.iface.IMovimientoDao" implementation="com.farmacia.persistence.sqlmapdao.MovimientoSqlMapDao" />

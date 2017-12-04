@@ -72,7 +72,7 @@
 	
 	function enviarBarcode(){
 		var barcode = document.getElementsByName('barcode')[0].value
-	 	eval("window.open('<%=request.getContextPath()%>/Producto.do?method=listPopupBarcode&venta=venta&barcode="+ barcode + "','popup','width=700,height=550,scrollbars=yes,resizable')");
+	 	eval("window.open('<%=request.getContextPath()%>/Producto.do?method=listPopupBarcode&venta=venta&barcode="+ barcode + "','popup','width=800,height=550,scrollbars=yes,resizable')");
 	}
 </script>
 	<html:hidden property="strutsAction" />
@@ -168,7 +168,7 @@
 					<td align="center"><html:hidden property="idproducto" value="0"></html:hidden> 
 						<input type="text" class="selText" name="descproducto" id="descproducto" readonly="readonly">
 						<input type="hidden" class="selText" name="campoproducto" id="campoproducto"> 
-						<IMG src="<%=request.getContextPath()%>/images/lupa.gif" onclick=" window.open('<%=request.getContextPath()%>/Producto.do?method=listPopup&venta=venta','popup','width=700,height=550,scrollbars=yes,resizable')" style="cursor: hand;"><br> 
+						<IMG src="<%=request.getContextPath()%>/images/lupa.gif" onclick=" window.open('<%=request.getContextPath()%>/Producto.do?method=listPopup&venta=venta','popup','width=800,height=550,scrollbars=yes,resizable')" style="cursor: hand;"><br> 
 						<input type="text" class="selText" name="barcode" id="barcode" maxlength="20">
 						<IMG src="<%=request.getContextPath()%>/images/barcode.png" height="24" width="24" onclick="enviarBarcode();" style="cursor: hand;"> 
 						</td>

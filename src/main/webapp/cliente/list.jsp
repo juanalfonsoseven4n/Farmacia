@@ -32,21 +32,16 @@
 		forma.submit();
 	}
 </script>
+<section class="main">
 	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Cliente.do?method=pager" />
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
 
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="cliente.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<div class="tit">
+		<span><bean:message
+				key="cliente.title.list" /></span>
 				<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
@@ -64,13 +59,11 @@
 					</tr>
 				</logic:messagesPresent>
 
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3">Nombre: &nbsp;
-					<html:text  property="nombre" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;&nbsp;
-					<bean:message key="cliente.field.idclasificacion" />&nbsp;
-					<html:select property="idclasificacion" styleClass="sel">
+				<div class="contBus">
+			<span class="spanName" >Nombre:</span>
+					<html:text styleClass="text" property="nombre" maxlength="50" onkeyup="this.v	alue=this.value.toUpperCase()"></html:text> &nbsp;&nbsp;
+					<span class="spanName" ><bean:message key="cliente.field.idclasificacion" />:</span>
+					<html:select property="idclasificacion" >
 						<html:option value="0">Seleccione</html:option>
 						<html:options collection="clasLista" labelProperty="nombre" property="idclasificacion" />
 					</html:select>&nbsp;&nbsp;
@@ -81,39 +74,33 @@
 					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarFiltro(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
-					</td>
-
-				</tr>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
+					</div>
+	</div>
+	<div class="prevNext"><c:out
+						value="${sessionScope.stringpag}" escapeXml="false" /></div>
 				
 				<logic:notEmpty name="CLIENTES" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-								<td style="display: none;"><bean:message key="cliente.field.idcliente" /></td>
-								<td><bean:message key="cliente.field.nombre" /></td>
-								<td><bean:message key="cliente.field.apellido" /></td>
-								<td><bean:message key="cliente.field.direccion" /></td>
-								<td><bean:message key="cliente.field.telefono" /></td>
-								<td style="display: none;"><bean:message key="cliente.field.mail" /></td>
-								<td><bean:message key="cliente.field.cedula" /></td>
-								<td><bean:message key="cliente.field.sexo" /></td>
-								<td><bean:message key="cliente.field.edad" /></td>
+					<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th style="display: none;"><bean:message key="cliente.field.idcliente" /></th>
+								<th><bean:message key="cliente.field.nombre" /></th>
+								<th><bean:message key="cliente.field.apellido" /></th>
+								<th><bean:message key="cliente.field.direccion" /></th>
+								<th><bean:message key="cliente.field.telefono" /></th>
+								<th style="display: none;"><bean:message key="cliente.field.mail" /></th>
+								<th><bean:message key="cliente.field.cedula" /></th>
+								<th><bean:message key="cliente.field.sexo" /></th>
+								<th><bean:message key="cliente.field.edad" /></th>
 								
-								<td><bean:message key="cliente.field.idclasificacion" /></td>
-								<td><bean:message key="cliente.field.idclasificacion2" /></td>
-								<td><bean:message key="cliente.field.idclasificacion3" /></td>
-								<td colspan="3"><bean:message key="label.global.acciones" /></td>
+								<th><bean:message key="cliente.field.idclasificacion" /></th>
+								<th><bean:message key="cliente.field.idclasificacion2" /></th>
+								<th><bean:message key="cliente.field.idclasificacion3" /></th>
+								<th	><bean:message key="label.global.acciones" /></th>
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="cliente" name="CLIENTES"
 								type="com.farmacia.domain.Cliente">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -130,7 +117,7 @@
 									<td><bean:write name="cliente" property="clasdesc2"	scope="page" /></td>
 									<td><bean:write name="cliente" property="clasdesc3"	scope="page" /></td>
 
-									<td width="2%">
+									<td nowrap="nowrap" align="center">
 									<%
 											java.util.HashMap map = new java.util.HashMap();
 																				map.put("idcliente", String.valueOf(cliente.getIdcliente()));
@@ -141,15 +128,11 @@
 													width="14" height="14" titleKey="label.global.ver" />
 											</html:link>&nbsp;&nbsp;
 											
-											</td>
-										<td width="2%">
 											<html:link href="/Farmacia/Cliente.do?method=edit" name="map"	scope="page">
 												<html:img border="0" src="/Farmacia/images/editar.gif"
 													width="14" height="14" titleKey="label.global.editar" />
 											</html:link>&nbsp;&nbsp;
 											
-										</td>
-										<td width="2%">
 											<html:link href="/Farmacia/Cliente.do?method=delete" name="map"	scope="page">
 												<html:img border="0" src="/Farmacia/images/eliminar.gif"
 													width="14" height="14" titleKey="label.global.eliminar" />
@@ -159,9 +142,9 @@
 
 								</tr>
 							</logic:iterate>
+						</tbody>
 						</table>
-						</td>
-					</tr>
+						</div>
 
 				</logic:notEmpty>
 
@@ -173,15 +156,12 @@
 						<td colspan="1">&nbsp;</td>
 					</tr>
 				</logic:empty>
-				<tr  align="center" class="titulos">
-					<td colspan="3" ><input type="button" class="boton"
+				<div class="row">
+					<div class="contBtnFo">
+						<input type="button" class="boton"
 						name="agregar" onclick="cambioAction(this.form, '<%=request.getContextPath()%>/Cliente.do?method=add')"
 						value="<bean:message key="label.global.agregar" />">
-					</td>
-				</tr>
-			</table>
-			</td>
-			</tr>
-			</table>
-			
+					</div>
+				</div>
+	</section>			
 </html:form>

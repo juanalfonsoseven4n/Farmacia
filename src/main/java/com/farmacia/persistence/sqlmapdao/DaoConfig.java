@@ -23,6 +23,10 @@ public class DaoConfig {
 			String resource = "com/farmacia/persistence/resources/dao.xml";
 			Reader reader = Resources.getResourceAsReader(resource);
 			System.out.println("Reader: "+reader.toString());
+			System.out.println("Props: "+props.getProperty("username"));
+			System.out.println("Props: "+props.getProperty("url"));
+			System.out.println("Props: "+props.getProperty("schema"));
+			System.out.println("Props: "+props.getProperty("jndi.name"));
 			daoManager = DaoManagerBuilder.buildDaoManager(reader,props);
 			System.out.println("DaoManagerBuilder: "+daoManager.toString());
 		} catch (Exception e) {

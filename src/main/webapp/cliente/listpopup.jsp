@@ -12,7 +12,9 @@
 <%@ taglib uri="/WEB-INF/tiles.tld" prefix="comp"%>
 
 <link href="<%=request.getContextPath()%>/styles/diseno.css" rel="stylesheet" type="text/css">
-
+<link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/responsive.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/internas.css" rel="stylesheet" type="text/css">
 
 <html:form target="_self" action="/Cliente.do?method=listPopup">
 <script type="text/javascript">
@@ -31,22 +33,17 @@
 		window.close();
 	}   
 </script>
+<section class="main">
 	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Cliente.do?method=pager" />
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
 
-	<table border="0" cellpadding="0" cellspacing="0" width=100% align="center">
-		<tr >
-			<td align="center" class="titulos" ><bean:message
-				key="cliente.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+	<div class="tit">
+		<span><bean:message
+				key="cliente.title.list" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -62,49 +59,40 @@
 						</logic:messagesPresent></td>
 					</tr>
 				</logic:messagesPresent>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3">Nombre: &nbsp;
-					<html:text  property="nombre" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
+		<div class="contBus">
+			<span class="spanName" >Nombre:</span>
+			<html:text  property="nombre" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
 					<html:submit styleClass="boton"
 						property="Buscar" >
 						<bean:message key="label.global.buscar" />
-					</html:submit>&nbsp;
+					</html:submit>
 					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarNombre(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
-					</td>
-
-				</tr>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
-				
+		</div>
+	</div>
+	<div class="prevNext"><c:out
+						value="${sessionScope.stringpag}" escapeXml="false" /></div>
+						
 				<logic:notEmpty name="CLIENTES" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="3" width="100%" align="center">
-							<tr class="titulos">
-								<td colspan="1"><bean:message key="label.global.acciones" /></td>
-								<td  style="display: none;"><bean:message key="cliente.field.idcliente" /></td>
-								<td><bean:message key="cliente.field.nombre" /></td>
-								<td><bean:message key="cliente.field.apellido" /></td>
-								<td  style="display: none;"><bean:message key="cliente.field.direccion" /></td>
-								<td><bean:message key="cliente.field.telefono" /></td>
-								<td><bean:message key="cliente.field.mail" /></td>
-								<td><bean:message key="cliente.field.cedula" /></td>
-								<td><bean:message key="cliente.field.idclasificacion" /></td>
+					<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th colspan="1"><bean:message key="label.global.acciones" /></th>
+								<th  style="display: none;"><bean:message key="cliente.field.idcliente" /></th>
+								<th><bean:message key="cliente.field.nombre" /></th>
+								<th><bean:message key="cliente.field.apellido" /></th>
+								<th  style="display: none;"><bean:message key="cliente.field.direccion" /></th>
+								<th><bean:message key="cliente.field.telefono" /></th>
+								<th><bean:message key="cliente.field.mail" /></th>
+								<th><bean:message key="cliente.field.cedula" /></th>
+								<th><bean:message key="cliente.field.idclasificacion" /></th>
 																								
 
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="cliente" name="CLIENTES"
 								type="com.farmacia.domain.Cliente">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -130,10 +118,9 @@
 									<td><bean:write name="cliente" property="clasdesc"	scope="page" /></td>
 								</tr>
 							</logic:iterate>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -144,10 +131,6 @@
 						<td colspan="3">&nbsp;</td>
 					</tr>
 				</logic:empty>
-			
-			</table>
-			</td>
-			</tr>
-			</table>
-			
+
+	</section>			
 </html:form>

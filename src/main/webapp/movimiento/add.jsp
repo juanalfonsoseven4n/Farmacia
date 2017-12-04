@@ -151,7 +151,7 @@
 							<html:hidden property="idproducto" ></html:hidden>
 					<input type="text" class="selText"  name="descproducto" id="descproducto" readonly="readonly" alt="Seleccione un Producto"/>
 					<input type="hidden" name="campoproducto" id="campoproducto" readonly="readonly" />
-					<IMG alt="Seleccione un Producto" src="<%=request.getContextPath()%>/images/lupa.gif" onclick=" window.open('<%=request.getContextPath()%>/Producto.do?method=listPopup','popup','width=700,height=550,scrollbars=yes,resizable')" style="cursor: hand;">
+					<IMG alt="Seleccione un Producto" src="<%=request.getContextPath()%>/images/lupa.gif" onclick=" window.open('<%=request.getContextPath()%>/Producto.do?method=listPopup','popup','width=800,height=550,scrollbars=yes,resizable')" style="cursor: hand;">
 						</td>
 				</tr>
 				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'" id="presentaciones" style="display: none;">

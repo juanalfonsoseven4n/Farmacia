@@ -78,46 +78,19 @@
 
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="js/script.js"></script>
-<table border="0" cellpadding="0" cellspacing="0" width="100%"
-	height="100%">
-	<tr>
-		<td height="1" class="shade7"><img
-			src="<%=request.getContextPath()%>/images/pixel.gif" width="100%"
-			height="1" border="0"></td>
-	</tr>
-	<tr>
-		<td height="10" class="grey1"><img
-			src="<%=request.getContextPath()%>/images/pixel.gif" width="100%"
-			height="10" border="0"></td>
-	</tr>
+
 	<!-- Contents -->
-	<tr>
-		<td valign="top">
-		<table border="0" cellpadding="0" cellspacing="0" width="100%"
-			height="100%">
-			<tr>
-				<td width="10" class="grey1"><img
-					src="<%=request.getContextPath()%>/images/pixel.gif" width="10"
-					height="20" border="0"></td>
-				<td class="grey1" valign="top">
-					<comp:insert attribute='body' />
-				</td>
-				<td width="10" class="grey1">
-				<img
-					src="<%=request.getContextPath()%>/images/pixel.gif" width="10"
-					height="100%" border="0"></td>
-			</tr>
-		</table>
-		</td>
-	</tr>
 	
+		
+					<comp:insert attribute='body' />
+			
+		
 	<!-- End Contents -->
 
 	<!-- Footer -->
-	<tr height="20">
-		<td height="20" bgcolor="#3F7F7F"><img
-			src="<%=request.getContextPath()%>/images/pixel.gif" width="30"
-			height="20" border="0"> 
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" >
+	<tr>
+		<td height="10" bgcolor="#3F7F7F">
 			
 			<logic:messagesPresent>
 			    <div class="fondo_error">
@@ -138,9 +111,10 @@
 		
 
 	</tr>
+	</table>
 	<!-- End Footer -->
 
-</table>
+
 </body>
 
 </html>

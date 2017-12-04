@@ -1,4 +1,4 @@
-td { font-family: arial,helvetica,sans-serif}
+/*td { font-family: arial,helvetica,sans-serif}*/
 
 .fondo_balnco {color: #3F7F7F; padding: 5px; background-color: #FFFFFF; font-weight: bold; font-size:11px }
 .fondo_gris {color: #3F7F7F; padding: 5px; background-color: #CCCCCC; font-weight: bold; font-size:11px } 
@@ -62,13 +62,6 @@ td { font-family: arial,helvetica,sans-serif}
 
 
 
-.selinv { border: 0px; font-size: 12px; background: #ffffff; cursor: hand; color: #3F7F7F; font-family: BISans, Arial, Helvetica, sans-serif; height: 19px; text-decoration: none; background-color: transparent;}
-.selinvn { border: 0px; font-size: 12px; background: #ffffff; cursor: hand; color: #3F7F7F; font-family: BISans, Arial, Helvetica, sans-serif; height: 19px; text-decoration: none; background-color: transparent; font-weight: bold; text-align: right;}
-.sel {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff;border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; height: 21px; text-decoration: none;	background-color: transparent;}
-.selText {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff; background-color: #ffffff; border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; height: 19px; text-decoration: none;	}
-.selNum {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff; background-color: #ffffff; border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; height: 19px; text-decoration: none;	text-align: right;}
-.selMulti {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff;border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; text-decoration: none;	background-color: transparent; width: 220px;}
-.selObser {border-right: #104a7b 1px solid; border-top: #afc4d5 1px solid; font-size: 11px; background: #ffffff;border-left: #afc4d5 1px solid;cursor: hand;color: #3F7F7F; border-bottom: #104a7b 1px solid;font-family:  Arial, Helvetica, sans-serif; text-decoration: none;	background-color: transparent; width: 380px;}
 
 #header {
   float:left;
@@ -117,21 +110,21 @@ td { font-family: arial,helvetica,sans-serif}
 tR.navon {
 background-color: #BAE8CD;
 cursor: hand;
-color: #3F7F7F; padding: 5px; font-weight: bold; font-size:11px
+/*color: #3F7F7F; padding: 5px; font-weight: bold; font-size:11px*/
 }
 tR.navoff {
 background-color: #FFFFFF;
 cursor: hand;
-color: #3F7F7F; padding: 5px; font-weight: bold; font-size:11px
+/*color: #3F7F7F; padding: 5px; font-weight: bold; font-size:11px*/
 }
 tR.navcuarentena {
 background-color: #efef11;
 cursor: hand;
-color: #3F7F7F; padding: 5px; font-weight: bold; font-size:11px
+/*color: #3F7F7F; padding: 5px; font-weight: bold; font-size:11px*/
 }
 
 tR.navprioridad {
 background-color: #E65F00;
 cursor: hand;
-color: #FFFFFF; padding: 5px; font-weight: bold; font-size:11px
+/*color: #FFFFFF; padding: 5px; font-weight: bold; font-size:11px*/
 }

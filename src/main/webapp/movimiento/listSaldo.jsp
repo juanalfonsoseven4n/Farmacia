@@ -31,21 +31,16 @@
 		forma.submit();
 	}
 </script>
+<section class="main">
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
 
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="movimiento.title.listSaldo" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+		<div class="tit">
+		<span><bean:message
+				key="movimiento.title.listSaldo" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -61,42 +56,38 @@
 						</logic:messagesPresent></td>
 					</tr>
 				</logic:messagesPresent>
-
-		<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3">Nombre de <bean:message key="movimiento.field.idproducto"/>: &nbsp;
-					<html:text  property="proddesc" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
+		<div class="contBus">
+			<span class="spanName" >Nombre de <bean:message key="movimiento.field.idproducto"/>:</span>
+			<html:text  property="proddesc" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text>
 						
 					<html:submit styleClass="boton"
 						property="Buscar" >
 						<bean:message key="label.global.buscar" />
-					</html:submit>&nbsp;
+					</html:submit>
 					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarFiltro(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
-					</td>
-
-				</tr>
+		</div>
+	</div>
 
 				
 				
 				<logic:notEmpty name="SALDOS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-																	
-									<td><bean:message key="movimiento.field.idproducto" /></td>
-									<td><bean:message key="producto.field.codigobarras" /></td>
-									<td width="12%"><bean:message key="movimiento.field.cantidadCaja" /></td>
-									<td width="12%"><bean:message key="movimiento.field.cantidadSobre" /></td>
-									<td width="12%"><bean:message key="movimiento.field.preciocompra" /></td>
-									<td width="12%"><bean:message key="movimiento.field.precioventa" /></td>
-									<td width="12%"><bean:message key="movimiento.field.valorMercanciaCompra" /></td>
-									<td width="12%"><bean:message key="movimiento.field.valorMercancia" /></td>	
+					<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th><bean:message key="movimiento.field.idproducto" /></th>
+								<th><bean:message key="producto.field.codigobarras" /></th>
+								<th width="12%"><bean:message key="movimiento.field.cantidadCaja" /></th>
+								<th width="12%"><bean:message key="movimiento.field.cantidadSobre" /></th>
+								<th width="12%"><bean:message key="movimiento.field.preciocompra" /></th>
+								<th width="12%"><bean:message key="movimiento.field.precioventa" /></th>
+								<th width="12%"><bean:message key="movimiento.field.valorMercanciaCompra" /></th>
+								<th width="12%"><bean:message key="movimiento.field.valorMercancia" /></th>	
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="movimiento" name="SALDOS"
 								type="com.farmacia.domain.Movimiento">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -110,10 +101,29 @@
 									<td align="right">$<bean:write name="movimiento" property="valorMercancia"	scope="page" format="#,##0.00"/></td>
 								</tr>
 							</logic:iterate>
+							<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+			                    <td colspan="8" align="right">
+			                    	<bean:message key="movimiento.field.totalcompras" /> : $<bean:write name="movimientoForm" property="totalCompras" format="#,##0.00"/> &nbsp; <br>
+			                    </td>
+							</tr>
+							<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+			                    <td colspan="8" align="right">
+			                    	<bean:message key="movimiento.field.totalventas" /> : $<bean:write name="movimientoForm" property="totalVentas" format="#,##0.00"/> &nbsp; <br>
+			                    </td>
+							</tr>
+							<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+			                    <td colspan="8" align="right">
+			                    	<bean:message key="movimiento.field.totalmercanciacompra" /> : $<bean:write name="movimientoForm" property="totalMercanciaCompra" format="#,##0.00"/> &nbsp;                     	
+			                    </td>
+							</tr>
+							<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+			                    <td colspan="8" align="right">
+			                    	<bean:message key="movimiento.field.totalmercancia" /> : $<bean:write name="movimientoForm" property="totalMercancia" format="#,##0.00"/> &nbsp;                     	
+			                    </td>
+							</tr>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -124,33 +134,7 @@
 						<td colspan="1">&nbsp;</td>
 					</tr>
 				</logic:empty>
-				<tr  align="center" class="titulos" >
-					<td colspan="3" >&nbsp;
-					</td>
-				</tr>
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-                    <td colspan="3" align="right">
-                    	<bean:message key="movimiento.field.totalcompras" /> : $<bean:write name="movimientoForm" property="totalCompras" format="#,##0.00"/> &nbsp; <br>
-                    </td>
-				</tr>
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-                    <td colspan="3" align="right">
-                    	<bean:message key="movimiento.field.totalventas" /> : $<bean:write name="movimientoForm" property="totalVentas" format="#,##0.00"/> &nbsp; <br>
-                    </td>
-				</tr>
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-                    <td colspan="3" align="right">
-                    	<bean:message key="movimiento.field.totalmercanciacompra" /> : $<bean:write name="movimientoForm" property="totalMercanciaCompra" format="#,##0.00"/> &nbsp;                     	
-                    </td>
-				</tr>
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-                    <td colspan="3" align="right">
-                    	<bean:message key="movimiento.field.totalmercancia" /> : $<bean:write name="movimientoForm" property="totalMercancia" format="#,##0.00"/> &nbsp;                     	
-                    </td>
-				</tr>
-			</table>
-			</td>
-			</tr>
-			</table>
+							
+		</section>
 			
 </html:form>

@@ -27,91 +27,73 @@
 			forma.submit();
 	}
 </script>
+<section class="main">
 	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Producto.do?method=pager" />
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
-
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="producto.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
-					<tr>			
-						<td class="exito" colspan="2" align="center">
-							<bean:message name="mensaje" scope="request"/>
-						</td>
-					</tr>
-				</logic:present>
-				<logic:messagesPresent>
-					<tr>
-						<td colspan=3"><logic:messagesPresent>
-							<html:messages id="error">
-								<bean:write name="error" />
-							</html:messages>
-						</logic:messagesPresent></td>
-					</tr>
-				</logic:messagesPresent>
-
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3">Nombre: &nbsp;
-					<html:text  property="nombre" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
-					<html:submit styleClass="boton"
-						property="Buscar" >
-						<bean:message key="label.global.buscar" />
-					</html:submit>&nbsp;
-					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarNombre(this.form);">
-						<bean:message key="label.global.limpiar" />
-					</html:button>
-					</td>
-
-				</tr>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
-				
+	<div class="tit">
+		<span><bean:message key="producto.title.list" /></span>
+		<logic:present name="mensaje" scope="request">
+			<span><tr>			
+				<td class="exito" colspan="2" align="center">
+					<bean:message name="mensaje" scope="request"/>
+				</td>
+			</tr></span>
+		</logic:present>
+		<logic:messagesPresent>
+			<span><tr>
+				<td colspan=3"><logic:messagesPresent>
+					<html:messages id="error">
+						<bean:write name="error" />
+					</html:messages>
+				</logic:messagesPresent></td>
+			</tr></span>
+		</logic:messagesPresent>
+		<div class="contBus">
+			<span class="spanName" >Nombre:</span>
+			<html:text title="Nombre" styleClass="text" alt="Nombre" property="nombre" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text>
+			<html:submit styleClass="boton" property="Buscar" >
+				<bean:message key="label.global.buscar" />
+			</html:submit>
+			<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarNombre(this.form);">
+				<bean:message key="label.global.limpiar" />
+			</html:button>
+		</div>
+	</div>
+	<div class="prevNext"><c:out value="${sessionScope.stringpag}" escapeXml="false" /></div>
+						
 				<logic:notEmpty name="PRODUCTOS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-								<td style="display: none;"><bean:message key="producto.field.idproducto" /></td>
-								<td><bean:message key="producto.field.nombre" /></td>
-								<td><bean:message key="producto.field.idfamilia" /></td>
-								<td><bean:message key="producto.field.presentacion" /></td>
-								<td><bean:message key="producto.field.sobre" /></td>
-								<td><bean:message key="producto.field.caja" /></td>
+					
+						<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th style="display: none;"><bean:message key="producto.field.idproducto" /></th>
+								<th><bean:message key="producto.field.nombre" /></th>
+								<th><bean:message key="producto.field.idfamilia" /></th>
+								<th><bean:message key="producto.field.presentacion" /></th>
+								<th><bean:message key="producto.field.sobre" /></th>
+								<th><bean:message key="producto.field.caja" /></th>
 
-								<td><bean:message key="producto.field.codigobarras" /></td>
-								<td><bean:message key="producto.field.invima" /></td>
-								<td style="display: none;"><bean:message key="producto.field.iva" /></td>
-								<td style="display: none;"><bean:message key="producto.field.valorunit" /></td>
-								<td><bean:message key="producto.field.valor" /></td>
-								<td><bean:message key="producto.field.precioventa" /></td>
-								<td style="display: none;"><bean:message key="producto.field.cantidadmin" /></td>
+								<th><bean:message key="producto.field.codigobarras" /></th>
+								<th><bean:message key="producto.field.invima" /></th>
+								<th style="display: none;"><bean:message key="producto.field.iva" /></th>
+								<th style="display: none;"><bean:message key="producto.field.valorunit" /></th>
+								<th><bean:message key="producto.field.valor" /></th>
+								<th><bean:message key="producto.field.precioventa" /></th>
+								<th style="display: none;"><bean:message key="producto.field.cantidadmin" /></th>
 								
-								<td style="display: none;"><bean:message key="producto.field.comentarios" /></td>
-								<td style="display: none;"><bean:message key="producto.field.indicaciones" /></td>
-								<td><bean:message key="producto.field.idlaboratorio" /></td>
-								<td><bean:message key="producto.field.idcategoria" /></td>
-								<td><bean:message key="producto.field.idcategoriad" /></td>																
-								<td colspan="3"><bean:message key="label.global.acciones" /></td>
+								<th style="display: none;"><bean:message key="producto.field.comentarios" /></th>
+								<th style="display: none;"><bean:message key="producto.field.indicaciones" /></th>
+								<th><bean:message key="producto.field.idlaboratorio" /></th>
+								<th><bean:message key="producto.field.idcategoria" /></th>
+								<th><bean:message key="producto.field.idcategoriad" /></th>																
+								<th ><bean:message key="label.global.acciones" /></th>
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="producto" name="PRODUCTOS"
 								type="com.farmacia.domain.Producto">
 								
@@ -135,58 +117,51 @@
 									<td><bean:write name="producto" property="catdesc"	scope="page" /></td>
 									<td><bean:write name="producto" property="catdescd"	scope="page" /></td>
 									
-									<td width="2%">
+									<td nowrap="nowrap" align="center">
 									<%
 											java.util.HashMap map = new java.util.HashMap();
 																				map.put("idproducto", String.valueOf(producto.getIdproducto()));
 																				pageContext.setAttribute("map", map, PageContext.PAGE_SCOPE);
 									%>
 											<html:link href="/Farmacia/Producto.do?method=detail" name="map"	scope="page">
-												<html:img border="0" src="/Farmacia/images/ver.gif"
-													width="14" height="14" titleKey="label.global.ver" />
-											</html:link>&nbsp;&nbsp;
-											
-											</td>
-										<td width="2%">
+												<html:img src="/Farmacia/images/ico_ver.png"
+													titleKey="label.global.ver" />
+											</html:link>
 											<html:link href="/Farmacia/Producto.do?method=edit" name="map"	scope="page">
-												<html:img border="0" src="/Farmacia/images/editar.gif"
-													width="14" height="14" titleKey="label.global.editar" />
-											</html:link>&nbsp;&nbsp;
-											
-										</td>
-										<td width="2%">
+												<html:img src="/Farmacia/images/ico_edit.png"
+													titleKey="label.global.editar" />
+											</html:link>
 											<html:link href="/Farmacia/Producto.do?method=delete" name="map"	scope="page">
-												<html:img border="0" src="/Farmacia/images/eliminar.gif"
-													width="14" height="14" titleKey="label.global.eliminar" />
-											</html:link>&nbsp;&nbsp;
-											
-										</td>
+												<html:img src="/Farmacia/images/ico_basu.png"
+													titleKey="label.global.eliminar" />
+											</html:link>
+									</td>
 
 								</tr>
 							</logic:iterate>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
 				<logic:empty name="PRODUCTOS" scope="session">
-					<tr align="center">
-						<td colspan="1">&nbsp;</td>
-						<td colspan="1"><bean:message key="label.global.noregisters" /></td>
-						<td colspan="1">&nbsp;</td>
-					</tr>
+					<table>
+						<tr align="center">
+							<td colspan="1">&nbsp;</td>
+							<td colspan="1"><bean:message key="label.global.noregisters" /></td>
+							<td colspan="1">&nbsp;</td>
+						</tr>
+					</table>
 				</logic:empty>
-				<tr  align="center" class="titulos">
-					<td colspan="3" ><input type="button" class="boton"
+				
+				<div class="row">
+					<div class="contBtnFo">
+						<input type="button" class="boton"
 						name="agregar" onclick="cambioAction(this.form, '<%=request.getContextPath()%>/Producto.do?method=add')"
 						value="<bean:message key="label.global.agregar" />">
-					</td>
-				</tr>
-			</table>
-			</td>
-			</tr>
-			</table>
-			
+					</div>
+				</div>
+							
+		</section>	
 </html:form>

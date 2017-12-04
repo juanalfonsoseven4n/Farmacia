@@ -27,21 +27,17 @@
 			forma.submit();
 	}
 </script>
-	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Categoria.do?method=pager" />
-	<html:hidden property="strutsAction" />
-	<input type="hidden" name="idTabla" id="idTabla"/>
-	<html:hidden property="strutsOrderby" />
-
-
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="categoria.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<section class="main">
+		<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Categoria.do?method=pager" />
+		<html:hidden property="strutsAction" />
+		<input type="hidden" name="idTabla" id="idTabla"/>
+		<html:hidden property="strutsOrderby" />
+	
+	
+		<div class="tit">
+				<span><bean:message
+					key="categoria.title.list" /></span>
+			
 				<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
@@ -51,19 +47,17 @@
 				</logic:present>
 				<logic:messagesPresent>
 					<tr>
-						<td colspan=3"><logic:messagesPresent>
+						<td colspan="3"><logic:messagesPresent>
 							<html:messages id="error">
 								<bean:write name="error" />
 							</html:messages>
 						</logic:messagesPresent></td>
 					</tr>
 				</logic:messagesPresent>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3">Nombre: &nbsp;
-					<html:text  property="nombre" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
+	
+				<div class="contBus">
+					<span class="spanName" >Nombre:</span>  &nbsp;
+					<html:text styleClass="text" property="nombre" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
 					<html:submit styleClass="boton"
 						property="Buscar" >
 						<bean:message key="label.global.buscar" />
@@ -71,89 +65,77 @@
 					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarNombre(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
-					</td>
-
-				</tr>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
-				
-				<logic:notEmpty name="LABORATORIOS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-																	<td><bean:message key="categoria.field.idcategoria" /></td>
-																	<td><bean:message key="categoria.field.nombre" /></td>
-																	<td><bean:message key="categoria.field.descripcion" /></td>
-																
-								<td colspan="3"><bean:message key="label.global.acciones" /></td>
-							</tr>
-
-							<logic:iterate indexId="ind" id="categoria" name="LABORATORIOS"
-								type="com.farmacia.domain.Categoria">
-								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-																	<td><bean:write name="categoria" property="idcategoria"	scope="page" /></td>
-																	<td><bean:write name="categoria" property="nombre"	scope="page" /></td>
-																	<td><bean:write name="categoria" property="descripcion"	scope="page" /></td>
+				</div>	
+		</div>
+		<div class="prevNext"><c:out value="${sessionScope.stringpag}" escapeXml="false" /></div>
+					
+		<logic:notEmpty name="LABORATORIOS" scope="session">
+			<div class="tableCont">
+				<table cellspacing="0" >
+					<thead>
+						<tr>
+							<th><bean:message key="categoria.field.idcategoria" /></th>
+							<th><bean:message key="categoria.field.nombre" /></th>
+							<th><bean:message key="categoria.field.descripcion" /></th>
+							<th><bean:message key="label.global.acciones" /></th	>
+						</tr>
+					</thead>
+					<tbody>
+					<logic:iterate indexId="ind" id="categoria" name="LABORATORIOS"
+						type="com.farmacia.domain.Categoria">
+						<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+															<td><bean:write name="categoria" property="idcategoria"	scope="page" /></td>
+															<td><bean:write name="categoria" property="nombre"	scope="page" /></td>
+															<td><bean:write name="categoria" property="descripcion"	scope="page" /></td>
+						
+							<td nowrap="nowrap" align="center">
+							<%
+									java.util.HashMap map = new java.util.HashMap();
+																		map.put("idcategoria", String.valueOf(categoria.getIdcategoria()));
+																		pageContext.setAttribute("map", map, PageContext.PAGE_SCOPE);
+							%>
+									<html:link href="/Farmacia/Categoria.do?method=detail" name="map"	scope="page">
+										<html:img border="0" src="/Farmacia/images/ver.gif"
+											width="14" height="14" titleKey="label.global.ver" />
+									</html:link>&nbsp;&nbsp;
+									
+									
+									<html:link href="/Farmacia/Categoria.do?method=edit" name="map"	scope="page">
+										<html:img border="0" src="/Farmacia/images/editar.gif"
+											width="14" height="14" titleKey="label.global.editar" />
+									</html:link>&nbsp;&nbsp;
+									
 								
-									<td width="2%">
-									<%
-											java.util.HashMap map = new java.util.HashMap();
-																				map.put("idcategoria", String.valueOf(categoria.getIdcategoria()));
-																				pageContext.setAttribute("map", map, PageContext.PAGE_SCOPE);
-									%>
-											<html:link href="/Farmacia/Categoria.do?method=detail" name="map"	scope="page">
-												<html:img border="0" src="/Farmacia/images/ver.gif"
-													width="14" height="14" titleKey="label.global.ver" />
-											</html:link>&nbsp;&nbsp;
-											
-											</td>
-										<td width="2%">
-											<html:link href="/Farmacia/Categoria.do?method=edit" name="map"	scope="page">
-												<html:img border="0" src="/Farmacia/images/editar.gif"
-													width="14" height="14" titleKey="label.global.editar" />
-											</html:link>&nbsp;&nbsp;
-											
-										</td>
-										<td width="2%">
-											<html:link href="/Farmacia/Categoria.do?method=delete" name="map"	scope="page">
-												<html:img border="0" src="/Farmacia/images/eliminar.gif"
-													width="14" height="14" titleKey="label.global.eliminar" />
-											</html:link>&nbsp;&nbsp;
-											
-										</td>
-
-								</tr>
-							</logic:iterate>
-						</table>
-						</td>
-					</tr>
-
-				</logic:notEmpty>
-
-
-				<logic:empty name="LABORATORIOS" scope="session">
-					<tr align="center">
-						<td colspan="1">&nbsp;</td>
-						<td colspan="1"><bean:message key="label.global.noregisters" /></td>
-						<td colspan="1">&nbsp;</td>
-					</tr>
-				</logic:empty>
-				<tr  align="center" class="titulos">
-					<td colspan="3" ><input type="button" class="boton"
-						name="agregar" onclick="cambioAction(this.form, '<%=request.getContextPath()%>/Categoria.do?method=add')"
-						value="<bean:message key="label.global.agregar" />">
-					</td>
-				</tr>
-			</table>
-			</td>
+									<html:link href="/Farmacia/Categoria.do?method=delete" name="map"	scope="page">
+										<html:img border="0" src="/Farmacia/images/eliminar.gif"
+											width="14" height="14" titleKey="label.global.eliminar" />
+									</html:link>&nbsp;&nbsp;
+									
+								</td>
+	
+						</tr>
+					</logic:iterate>
+					</tbody>
+				</table>
+				</div>
+	
+		</logic:notEmpty>
+	
+	
+		<logic:empty name="LABORATORIOS" scope="session">
+			<tr align="center">
+				<td colspan="1">&nbsp;</td>
+				<td colspan="1"><bean:message key="label.global.noregisters" /></td>
+				<td colspan="1">&nbsp;</td>
 			</tr>
-			</table>
+		</logic:empty>
+		<div class="row">
+			<div class="contBtnFo">
+			<input type="button" class="boton"
+				name="agregar" onclick="cambioAction(this.form, '<%=request.getContextPath()%>/Categoria.do?method=add')"
+				value="<bean:message key="label.global.agregar" />">
+			</</div>
+		</div>
 			
+	</section>
 </html:form>

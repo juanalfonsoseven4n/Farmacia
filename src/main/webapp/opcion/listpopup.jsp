@@ -12,7 +12,9 @@
 <%@ taglib uri="/WEB-INF/tiles.tld" prefix="comp"%>
 
 <link href="<%=request.getContextPath()%>/styles/diseno.css" rel="stylesheet" type="text/css">
-
+<link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/responsive.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/internas.css" rel="stylesheet" type="text/css">
 
 <html:form target="_self" action="/Opcion.do?method=listPopup">
 <script type="text/javascript">
@@ -27,22 +29,17 @@
 		window.close();
 	}   
 </script>
+<section class="main">
 	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Opcion.do?method=pager" />
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
 
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="opcion.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+	<div class="tit">
+		<span><bean:message
+				key="opcion.title.list" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -58,30 +55,23 @@
 						</logic:messagesPresent></td>
 					</tr>
 				</logic:messagesPresent>
-
-
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
-				
+	</div>
+	<div class="prevNext"><c:out
+						value="${sessionScope.stringpag}" escapeXml="false" /></div>
+						
 				<logic:notEmpty name="OPCIONS" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-								<td colspan="1"><bean:message key="label.global.acciones" /></td>
-																	<td><bean:message key="opcion.field.idopcion" /></td>
-																	<td><bean:message key="opcion.field.nombre" /></td>
-																	<td><bean:message key="opcion.field.descripcion" /></td>
-																								
+					<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th colspan="1"><bean:message key="label.global.acciones" /></th>
+								<th><bean:message key="opcion.field.idopcion" /></th>
+								<th><bean:message key="opcion.field.nombre" /></th>
+								<th><bean:message key="opcion.field.descripcion" /></th>																								
 
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="opcion" name="OPCIONS"
 								type="com.farmacia.domain.Opcion">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -103,10 +93,9 @@
 
 								</tr>
 							</logic:iterate>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -117,10 +106,6 @@
 						<td colspan="3">&nbsp;</td>
 					</tr>
 				</logic:empty>
-			
-			</table>
-			</td>
-			</tr>
-			</table>
+			</section>
 			
 </html:form>

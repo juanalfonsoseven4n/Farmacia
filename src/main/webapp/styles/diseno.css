@@ -1,4 +1,4 @@
-body {
+/*body {
 	height:100px;
 		margin:0px;
 		padding:0px;
@@ -7,7 +7,7 @@ body {
 
 html{
 		height:100%;
-	}
+	}*/
 	
 	#pageContent{
 	width:200px;
@@ -79,23 +79,13 @@ html{
 		float:left;	/* Firefox - to avoid blank white space above panel */
 		padding-left:10px;	/* A little space at the left */
 	}
-.titulos {
-		color: #FEFEFE; 
-		font-weight: bold; 
-		background-color: #3F7F7F;
-		text-align: center;
-		font-size:13px;
-		font-family: arial,helvetica,sans-serif
+
 		}
 .listado {
 	color: #000000;
 	background-color: #d6dff7;
 	}
-.formulario {
-	color: #000000;
-	background-color: #FFFFFF;
-	text-align: right;	
-	}
+
 .detalle {
 	color: #000000;
 	background-color: #d6dff7;
@@ -110,17 +100,7 @@ html{
 	color: #3f7f7f;
 	text-align: left;
 	}
-.boton{
-		font-size: 11px;
-		font-weight: bold;
-		background: #d6e7ef;
-		cursor: hand;
-		color: #3F7F7F;
-		font-family: tahoma, sans-serif;
-		text-decoration: none;
-		padding:1 1 1 1;
-		
-		}
+
 .recibo {
 	font-weight: normal; 
 	font-size: 11px;

@@ -53,7 +53,7 @@ header .brandCont .rightCont .name{
 }
 header .brandCont .rightCont .name .texto{
 	font-size: 14px;
-	font-weight: 200;
+	font-weight: 300;
 	display: inline-block;
 	color: #ababab;
 }
@@ -76,6 +76,7 @@ header .brandCont .rightCont .btnCont a{
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	font-weight: 300;
 }
 header .brandCont .rightCont .btnCont a:hover{
 	background: #6cc4f8;
@@ -98,6 +99,7 @@ header .brandCont .rightCont .btnCont a:hover{
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  z-index: 1111;
 }
 #cssmenu:after,
 #cssmenu > ul:after {
@@ -107,6 +109,7 @@ header .brandCont .rightCont .btnCont a:hover{
   visibility: hidden;
   line-height: 0;
   height: 0;
+  z-index: 1111;
 }
 #cssmenu #menu-button {
   display: none;
@@ -115,6 +118,7 @@ header .brandCont .rightCont .btnCont a:hover{
 	font-family: Montserrat, sans-serif;
 	background: #FFFFFF;
 	border-top:1px solid #e7f2f7;
+	z-index: 1111;
 }
 #cssmenu > ul > li {
   float: left;
@@ -326,6 +330,7 @@ section.login .left .brand .contBrand h1{
 section.login .left .brand .contBrand p{
 	color: #FFFFFF;
 	font-size: 14px;
+	font-weight: 400;
 }
 section.login .right{
 	width:50%;
@@ -344,18 +349,19 @@ section.login .right .formLog p{
 	font-size: 14px;
 	color: #ababab;
 	text-align: center;
+	font-weight: 400;
 }
 section.login .right .formLog input{
 	width: 94%;
 	padding: 13px 3%;
 	font-size: 14px;
 	color: #ababab;
-	border: 1px solid #dbdbdb;
+	border: 1px solid #d0d0d0;
 	margin: 0 0 20px 0;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	font-weight: 100;
+	font-weight: 300;
 }
 section.login .right .formLog .btnLog{
 	width: 100%;
@@ -416,4 +422,120 @@ section.login .right .formLog .olvido a:hover{
 	vertical-align: middle;
 }
 
+.titulos {
+   	color: #366177; 
+	font-weight: bold; 
+	background-color: #FFF;
+	text-align: center;
+	font-size: 15px;
+	padding: 20px 0px 10px;	
+}
 
+.formulario {
+	text-align: right;	
+    font-size: 14px;
+    font-weight: 300;
+    color: #0e4b63;
+    margin: 0 0 5px 0;
+	}
+.sel {
+	padding: 4px 1px;
+	font-size: 12px;
+	cursor: pointer;
+	color: #a8a8a8;
+	border: 1px solid #d0d0d0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 5px;
+    font-weight: 100;
+}
+
+.selText {	
+	padding: 4px 1px;
+    font-size: 12px;
+    color: #a8a8a8;
+    border: 1px solid #d0d0d0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 5px;
+    font-weight: 100;
+}
+
+.selinv {
+	padding: 4px 1px;
+	font-size: 12px;
+	color: #a8a8a8;
+	cursor: pointer;
+    border: 1px solid #d0d0d0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 5px;
+    font-weight: 100;
+}
+
+.selinvn {
+	padding: 4px 1px;
+	font-size: 12px;
+	color: #a8a8a8;
+	cursor: pointer;
+    border: 1px solid #d0d0d0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 5px;
+    font-weight: 100;
+	text-align: right;
+}
+
+.selNum {
+	padding: 4px 1px;
+	font-size: 12px;
+	color: #a8a8a8;
+	cursor: pointer;
+    border: 1px solid #d0d0d0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 5px;
+    font-weight: 100;
+	text-align: right;
+}
+
+.selMulti {
+	padding: 4px 1px;
+	font-size: 12px;
+	color: #a8a8a8;
+	cursor: pointer;
+    border: 1px solid #d0d0d0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 5px;
+    font-weight: 100;
+	width: 220px;
+}
+
+.selObser {
+	padding: 4px 1px;
+	font-size: 12px;
+	color: #a8a8a8;
+	cursor: pointer;
+    border: 1px solid #d0d0d0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 5px;
+    font-weight: 100;
+	width: 380px;
+}
+.boton{
+	font-family: tahoma, sans-serif;
+	padding: 7px 7px;
+    font-size: 13px;
+    color: #FFFFFF;
+    border: 0;
+    background: #6cc4f8;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 5px;
+    font-weight: 300;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+	}

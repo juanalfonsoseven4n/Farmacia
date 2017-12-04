@@ -33,22 +33,17 @@
 		forma.submit();
 	}
 </script>
+<section class="main">
 	<input type="hidden" name="listPager" id="listPager" value="<%=request.getContextPath()%>/Venta.do?method=pager" />
 	<html:hidden property="strutsAction" />
 	<input type="hidden" name="idTabla" id="idTabla"/>
 	<html:hidden property="strutsOrderby" />
 
 
-	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos" ><bean:message
-				key="venta.title.list" /></td>
-		</tr>
-
-		<tr>
-			<td>
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<logic:present name="mensaje" scope="request">
+		<div class="tit">
+		<span><bean:message
+				key="venta.title.list" /></span>
+		<logic:present name="mensaje" scope="request">
 					<tr>			
 						<td class="exito" colspan="2" align="center">
 							<bean:message name="mensaje" scope="request"/>
@@ -65,21 +60,20 @@
 					</tr>
 				</logic:messagesPresent>
 
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="center" colspan=3">Nombre del <bean:message key="venta.field.idusuario"/>: &nbsp;
-					<html:text  property="usuario" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
-					<bean:message key="producto.title" />: &nbsp;
-					<html:text  property="descproducto" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text> &nbsp;
-					<bean:message key="movimiento.field.fechaini"/>: &nbsp;
-					<html:text styleClass="selText" property="fechaini" size="10" maxlength="10" onfocus="this.select()"
+		
+		<div class="contBus">
+			<span class="spanName" >Nombre del <bean:message key="venta.field.idusuario"/>:</span>
+					<html:text styleClass="text" property="usuario" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text>
+					<span class="spanName" ><bean:message key="producto.title" />:</span>
+					<html:text styleClass="text" property="descproducto" maxlength="50" onkeyup="this.value=this.value.toUpperCase()"></html:text>
+					<span class="spanName" ><bean:message key="movimiento.field.fechaini"/>:</span>
+					<html:text styleClass="text" property="fechaini" size="10" maxlength="10" onfocus="this.select()"
 					    readonly="true"/>&nbsp;<IMG src="<%=request.getContextPath()%>/images/calendario.gif"
 				   alt="Obtener Fecha" onclick="return showCalendar('fechaini', 'y/mm/dd');"> &nbsp;
-					<bean:message key="movimiento.field.fechafin"/>: &nbsp;
-					<html:text styleClass="selText" property="fechafin" size="10" maxlength="10" onfocus="this.select()"
+					<span class="spanName" ><bean:message key="movimiento.field.fechafin"/>:</span>
+					<html:text styleClass="text" property="fechafin" size="10" maxlength="10" onfocus="this.select()"
 					    readonly="true"/>&nbsp;<IMG src="<%=request.getContextPath()%>/images/calendario.gif"
-				   alt="Obtener Fecha" onclick="return showCalendar('fechafin', 'y/mm/dd');"> &nbsp;			
+				   alt="Obtener Fecha" onclick="return showCalendar('fechafin', 'y/mm/dd');"> 
 					<html:submit styleClass="boton"
 						property="Buscar" >
 						<bean:message key="label.global.buscar" />
@@ -87,34 +81,31 @@
 					<html:button styleClass="boton"	property="LimpiarBt" onclick="limpiarFiltro(this.form);">
 						<bean:message key="label.global.limpiar" />
 					</html:button>
-					</td>
-
-				</tr>
-
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-
-
-					<td align="right" colspan=3"><c:out
-						value="${sessionScope.stringpag}" escapeXml="false" /></td>
-
-				</tr>
+					</div>
+	</div>
+	<div class="prevNext"><c:out
+						value="${sessionScope.stringpag}" escapeXml="false" /></div>
+						
+				
 				<%double totalpag=0; %>
 				<logic:notEmpty name="VENTASLIST" scope="session">
-					<tr>
-						<td colspan="3">
-						<table border="0" cellspacing="2" cellpadding="0" width="100%" align="center">
-							<tr class="titulos">
-								<td><bean:message key="venta.field.fecha" /></td>
-								<td><bean:message key="venta.field.hora" /></td>
-								<td><bean:message key="venta.field.idusuario" /></td>
-								<td><bean:message key="venta.field.idmedico" /></td>
-								<td><bean:message key="venta.field.valortotal" /></td>
-								<td><bean:message key="venta.field.iva" /></td>
-								<td><bean:message key="venta.field.idcliente" /></td>
-								<td style="display: none;"><bean:message key="venta.field.codigo" /></td>
-								<td colspan="2"><bean:message key="label.global.acciones" /></td>
+					
+						<div class="tableCont">
+						<table cellspacing="0">
+							<thead>
+							<tr>
+								<th><bean:message key="venta.field.fecha" /></th>
+								<th><bean:message key="venta.field.hora" /></th>
+								<th><bean:message key="venta.field.idusuario" /></th>
+								<th><bean:message key="venta.field.idmedico" /></th>
+								<th><bean:message key="venta.field.valortotal" /></th>
+								<th><bean:message key="venta.field.iva" /></th>
+								<th><bean:message key="venta.field.idcliente" /></th>
+								<th style="display: none;"><bean:message key="venta.field.codigo" /></th>
+								<th><bean:message key="label.global.acciones" /></th>
 							</tr>
-
+							</thead>
+							<tbody>
 							<logic:iterate indexId="ind" id="venta" name="VENTASLIST"
 								type="com.farmacia.domain.Venta">
 								<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
@@ -148,10 +139,19 @@
 
 								</tr>
 							</logic:iterate>
+							<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+			                    <td colspan="8" align="right">
+			                    	<bean:message key="venta.comision" /> (10%) : $<%= totalpag*10/100 %> &nbsp; <br>
+			                    </td>
+							</tr>
+							<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
+			                    <td colspan="8" align="right">
+			                    	<bean:message key="venta.field.totalVentasPagina" /> : $<%= totalpag %> &nbsp; <br>
+			                    </td>
+							</tr>
+							</tbody>
 						</table>
-						</td>
-					</tr>
-
+						</div>
 				</logic:notEmpty>
 
 
@@ -162,24 +162,9 @@
 						<td colspan="1">&nbsp;</td>
 					</tr>
 				</logic:empty>
-				<tr  align="center" class="titulos" >
-					<td colspan="3" >&nbsp;
-					</td>
-				</tr>
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-                    <td colspan="3" align="right">
-                    	<bean:message key="venta.comision" /> (10%) : $<%= totalpag*10/100 %> &nbsp; <br>
-                    </td>
-				</tr>
-				<tr class="navoff" onmouseover="className='navon'" onmouseout="className='navoff'">
-                    <td colspan="3" align="right">
-                    	<bean:message key="venta.field.totalVentasPagina" /> : $<%= totalpag %> &nbsp; <br>
-                    </td>
-				</tr>
 				
-			</table>
-			</td>
-			</tr>
-			</table>
+				
+				
+			</section>
 			
 </html:form>

@@ -100,7 +100,8 @@
 			upper(p.nombre) like '$proddesc$%'
 		</isNotEmpty>
 			<isNotEmpty prepend="AND" property="tipo">
-			upper( m.tipo) = #tipo#
+			<!-- upper( m.tipo) = #tipo# -->
+			m.tipo = #tipoNum#
 		</isNotEmpty>
 		<isNotEmpty property="fechaini">
 		<isNotEqual compareValue="0" prepend="AND" property="fechainiNum">

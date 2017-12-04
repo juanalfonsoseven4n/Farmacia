@@ -44,10 +44,13 @@
 	<html:hidden property="strutsOrderby" />
 	<input type="hidden" name="proveedorID" id="proveedorID" />
 	<input type="hidden" name="pageSource" id="pageSource" value="toadd" />
+	<section class="main">
+	<div class="tit">
+		<span>Agregar producto</span>
+	</div>
 	<table border="0" cellpadding="0" cellspacing="0" width=90% align="center">
-		<tr width="90%">
-			<td align="center" class="titulos"><bean:message key="producto.title.add" /></td>
-		</tr>
+		
+	
 
 		<tr>
 			<td>
@@ -210,15 +213,17 @@
 
 				<tr>
 					<td class="formulario" colspan="3" align="center"><span class="requerido"> <bean:message key="campos.requeridos" /> </span></td>
-				</tr>
-				<tr align="center" class="titulos">
-					<td colspan="3"><html:button styleClass="boton" onclick="enviar(this.form)" property="Agregar">
-						<bean:message key="label.global.agregar" />
-					</html:button></td>
-				</tr>
+				</tr>				
 			</table>
+			<div class="row">
+					<div class="contBtnFo">
+						<html:button styleClass="boton" onclick="enviar(this.form)" property="Agregar">
+						<bean:message key="label.global.agregar" />
+					</html:button>
+					</div>
+				</div>
 			</td>
 		</tr>
 	</table>
-
+	</section>
 </html:form>
